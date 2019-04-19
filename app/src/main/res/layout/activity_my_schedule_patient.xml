@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0B0A">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/white"
+        app:srcCompat="@drawable/myschedule_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/daa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:gravity="center_horizontal"
+
+            android:textAllCaps="true"
+            android:textSize="21sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <!--<ImageView-->
+        <!--android:id="@+id/imageView10"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="132dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--app:srcCompat="@drawable/containter_1" />-->
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="fill_parent"
+            android:layout_height="132dp"
+            android:background="@drawable/containter_1"
+            android:gravity="center"
+            android:text="Date"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+
+        <TextView
+            android:id="@+id/medicine_date"
+            android:layout_width="fill_parent"
+            android:layout_height="132dp"
+            android:background="@drawable/container_2"
+            android:gravity="center"
+            android:text="medicine date"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/addnote"
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/addnotes" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/btn_back" />
+
+</RelativeLayout>

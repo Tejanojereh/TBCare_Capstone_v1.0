@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+            <!--android:icon="@drawable/details"-->
+
+
+        <item
+            android:id="@+id/nav_progress"
+            android:title="My Progress"
+            android:icon="@drawable/progress"/>
+
+        <item
+            android:id="@+id/nav_schedule"
+            android:title="My Schedule"
+            android:icon="@drawable/schedule"/>
+        <item
+            android:id="@+id/nav_tp"
+            android:title="My Treatment Partner" />
+
+        <item
+            android:id="@+id/nav_log_out"
+            android:title="Log Out"
+            android:icon="@drawable/logout"/>
+
+    </group>
+
+</menu>

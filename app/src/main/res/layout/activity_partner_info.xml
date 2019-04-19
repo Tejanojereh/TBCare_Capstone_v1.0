@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0B0A">
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        app:srcCompat="@drawable/tp_title" />
+
+
+    <TextView
+        android:id="@+id/tp_name"
+        android:layout_width="fill_parent"
+        android:layout_height="132dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="97dp"
+        android:background="@drawable/container_2"
+        android:gravity="center"
+        android:text="Name"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tp_contact"
+        android:layout_width="fill_parent"
+        android:layout_height="132dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/container_3"
+        android:gravity="center"
+        android:text="Contact Number:"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="13dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/btn_back" />
+
+
+</RelativeLayout>
