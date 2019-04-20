@@ -23,27 +23,22 @@ public class WebService extends AsyncTask {
     private String Address;
     private String[] Value;
     private String[] ValueName;
+    private org.json.JSONArray RecordResult;
 
     public WebService(String address, String[] value, String[] valueName)
     {
         Address = address;
         Value = value;
         ValueName = valueName;
+        RecordResult = new org.json.JSONArray();
     }
 
-    public String[] WebServiceManager() //Will Return the Data
+    public org.json.JSONArray WebServiceManager() //Will Return the Data
     {
-        String[] toReturn = new String[100];
-
-        try
-        {
-            doInBackground(null);
-            return toReturn;
-        }
-        catch (Exception e)
-        {
+        if(RecordResult.length() != 0)
+            return RecordResult;
+        else
             return null;
-        }
     }
 
     @Override
@@ -63,16 +58,10 @@ public class WebService extends AsyncTask {
         {
             nameValuePairs.add(new BasicNameValuePair(ValueName[i].toString(), Value[i].toString()));
         }
-        //nameValuePairs.add(new BasicNameValuePair("username", txtUsername.getText().toString()));
-        //nameValuePairs.add(new BasicNameValuePair("password", txtPassword.getText().toString()));
 
         try {
-
-
             httpClient = new DefaultHttpClient();
-
             httpPost = new HttpPost(Address);
-
             httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             response = httpClient.execute(httpPost);
@@ -87,7 +76,10 @@ public class WebService extends AsyncTask {
 
             message = buffer.toString();
             JSONObject jsonObj = new JSONObject(message);
-            org.json.JSONArray record = jsonObj.getJSONArray("results");
+            org.json.JSONArray RecordResult = jsonObj.getJSONArray("results");
+
+            //WebServiceManager(record);
+
             //   inputStream.close();
 
             /*if(record.length() == 0) {

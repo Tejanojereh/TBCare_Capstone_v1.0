@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText txtUsername, txtPassword;
     private ImageButton imgBtnSignIn, imgBtnForgotPassword;
     private String id, uname;
+    private WebService WebService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //sign in
             case R.id.imageButton:
             {
+                String address = "http://tbcarephp.azurewebsites.net/login.php";
+                String[] value = {txtUsername.getText().toString(), txtPassword.getText().toString()};
+                String[] valueName = {"username", "password"};
+                WebService = new WebService(address, value, valueName);
+                org.json.JSONArray data =  WebService.WebServiceManager();
 
-                new WebService().execute();
+                if(data != null)
+                {
+                    try {
+                        JSONObject object = data.getJSONObject(0);
+                        id = object.getString("id");
+                        object = data.getJSONObject(1);
+                        uname = object.getString("username");
+
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+
+                        if (uname.contains("TP"))
+                            intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+
+                        else {
+                            intent = new Intent(MainActivity.this, Menu_Patient.class);
+                        }
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id", uname);
+                        intent.putExtras(bundle);
+                        txtPassword.setText(" ");
+                        txtUsername.setText(" ");
+                        startActivity(intent);
+//                        }
+//                    });
+                    }
+                    catch(Exception e)
+                    {
+
+                    }
+                }
+                //new WebService().execute();
             }break;
 
             //forgot password
@@ -72,94 +110,94 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgBtnSignIn.setOnClickListener(this);
     }
 
-    class WebService extends AsyncTask {
-
-        @Override
-        protected Object doInBackground(Object[] objects) {
-            byte data[];
-            HttpPost httpPost;
-            StringBuffer buffer = null;
-            HttpResponse response;
-            HttpClient httpClient;
-            InputStream inputStream;
-            final String message;
-
-            List<NameValuePair> nameValuePairs;
-            nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("username", txtUsername.getText().toString()));
-            nameValuePairs.add(new BasicNameValuePair("password", txtPassword.getText().toString()));
-
-            try {
-
-
-                httpClient = new DefaultHttpClient();
-
-                httpPost = new HttpPost("http://tbcarephp.azurewebsites.net/login.php");
-
-                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                response = httpClient.execute(httpPost);
-                inputStream = response.getEntity().getContent();
-                data = new byte[256];
-                buffer = new StringBuffer();
-                int len = 0;
-
-                while(-1 != (len=inputStream.read(data))) {
-                    buffer.append(new String (data, 0, len));
-                }
-
-                message = buffer.toString();
-                JSONObject jsonObj = new JSONObject(message);
-                org.json.JSONArray record = jsonObj.getJSONArray("results");
-                //   inputStream.close();
-
-                if(record.length() == 0) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //    progressDialog.dismiss();
-                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
-                        }
-                    });
-                } else {
-                    JSONObject object = record.getJSONObject(0);
-                    id = object.getString("id");
-                    object = record.getJSONObject(1);
-                    uname = object.getString("username");
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            Intent intent;
-                            if(uname.contains("TP") )
-                                intent = new Intent(MainActivity.this, Menu_TBPartner.class);
-
-                            else {
-                                intent = new Intent(MainActivity.this, Menu_Patient.class);
-                            }
-                            Bundle bundle = new Bundle();
-                            bundle.putString("id", uname);
-                            intent.putExtras(bundle);
-                            txtPassword.setText(" ");
-                            txtUsername.setText(" ");
-                            startActivity(intent);
-
-                        }
-                    });
-                }
-
-            }catch (final Exception e) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-
-            return null;
-        }
-    }
+//    class WebService extends AsyncTask {
+//
+//        @Override
+//        protected Object doInBackground(Object[] objects) {
+//            byte data[];
+//            HttpPost httpPost;
+//            StringBuffer buffer = null;
+//            HttpResponse response;
+//            HttpClient httpClient;
+//            InputStream inputStream;
+//            final String message;
+//
+//            List<NameValuePair> nameValuePairs;
+//            nameValuePairs = new ArrayList<NameValuePair>(2);
+//            nameValuePairs.add(new BasicNameValuePair("username", txtUsername.getText().toString()));
+//            nameValuePairs.add(new BasicNameValuePair("password", txtPassword.getText().toString()));
+//
+//            try {
+//
+//
+//                httpClient = new DefaultHttpClient();
+//
+//                httpPost = new HttpPost("http://tbcarephp.azurewebsites.net/login.php");
+//
+//                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//
+//                response = httpClient.execute(httpPost);
+//                inputStream = response.getEntity().getContent();
+//                data = new byte[256];
+//                buffer = new StringBuffer();
+//                int len = 0;
+//
+//                while(-1 != (len=inputStream.read(data))) {
+//                    buffer.append(new String (data, 0, len));
+//                }
+//
+//                message = buffer.toString();
+//                JSONObject jsonObj = new JSONObject(message);
+//                org.json.JSONArray record = jsonObj.getJSONArray("results");
+//                //   inputStream.close();
+//
+//                if(record.length() == 0) {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            //    progressDialog.dismiss();
+//                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+//                } else {
+//                    JSONObject object = record.getJSONObject(0);
+//                    id = object.getString("id");
+//                    object = record.getJSONObject(1);
+//                    uname = object.getString("username");
+//
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//
+//                            Intent intent;
+//                            if(uname.contains("TP") )
+//                                intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+//
+//                            else {
+//                                intent = new Intent(MainActivity.this, Menu_Patient.class);
+//                            }
+//                            Bundle bundle = new Bundle();
+//                            bundle.putString("id", uname);
+//                            intent.putExtras(bundle);
+//                            txtPassword.setText(" ");
+//                            txtUsername.setText(" ");
+//                            startActivity(intent);
+//
+//                        }
+//                    });
+//                }
+//
+//            }catch (final Exception e) {
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
+//                    }
+//                });
+//            }
+//
+//            return null;
+//        }
+//    }
 
 }
