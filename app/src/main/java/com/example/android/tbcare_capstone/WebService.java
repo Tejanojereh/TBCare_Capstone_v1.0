@@ -11,13 +11,15 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WebService extends AppCompatActivity { //for the runOnUiThread
+//public class WebService extends AppCompatActivity { //for the runOnUiThread
     class WebServiceClass extends AsyncTask {
 
         private String Address;
@@ -25,23 +27,31 @@ public class WebService extends AppCompatActivity { //for the runOnUiThread
         private String[] ValueName;
         private org.json.JSONArray RecordResult;
 
-        public WebServiceClass(String address, String[] value, String[] valueName)
+        public interface Listener{
+            void OnTaskCompleted(JSONArray Result);
+        }
+
+        Listener listener;
+
+        public WebServiceClass(String address, String[] value, String[] valueName, Listener activityContext)
         {
             Address = address;
             Value = value;
             ValueName = valueName;
             RecordResult = new org.json.JSONArray();
+            this.listener = activityContext;
         }
 
-        public org.json.JSONArray WebServiceManager() //Will Return the Data
+        /*public org.json.JSONArray WebServiceManager() //Will Return the Data
         {
             if(RecordResult.length() != 0)
                 return RecordResult;
             else
                 return null;
-        }
+        }*/
 
-        @Override
+
+    @Override
         protected Object doInBackground(Object[] objects) {
 
             byte data[];
@@ -78,12 +88,12 @@ public class WebService extends AppCompatActivity { //for the runOnUiThread
                 JSONObject jsonObj = new JSONObject(message);
                 JSONArray RecordResult = jsonObj.getJSONArray("results");
 
-                runOnUiThread(new Runnable() {
+                /*runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         WebServiceManager();
                     }
-                });
+                });*/
 
                 return RecordResult;
 
@@ -91,5 +101,20 @@ public class WebService extends AppCompatActivity { //for the runOnUiThread
                 return null;
             }
         }
+
+
+        @Override
+        protected void onPostExecute(Object o) {
+            Object json = null;
+            try {
+                json = new JSONTokener(o.toString()).nextValue();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (json instanceof JSONArray) {
+                RecordResult = (JSONArray) json;
+            }
+            listener.OnTaskCompleted(RecordResult);
+        }
     }
-}
+//}

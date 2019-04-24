@@ -11,7 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
-import com.example.android.tbcare_capstone.WebService.WebServiceClass;
+import com.example.android.tbcare_capstone.WebServiceClass;
+import com.example.android.tbcare_capstone.WebServiceClass.Listener;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -28,20 +29,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, Listener{
 
     private EditText txtUsername, txtPassword;
     private ImageButton imgBtnSignIn, imgBtnForgotPassword;
     private String id, uname;
-    private WebService WebService;
     private ProgressDialog progressDialog;
+    private JSONArray data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InstantiateControl();
-        WebService = new WebService();
     }
     @Override
     public void onClick(View v) {
@@ -55,23 +55,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
                 String[] value = {txtUsername.getText().toString(), txtPassword.getText().toString()};
                 String[] valueName = {"username", "password"};
-                WebServiceClass(address, value, valueName);
+                WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this);
 
-                WebService.WebServiceClass.execute();
+                wbc.execute();
 
                 //Check the status of AsyncTask
-                while (WebService.WebServiceClass.getStatus() == AsyncTask.Status.PENDING || WebService.WebServiceClass.getStatus() == AsyncTask.Status.RUNNING)
+                /*while (wbc.getStatus() == AsyncTask.Status.PENDING || wbc.getStatus() == AsyncTask.Status.RUNNING)
                 {
                     progressDialog = ProgressDialog.show(this, "Loading", "Loading, Please Wait.....", true, false);
                     progressDialog.setCancelable(false);
                     progressDialog.show();
-                }
+                }*/
 
-                if(WebService.WebServiceClass.getStatus() == AsyncTask.Status.FINISHED)
+                /*if(wbc.getStatus() == AsyncTask.Status.FINISHED)
                 {
                     progressDialog.dismiss();
 
-                    org.json.JSONArray data =  WebService.WebServiceClass.WebServiceManager();
 
                     if(data != null)
                     {
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     {
                         Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
                     }
-                }
+                }*/
 
 
                 //new WebService().execute();
@@ -127,6 +126,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         imgBtnForgotPassword.setOnClickListener(this);
         imgBtnSignIn.setOnClickListener(this);
+    }
+
+    @Override
+    public void OnTaskCompleted(JSONArray Result) {
+        data = Result;
+        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
     }
 
 //    class WebService extends AsyncTask {
