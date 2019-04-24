@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+import com.example.android.tbcare_capstone.WebService.WebServiceClass;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -32,17 +34,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton imgBtnSignIn, imgBtnForgotPassword;
     private String id, uname;
     private WebService WebService;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InstantiateControl();
+        WebService = new WebService();
     }
     @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class );
+        Intent intent;
         switch (v.getId())
         {
             //sign in
@@ -51,51 +55,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
                 String[] value = {txtUsername.getText().toString(), txtPassword.getText().toString()};
                 String[] valueName = {"username", "password"};
-                WebService = new WebService(address, value, valueName);
-                org.json.JSONArray data =  WebService.WebServiceManager();
+                WebServiceClass(address, value, valueName);
 
-                if(data != null)
+                WebService.WebServiceClass.execute();
+
+                //Check the status of AsyncTask
+                while (WebService.WebServiceClass.getStatus() == AsyncTask.Status.PENDING || WebService.WebServiceClass.getStatus() == AsyncTask.Status.RUNNING)
                 {
-                    try {
-                        JSONObject object = data.getJSONObject(0);
-                        id = object.getString("id");
-                        object = data.getJSONObject(1);
-                        uname = object.getString("username");
+                    progressDialog = ProgressDialog.show(this, "Loading", "Loading, Please Wait.....", true, false);
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+                }
 
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
+                if(WebService.WebServiceClass.getStatus() == AsyncTask.Status.FINISHED)
+                {
+                    progressDialog.dismiss();
 
-                        if (uname.contains("TP"))
-                            intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+                    org.json.JSONArray data =  WebService.WebServiceClass.WebServiceManager();
 
-                        else {
-                            intent = new Intent(MainActivity.this, Menu_Patient.class);
-                        }
-                        Bundle bundle = new Bundle();
-                        bundle.putString("id", uname);
-                        intent.putExtras(bundle);
-                        txtPassword.setText(" ");
-                        txtUsername.setText(" ");
-                        startActivity(intent);
-//                        }
-//                    });
-                    }
-                    catch(Exception e)
+                    if(data != null)
                     {
+                        try {
+                            JSONObject object = data.getJSONObject(0);
+                            id = object.getString("id");
+                            object = data.getJSONObject(1);
+                            uname = object.getString("username");
 
+                            if (uname.contains("TP"))
+                                intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+
+                            else {
+                                intent = new Intent(MainActivity.this, Menu_Patient.class);
+                            }
+                            Bundle bundle = new Bundle();
+                            bundle.putString("id", uname);
+                            intent.putExtras(bundle);
+                            txtPassword.setText(" ");
+                            txtUsername.setText(" ");
+                            startActivity(intent);
+                        }
+                        catch(Exception e)
+                        {
+                            Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
                     }
                 }
+
+
                 //new WebService().execute();
             }break;
 
             //forgot password
             case R.id.imageButton2:
             {
-
                 Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
+                intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class );
                 startActivity(intent);
-
             }break;
         }
     }
