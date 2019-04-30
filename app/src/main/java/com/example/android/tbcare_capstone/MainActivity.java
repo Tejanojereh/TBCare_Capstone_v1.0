@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton imgBtnSignIn, imgBtnForgotPassword;
     private String id, uname;
     private ProgressDialog progressDialog;
-    private JSONArray data;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 /*if(wbc.getStatus() == AsyncTask.Status.FINISHED)
                 {
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
 
 
                     if(data != null)
@@ -130,8 +130,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void OnTaskCompleted(JSONArray Result) {
-        data = Result;
-        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
+//        data = Result;
+//        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
+
+        if(Result != null)
+        {
+            try {
+                JSONObject object = Result.getJSONObject(0);
+                id = object.getString("id");
+                object = Result.getJSONObject(1);
+                uname = object.getString("username");
+
+                if (uname.contains("TP"))
+                    intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+
+                else {
+                    intent = new Intent(MainActivity.this, Menu_Patient.class);
+                }
+                Bundle bundle = new Bundle();
+                bundle.putString("id", uname);
+                intent.putExtras(bundle);
+                txtPassword.setText(" ");
+                txtUsername.setText(" ");
+                startActivity(intent);
+            }
+            catch(Exception e)
+            {
+                Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
+        }
     }
 
 //    class WebService extends AsyncTask {
