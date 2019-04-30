@@ -64,6 +64,7 @@ public class MyPatients extends AppCompatActivity implements Listener{
         String[] value = {bundle.getString("id")};
         String[] valueName = {"TP_ID"};
         WebServiceClass wbc = new WebServiceClass(address, value, valueName, MyPatients.this);
+        wbc.execute();
         //new ExecuteTask(this).execute();
     }
 
