@@ -6,13 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    private Button button;
+import android.view.View;
+import android.widget.EditText;
 
+public class MainActivity extends AppCompatActivity{
+    private Button button;
+    private Button btnregister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register);
+
+
+        btnregister = findViewById(R.id.btnregisterm);
+
+
+
+
+
+    }
         //hi
 
         //hi my name is gwen
@@ -28,5 +40,4 @@ public class MainActivity extends AppCompatActivity {
        // });
 
 
-    }
 }
