@@ -36,12 +36,15 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPatients extends AppCompatActivity {
+import com.example.android.tbcare_capstone.WebServiceClass.Listener;
+
+public class MyPatients extends AppCompatActivity implements Listener{
 
     Button[] btnPatients; RelativeLayout relativeLayout; LinearLayout linearLayout;
 
     HttpClient httpclient; HttpResponse httpresponse; HttpPost httppost;
-    StringBuffer stringbuffer = null; InputStream inputstream; BufferedReader bufferedreader;
+    StringBuffer stringbuffer = null; InputStream inputstream;
+//    BufferedReader bufferedreader;
     List<NameValuePair> nameValuePairs;
 
     String[] patients; byte[] data;
@@ -54,109 +57,144 @@ public class MyPatients extends AppCompatActivity {
         setContentView(R.layout.activity_my_patients);
 
         bundle = getIntent().getExtras();
-        nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("TP_ID", bundle.getString("id")));
+//        nameValuePairs = new ArrayList<NameValuePair>();
+//        nameValuePairs.add(new BasicNameValuePair("TP_ID", bundle.getString("id")));
 
-        new ExecuteTask(this).execute();
+        String address = "http://tbcarephp.azurewebsites.net/retrieveAssignedPatient.php ";
+        String[] value = {bundle.getString("id")};
+        String[] valueName = {"TP_ID"};
+        WebServiceClass wbc = new WebServiceClass(address, value, valueName, MyPatients.this);
+        wbc.execute();
+        //new ExecuteTask(this).execute();
     }
 
-    public class ExecuteTask extends AsyncTask {
+    @Override
+    public void OnTaskCompleted(JSONArray Result) {
 
-        private Context context;
-
-        public ExecuteTask(Context con) {
-            context = con;
-        }
-
-        @Override
-        protected Object doInBackground(Object[] objects) {
-            //httppost = new HttpPost("http://192.168.43.110/retrieveAssignedPatient.php");
-            httppost = new HttpPost("http://tbcarephp.azurewebsites.net/retrieveAssignedPatient.php");
-            try {
-                httpclient = new DefaultHttpClient();
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                httpresponse = httpclient.execute(httppost);
-
-                int len =0;
-                inputstream = httpresponse.getEntity().getContent();
-
-                data = new byte[256];
-                stringbuffer = new StringBuffer();
-                while (-1 != (len = inputstream.read(data))) {
-                    stringbuffer.append(new String(data, 0, len));
-                }
-                inputstream.close();
-
-                String s = stringbuffer.toString();
-                JSONObject jsonObj = new JSONObject(s);
-                JSONArray record = jsonObj.getJSONArray("results");
-                patients = new String[record.length()];
-                for(int i = 0; i< record.length(); i++)
+        try {
+                patients = new String[Result.length()];
+                for(int i = 0; i< Result.length(); i++)
                 {
-                    JSONObject c = record.getJSONObject(i);
+                    JSONObject c = Result.getJSONObject(i);
                     patients[i] = c.getString("TBCaseNo");
                 }
 
-                    runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        linearLayout = (LinearLayout)findViewById(R.id.linearLayoutID);
-                        btnPatients = new Button[patients.length];
+                linearLayout = (LinearLayout)findViewById(R.id.linearLayoutID);
+                btnPatients = new Button[patients.length];
 
-                        for(int i=0; i<btnPatients.length; i++){
-                            btnPatients[i] = new Button(context);
-                            btnPatients[i].setWidth(250);
-                            btnPatients[i].setHeight(250);
-                            btnPatients[i].setText(patients[i].toString());
-                            btnPatients[i].setTag(i);
-                            btnPatients[i].setOnClickListener(new ButtonClicked(btnPatients[i], context));
-                            btnPatients[i].setBackground(ContextCompat.getDrawable(context, R.drawable.containter_1));
-                            linearLayout.addView(btnPatients[i]);
-                        }
-//                        <ImageButton
-//                        android:id="@+id/btn_back"
-//                        android:layout_width="wrap_content"
-//                        android:layout_height="wrap_content"
-//
-//                        android:layout_alignParentBottom="true"
-//                        android:layout_alignParentStart="true"
-//                        android:background="@android:color/transparent"
-//                        app:srcCompat="@drawable/btn_back" />
+                for(int i=0; i<btnPatients.length; i++){
+                    btnPatients[i] = new Button(MyPatients.this);
+                    btnPatients[i].setWidth(250);
+                    btnPatients[i].setHeight(250);
+                    btnPatients[i].setText(patients[i].toString());
+                    btnPatients[i].setTag(i);
+                    btnPatients[i].setOnClickListener(new ButtonClicked(btnPatients[i], MyPatients.this));
+                    btnPatients[i].setBackground(ContextCompat.getDrawable(MyPatients.this, R.drawable.containter_1));
+                    linearLayout.addView(btnPatients[i]);
+                }
+        }
+        catch (Exception e) {
 
-//                        ImageButton img = new ImageButton(context);
-//                        img.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                        img.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                        img.setBackground(ContextCompat.getDrawable(context, drawable.btn_back));
-//                        linearLayout.addView(img);
-//
-//                        img=findViewById(R.id.btn_back);
-//                        img.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Intent intent = new Intent(MyPatients.this,Menu_Patient.class);
-//
-//                                bundle= getIntent().getExtras();
-//
-//                                id= bundle.getString("id");
-//
-//                                bundle.putString("id",id);
-//                                intent.putExtras(bundle);
-//                                startActivity(intent);
-//
-//
-//                            }
-//                        });
-
-
-                    }
-                });
-            }
-            catch (UnsupportedEncodingException e) { e.printStackTrace(); }
-            catch (IOException e) { e.printStackTrace(); }
-            catch (JSONException e) { e.printStackTrace(); }
-            return null;
         }
     }
+
+//    public class ExecuteTask extends AsyncTask {
+//
+//        private Context context;
+//
+//        public ExecuteTask(Context con) {
+//            context = con;
+//        }
+//
+//        @Override
+//        protected Object doInBackground(Object[] objects) {
+//            //httppost = new HttpPost("http://192.168.43.110/retrieveAssignedPatient.php");
+//            httppost = new HttpPost("http://tbcarephp.azurewebsites.net/retrieveAssignedPatient.php");
+//            try {
+//                httpclient = new DefaultHttpClient();
+//                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//                httpresponse = httpclient.execute(httppost);
+//
+//                int len =0;
+//                inputstream = httpresponse.getEntity().getContent();
+//
+//                data = new byte[256];
+//                stringbuffer = new StringBuffer();
+//                while (-1 != (len = inputstream.read(data))) {
+//                    stringbuffer.append(new String(data, 0, len));
+//                }
+//                inputstream.close();
+//
+//                String s = stringbuffer.toString();
+//                JSONObject jsonObj = new JSONObject(s);
+//                JSONArray record = jsonObj.getJSONArray("results");
+//                patients = new String[record.length()];
+//                for(int i = 0; i< record.length(); i++)
+//                {
+//                    JSONObject c = record.getJSONObject(i);
+//                    patients[i] = c.getString("TBCaseNo");
+//                }
+//
+//                    runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        linearLayout = (LinearLayout)findViewById(R.id.linearLayoutID);
+//                        btnPatients = new Button[patients.length];
+//
+//                        for(int i=0; i<btnPatients.length; i++){
+//                            btnPatients[i] = new Button(context);
+//                            btnPatients[i].setWidth(250);
+//                            btnPatients[i].setHeight(250);
+//                            btnPatients[i].setText(patients[i].toString());
+//                            btnPatients[i].setTag(i);
+//                            btnPatients[i].setOnClickListener(new ButtonClicked(btnPatients[i], context));
+//                            btnPatients[i].setBackground(ContextCompat.getDrawable(context, R.drawable.containter_1));
+//                            linearLayout.addView(btnPatients[i]);
+//                        }
+////                        <ImageButton
+////                        android:id="@+id/btn_back"
+////                        android:layout_width="wrap_content"
+////                        android:layout_height="wrap_content"
+////
+////                        android:layout_alignParentBottom="true"
+////                        android:layout_alignParentStart="true"
+////                        android:background="@android:color/transparent"
+////                        app:srcCompat="@drawable/btn_back" />
+//
+////                        ImageButton img = new ImageButton(context);
+////                        img.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+////                        img.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+////                        img.setBackground(ContextCompat.getDrawable(context, drawable.btn_back));
+////                        linearLayout.addView(img);
+////
+////                        img=findViewById(R.id.btn_back);
+////                        img.setOnClickListener(new View.OnClickListener() {
+////                            @Override
+////                            public void onClick(View v) {
+////                                Intent intent = new Intent(MyPatients.this,Menu_Patient.class);
+////
+////                                bundle= getIntent().getExtras();
+////
+////                                id= bundle.getString("id");
+////
+////                                bundle.putString("id",id);
+////                                intent.putExtras(bundle);
+////                                startActivity(intent);
+////
+////
+////                            }
+////                        });
+//
+//
+//                    }
+//                });
+//            }
+//            catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+//            catch (IOException e) { e.printStackTrace(); }
+//            catch (JSONException e) { e.printStackTrace(); }
+//            return null;
+//        }
+//    }
 
     public class ButtonClicked implements View.OnClickListener {
 

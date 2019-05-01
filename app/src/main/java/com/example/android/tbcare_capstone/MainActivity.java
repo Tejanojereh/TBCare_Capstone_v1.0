@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton imgBtnSignIn, imgBtnForgotPassword;
     private String id, uname;
     private ProgressDialog progressDialog;
-    private JSONArray data;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
                 String[] value = {txtUsername.getText().toString(), txtPassword.getText().toString()};
                 String[] valueName = {"username", "password"};
-                WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
+                WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this);
 
                 wbc.execute();
 
@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     progressDialog = ProgressDialog.show(this, "Loading", "Loading, Please Wait.....", true, false);
                     progressDialog.setCancelable(false);
                     progressDialog.show();
-                }
+                }*/
 
-                if(wbc.getStatus() == AsyncTask.Status.FINISHED)
+                /*if(wbc.getStatus() == AsyncTask.Status.FINISHED)
                 {
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
 
 
                     if(data != null)
@@ -130,15 +130,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void OnTaskCompleted(JSONArray Result) {
-        Intent intent;
-        data = Result;
-        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
-        if(data != null)
+//        data = Result;
+//        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
+
+        if(Result != null)
         {
             try {
-                JSONObject object = data.getJSONObject(0);
+                JSONObject object = Result.getJSONObject(0);
                 id = object.getString("id");
-                object = data.getJSONObject(1);
+                object = Result.getJSONObject(1);
                 uname = object.getString("username");
 
                 if (uname.contains("TP"))
