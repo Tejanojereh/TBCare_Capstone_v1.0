@@ -48,13 +48,6 @@ import java.util.List;
             this.activityContext = activity;
         }
 
-        /*public org.json.JSONArray WebServiceManager() //Will Return the Data
-        {
-            if(RecordResult.length() != 0)
-                return RecordResult;
-            else
-                return null;
-        }*/
 
 
     @Override
@@ -103,13 +96,6 @@ import java.util.List;
                 message = buffer.toString();
                 JSONObject jsonObj = new JSONObject(message);
                 JSONArray RecordResult = jsonObj.getJSONArray("results");
-
-                /*runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        WebServiceManager();
-                    }
-                });*/
 
                 return RecordResult;
 
