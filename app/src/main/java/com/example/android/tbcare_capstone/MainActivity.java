@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String id, uname;
     private ProgressDialog progressDialog;
     private Intent intent;
+    private Button button;
+    private Button btnregister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +79,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtPassword = (EditText)findViewById(R.id.input_password);
         imgBtnSignIn = (ImageButton)findViewById(R.id.btn_login);
         imgBtnForgotPassword = (TextView)findViewById(R.id.link_signup);
+        setContentView(R.layout.activity_register);
+
+
+        btnregister = findViewById(R.id.btnregisterm);
+
+
+
+
+
+    }
+        //hi
 
         imgBtnForgotPassword.setOnClickListener(this);
         imgBtnSignIn.setOnClickListener(this);
@@ -118,5 +131,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
         }
     }
-
-}
