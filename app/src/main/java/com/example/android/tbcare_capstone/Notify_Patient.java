@@ -48,9 +48,15 @@ public class Notify_Patient extends AppCompatActivity{
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         AlertDialog alertDialog = alertDialogBuilder.create();
 
-        new WebService_Medication().execute();
+       // new WebService_Medication().execute();
 
     }
+
+  public void outputNotif()
+  {
+
+
+  }
 
 
     class WebService_Medication extends AsyncTask

@@ -111,9 +111,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //forgot password
             case R.id.imageButton2:
             {
-                Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
-                intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class );
-                startActivity(intent);
+
+                if(txtUsername.getText().toString()== null)
+                {
+                    Toast.makeText(this, "Please enter your username", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
+                    startActivity(intent);
+                }
             }break;
         }
     }
