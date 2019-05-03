@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_account"
+        android:title="My Account" />
+        <!--android:icon="@drawable/details"-->
+        <item
+            android:id="@+id/nav_add"
+            android:title="Add Sputum Exam" />
+        <!--android:icon="@drawable/schedule"-->
+        <item
+            android:id="@+id/nav_patients"
+            android:title="My Patients" />
+
+        <item
+            android:id="@+id/nav_reac"
+            android:title="Reactions and Recommendations" />
+
+        <!--android:icon="@drawable/patient"-->
+        <item
+            android:id="@+id/nav_log_out"
+            android:title="Log Out" />
+        <!--android:icon="@drawable/logout"-->
+
+
+
+    </group>
+
+</menu>
