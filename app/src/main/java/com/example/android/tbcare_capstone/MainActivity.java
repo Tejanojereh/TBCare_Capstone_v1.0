@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, Listener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, Listener {
 
     private EditText txtUsername, txtPassword;
     private TextView imgBtnForgotPassword;
@@ -46,15 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         InstantiateControl();
     }
+
     @Override
     public void onClick(View v) {
 
         Intent intent;
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             //sign in
-            case R.id.btn_login:
-            {
+            case R.id.btn_login: {
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
                 String[] value = {txtUsername.getText().toString(), txtPassword.getText().toString()};
                 String[] valueName = {"username", "password"};
@@ -62,46 +61,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 wbc.execute();
 
-            }break;
+            }
+            break;
 
             //forgot password
-            case R.id.link_signup:
-            {
+            case R.id.link_signup: {
                 Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
-                intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class );
+                intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
                 startActivity(intent);
-            }break;
+            }
+            break;
         }
     }
 
-    private void InstantiateControl(){
-        txtUsername = (EditText)findViewById(R.id.input_email);
-        txtPassword = (EditText)findViewById(R.id.input_password);
-        imgBtnSignIn = (ImageButton)findViewById(R.id.btn_login);
-        imgBtnForgotPassword = (TextView)findViewById(R.id.link_signup);
+    private void InstantiateControl() {
+        txtUsername = (EditText) findViewById(R.id.input_email);
+        txtPassword = (EditText) findViewById(R.id.input_password);
+        imgBtnSignIn = (ImageButton) findViewById(R.id.btn_login);
+        imgBtnForgotPassword = (TextView) findViewById(R.id.link_signup);
         setContentView(R.layout.activity_register);
 
 
         btnregister = findViewById(R.id.btnregisterm);
 
-
-
-
-
-    }
-        //hi
-
         imgBtnForgotPassword.setOnClickListener(this);
         imgBtnSignIn.setOnClickListener(this);
+
+
     }
+
 
     @Override
     public void OnTaskCompleted(JSONArray Result) {
 //        data = Result;
 //        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
 
-        if(Result != null)
-        {
+        if (Result != null) {
             try {
                 JSONObject object = Result.getJSONObject(0);
                 id = object.getString("id");
@@ -120,14 +115,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 txtPassword.setText(" ");
                 txtUsername.setText(" ");
                 startActivity(intent);
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
-        }
-        else
-        {
+        } else {
             Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
         }
     }
+}
