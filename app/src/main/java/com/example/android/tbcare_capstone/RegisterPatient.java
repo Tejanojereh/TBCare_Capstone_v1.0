@@ -14,13 +14,13 @@ import android.widget.DatePicker;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class Registerpatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class RegisterPatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registerpatient);
+        setContentView(R.layout.register_patient);
 
 
         Button button= (Button) findViewById(R.id.btnintakefirst);
@@ -32,7 +32,7 @@ public class Registerpatient extends AppCompatActivity implements TimePickerDial
             }
         });
 
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
 
         Button btn = (Button) findViewById(R.id.btndateinitial);
         button.setOnClickListener(new View.OnClickListener() {

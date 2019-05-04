@@ -28,7 +28,7 @@
             android:layout_centerHorizontal="true">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tp_name"
                 android:layout_width="230dp"
                 android:layout_height="57dp"
                 android:layout_centerHorizontal="true"
@@ -104,6 +104,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tp_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"

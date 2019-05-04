@@ -51,7 +51,7 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(View_and_Update_Medication_Progress.this, menu_patient.class );
+                Intent intent = new Intent(View_and_Update_Medication_Progress.this, Menu_Patient.class );
                 startActivity(intent);
             }
 

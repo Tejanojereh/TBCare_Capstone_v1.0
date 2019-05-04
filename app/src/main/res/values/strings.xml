@@ -19,9 +19,8 @@
     <string name="securityquestionans">Security Question1 Answer</string>
     <string name="securityquestion2">Security Question2</string>
     <string name="securityquestionans2">Security Question2 Answer</string>
-	<string name="fb_app_id">ID</string> 
-	<string name="fb_app_name">APP_NAME</string>
-
+    <string name="fb_app_id">ID</string>
+    <string name="fb_app_name">APP_NAME</string>
 
 
     <string name="securityquestionsprompt">Choose a security question</string>

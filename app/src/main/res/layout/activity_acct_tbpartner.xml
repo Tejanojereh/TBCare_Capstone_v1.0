@@ -19,7 +19,7 @@
             android:layout_centerHorizontal="true">
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tp_name"
                 android:layout_width="230dp"
                 android:layout_height="57dp"
                 android:layout_centerHorizontal="true"

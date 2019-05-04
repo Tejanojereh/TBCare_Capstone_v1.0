@@ -1,33 +1,17 @@
 package com.example.android.tbcare_capstone;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.*;
 
-import com.example.android.tbcare_capstone.WebServiceClass;
 import com.example.android.tbcare_capstone.WebServiceClass.Listener;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 import org.json.JSONArray;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Listener {
@@ -72,19 +56,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
             break;
+            case R.id.btnregisterm: {
+                intent = new Intent(MainActivity.this, Choose_Account_Type.class);
+                startActivity(intent);
+            }
+            break;
         }
     }
 
     private void InstantiateControl() {
-        txtUsername = (EditText) findViewById(R.id.input_email);
+        txtUsername = (EditText) findViewById(R.id.email);
         txtPassword = (EditText) findViewById(R.id.input_password);
         imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
         imgBtnForgotPassword = (TextView) findViewById(R.id.link_signup);
-        setContentView(R.layout.activity_register);
-
-
         btnregister = findViewById(R.id.btnregisterm);
 
+        btnregister.setOnClickListener(this);
         imgBtnForgotPassword.setOnClickListener(this);
         imgBtnSignIn.setOnClickListener(this);
 
@@ -108,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent = new Intent(MainActivity.this, Menu_TBPartner.class);
 
                 else {
-                    intent = new Intent(MainActivity.this, menu_patient.class);
+                    intent = new Intent(MainActivity.this, Menu_Patient.class);
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString("id", uname);

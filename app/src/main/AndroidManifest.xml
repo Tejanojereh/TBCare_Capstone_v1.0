@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Choose_Account_Type"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,18 +17,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add_Sputum_Exam"></activity>
-        <activity android:name=".My_Schedule_Patient"></activity>
-        <activity android:name=".Menu_Patient"></activity>
-        <activity android:name=".Note_Patient"></activity>
-        <activity android:name=".Menu_TBPartner"></activity>
-        <activity android:name=".View_and_Update_Medication_Progress"></activity>
-        <activity android:name=".ForgotPassword_tbpartner"></activity>
-        <activity android:name=".Account_TBPartner"></activity>
-        <activity android:name=".TreatmentDetails"></activity>
-        <activity android:name=".Partner_Info"></activity>
-        <activity android:name=".MyPatients"></activity>
-        <activity android:name=".Myaccount_partner"></activity>
+        <activity android:name=".Add_Sputum_Exam" />
+        <activity android:name=".My_Schedule_Patient" />
+        <activity android:name=".Menu_Patient" />
+        <activity android:name=".Note_Patient" />
+        <activity android:name=".Menu_TBPartner" />
+        <activity android:name=".View_and_Update_Medication_Progress" />
+        <activity android:name=".ForgotPassword_tbpartner" />
+        <activity android:name=".Account_TBPartner" />
+        <activity android:name=".TreatmentDetails" />
+        <activity android:name=".Partner_Info" />
+        <activity android:name=".My_patients" />
+        <activity android:name=".Myaccount_partner" />
+        <activity android:name=".RegisterPartner" />
+        <activity android:name=".RegisterPatient" />
 
         <meta-data
             android:name="preloaded_fonts"

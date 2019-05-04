@@ -32,7 +32,7 @@
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/security_question_1"
             style="?android:attr/spinnerItemStyle"
             android:layout_width="match_parent"
             android:layout_height="7dp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/input_secquestion"
+                android:id="@+id/security_answer_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorWhite"
@@ -60,7 +60,7 @@
 
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/security_question_2"
             style="?android:attr/spinnerItemStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/input_secquestion2"
+                android:id="@+id/security_answer_2"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:backgroundTint="@color/colorWhite"
