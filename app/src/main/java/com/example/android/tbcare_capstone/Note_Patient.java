@@ -87,6 +87,7 @@ public class Note_Patient extends AppCompatActivity {
             nameValuePairs.add(new BasicNameValuePair("ID", id));
             nameValuePairs.add(new BasicNameValuePair("NOTES", note.getText().toString()));
 
+
             try {
                 httpclient = new DefaultHttpClient();
                 httpPost = new HttpPost("http://tbcarephp.azurewebsites.net/updatenotes.php");

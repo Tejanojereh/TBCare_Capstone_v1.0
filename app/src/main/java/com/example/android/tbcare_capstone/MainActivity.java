@@ -117,8 +117,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "Please enter your username", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
                     intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("uname",uname);
+                    intent.putExtras(bundle);
+
                     startActivity(intent);
                 }
             }break;
