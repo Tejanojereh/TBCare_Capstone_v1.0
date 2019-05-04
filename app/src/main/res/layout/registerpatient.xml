@@ -250,7 +250,7 @@
                     android:background="@drawable/btn_reverse"
                     android:backgroundTint="@color/colorAccent"
                     android:fontFamily="@font/roboto"
-                    android:hint="@string/register"
+
                     android:text="Register"
                     android:textColor="@color/colorWhite" />
 

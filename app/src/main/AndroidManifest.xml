@@ -27,6 +27,7 @@
         <activity android:name=".TreatmentDetails"></activity>
         <activity android:name=".Partner_Info"></activity>
         <activity android:name=".MyPatients"></activity>
+        <activity android:name=".Myaccount_partner"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
