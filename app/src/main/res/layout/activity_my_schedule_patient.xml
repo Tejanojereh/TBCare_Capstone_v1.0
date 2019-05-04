@@ -1,100 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A0B0A">
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:textColor="@android:color/white"
-        app:srcCompat="@drawable/myschedule_title" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/daa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:gravity="center_horizontal"
-
-            android:textAllCaps="true"
-            android:textSize="21sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <!--<ImageView-->
-        <!--android:id="@+id/imageView10"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="132dp"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:textColor="@android:color/white"-->
-        <!--app:srcCompat="@drawable/containter_1" />-->
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="fill_parent"
-            android:layout_height="132dp"
-            android:background="@drawable/containter_1"
-            android:gravity="center"
-            android:text="Date"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
+    android:background="@drawable/white">
 
 
-        <TextView
-            android:id="@+id/medicine_date"
-            android:layout_width="fill_parent"
-            android:layout_height="132dp"
-            android:background="@drawable/container_2"
-            android:gravity="center"
-            android:text="medicine date"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView10"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="132dp"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--app:srcCompat="@drawable/containter_1" />-->
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
 
-
-    </LinearLayout>
+        />
 
 
     <ImageButton
         android:id="@+id/addnote"
-        android:layout_width="153dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:srcCompat="@drawable/addnotes" />
 
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginEnd="208dp"
         android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addnote"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/btn_back" />
 
-</RelativeLayout>
+    <ListView
+        android:layout_width="410dp"
+        android:layout_height="575dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>
