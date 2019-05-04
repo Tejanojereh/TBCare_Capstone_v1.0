@@ -1,45 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E6DDE0">
+    android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:id="@+id/rel1"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/normalbar"
         android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:background="#EE4173">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color1"
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="230dp"
-                android:layout_height="57dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="12dp"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="Gwyneth Escarda"
-                android:textAlignment="center"
-                android:textColor="#E2DBE4"
-                android:textSize="32sp" />
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:navigationIcon="@drawable/ic_menu"
+        app:title="Edit Information" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_below="@id/rel1"
+        android:layout_below="@id/normalbar"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -47,7 +26,7 @@
             android:id="@+id/lin1"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-           android:layout_centerInParent="false"
+            android:layout_centerInParent="false"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:orientation="vertical">
@@ -67,7 +46,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -97,7 +76,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -128,7 +107,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -148,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-            
+
                 android:orientation="vertical">
 
                 <TextView
@@ -158,7 +137,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -189,7 +168,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -218,7 +197,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -247,7 +226,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -261,43 +240,21 @@
                     android:layout_marginTop="15dp"
                     android:background="@color/darkgray"/>
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="50dp"
+                    android:text="Update"
+
+                    />
+
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_below="@id/lin1"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/button"
-                android:layout_width="58dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
-                android:adjustViewBounds="true"
-
-                android:background="@drawable/back" />
-
-            <ImageButton
-                android:layout_width="58dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="210dp"
-                android:background="@drawable/pencil" />
-
-
-        </LinearLayout>
 
     </RelativeLayout>
 
 
 </RelativeLayout>
-
-
-
-
-
-

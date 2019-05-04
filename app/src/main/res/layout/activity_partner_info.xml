@@ -9,7 +9,7 @@
 
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar1"
         layout="@layout/normalbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -17,7 +17,7 @@
 
     <RelativeLayout
         android:id="@+id/rel1"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="165dp"
         android:background="#EE4173">

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle2"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+
+
+
+    >
+
+    <include
+        android:id="@+id/toolbar1"
+        layout="@layout/menu_login"
+
+        android:layout_width="413dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <TextView
+                    android:id="@+id/txtInitialinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#8888"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+
+                    android:text="Initial Date Input:"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/btndateinitial"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/btn_reverse"
+                    android:backgroundTint="@color/colorAccent"
+
+                    android:fontFamily="@font/roboto"
+
+
+                    android:text="Initial Date Input"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/txtfirstintake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="#8888"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/intake"
+                    android:ems="10"
+                    android:fontFamily="@font/vesper_libre"
+
+                    android:inputType="textPersonName"
+                    android:text="@string/intakefirst"
+                    android:textAlignment="center"
+
+
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnintakefirst"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+
+                    android:background="@drawable/btn_reverse"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/roboto"
+                    android:text="Pick First Intake"
+
+                    android:textColor="@color/colorWhite"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/txtsecintake"
+                    android:layout_width="382dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="#8888"
+                    android:drawableLeft="@drawable/intake"
+                    android:ems="10"
+                    android:fontFamily="@font/vesper_libre"
+                    android:inputType="textPersonName"
+
+                    android:text="@string/intakesecond"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+
+
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnintakesec"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/btn_reverse"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/roboto"
+                    android:text="Pick Second Intake"
+                    android:textColor="@color/colorWhite" />
+
+
+                <ProgressBar
+                    android:id="@+id/loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnregister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/btn_reverse"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/roboto"
+
+            android:text="Register"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+
+</FrameLayout>
