@@ -8,6 +8,7 @@ import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.*;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText txtUsername, txtPassword;
     private TextView imgBtnForgotPassword;
-    private ImageButton imgBtnSignIn;
+    private AppCompatButton imgBtnSignIn;
     private String id, uname;
     private ProgressDialog progressDialog;
     private Intent intent;
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void InstantiateControl() {
         txtUsername = (EditText) findViewById(R.id.input_email);
         txtPassword = (EditText) findViewById(R.id.input_password);
-        imgBtnSignIn = (ImageButton) findViewById(R.id.btn_login);
+        imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
         imgBtnForgotPassword = (TextView) findViewById(R.id.link_signup);
         setContentView(R.layout.activity_register);
 

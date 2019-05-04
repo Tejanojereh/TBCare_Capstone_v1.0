@@ -56,7 +56,7 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         String address = "http://tbcarephp.azurewebsites.net/retrieve_tbinfo.php";
         String[] value = {bundle.getString("id")};
         String[] valueName = {"P_ID"};
-        webService = new WebServiceClass(address, value, valueName, Account_TBPartner.this);
+        webService = new WebServiceClass(address, value, valueName, Account_TBPartner.this, this);
         webService.execute();
 
         //new WebService_TBPartner().execute();

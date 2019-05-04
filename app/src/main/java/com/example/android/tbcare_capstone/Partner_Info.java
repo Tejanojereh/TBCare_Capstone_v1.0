@@ -48,7 +48,7 @@ public class Partner_Info extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Partner_Info.this, Menu_Patient.class );
+                Intent intent = new Intent(Partner_Info.this, menu_patient.class );
                 bundle1= getIntent().getExtras();
 
                 id= bundle1.getString("id");

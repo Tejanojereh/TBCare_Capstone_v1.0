@@ -51,7 +51,7 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(View_and_Update_Medication_Progress.this, Menu_Patient.class );
+                Intent intent = new Intent(View_and_Update_Medication_Progress.this, menu_patient.class );
                 startActivity(intent);
             }
 
@@ -63,19 +63,19 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
         String address = "http://tbcarephp.azurewebsites.net/getPatient_OverallProgress.php";
         String[] value = new String[]{bundle.getString("id")};
         String[] valueName = new String[]{"TB_Case_No"};
-        WebServiceClass wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this);
+        WebServiceClass wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this, this);
         wbc.execute(); //First
 
         address = "";
         value = new String[]{bundle.getString("id")};
         valueName = new String[]{"TB_Case_No"};
-        wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this);
+        wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this, this);
         wbc.execute(); //Second
 
         address = "";
         value = new String[]{bundle.getString("id")};
         valueName = new String[]{"TB_Case_No"};
-        wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this);
+        wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this, this);
         wbc.execute(); //third
 
 

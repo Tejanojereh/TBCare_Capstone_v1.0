@@ -28,7 +28,7 @@
 
     <string-array name="sec_arrays">
         <item>What was your childhood nickname? </item>
-        <item>What is your maternal grandmother's maiden name?</item>
+        <item>What is your maternal grandmother\'s maiden name?</item>
         <item>In what city or town did your mother and father meet? </item>
         <item>What is the last name of the teacher who gave you your first failing grade?</item>
         <item>What is your favorite movie?</item>

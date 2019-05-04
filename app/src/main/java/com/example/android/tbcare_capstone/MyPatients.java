@@ -63,7 +63,7 @@ public class MyPatients extends AppCompatActivity implements Listener{
         String address = "http://tbcarephp.azurewebsites.net/retrieveAssignedPatient.php ";
         String[] value = {bundle.getString("id")};
         String[] valueName = {"TP_ID"};
-        WebServiceClass wbc = new WebServiceClass(address, value, valueName, MyPatients.this);
+        WebServiceClass wbc = new WebServiceClass(address, value, valueName, MyPatients.this, this);
         wbc.execute();
         //new ExecuteTask(this).execute();
     }
