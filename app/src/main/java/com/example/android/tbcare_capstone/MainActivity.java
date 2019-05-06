@@ -8,7 +8,8 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.*;
 
-import com.example.android.tbcare_capstone.WebServiceClass.Listener;
+import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
 
 import org.json.JSONObject;
 import org.json.JSONArray;

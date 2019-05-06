@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.Class;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -22,8 +22,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class WebService extends AppCompatActivity { //for the runOnUiThread
-    class WebServiceClass extends AsyncTask {
+public class WebServiceClass extends AsyncTask {
 
         private String Address;
         private String[] Value;
@@ -120,4 +119,3 @@ import java.util.List;
             listener.OnTaskCompleted(RecordResult);
         }
     }
-//}

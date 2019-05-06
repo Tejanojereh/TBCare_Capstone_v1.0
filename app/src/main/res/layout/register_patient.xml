@@ -150,8 +150,8 @@
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:ems="10"
+                    android:hint="Initial Date Input:"
                     android:inputType="textPersonName"
-                    android:text="Initial Date Input:"
                     android:textAlignment="center"
                     android:textSize="30sp"
                     android:textStyle="bold" />
@@ -170,17 +170,18 @@
 
                     android:text="Initial Date Input"
                     android:textColor="@color/colorWhite" />
+
                 <EditText
                     android:id="@+id/txtfirstintake"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:textSize="30sp"
                     android:layout_centerHorizontal="true"
+                    android:ems="10"
                     android:fontFamily="@font/vesper_libre"
+                    android:hint="First Intake"
                     android:inputType="textPersonName"
-                    android:text="@string/intakefirst"
                     android:textAlignment="center"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <Button
