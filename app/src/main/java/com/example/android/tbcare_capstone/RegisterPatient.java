@@ -14,7 +14,7 @@ import android.widget.DatePicker;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class RegisterPatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class Registerpatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
 
     @Override
@@ -35,7 +35,7 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
         //setContentView(R.layout.activity_main);
 
         Button btn = (Button) findViewById(R.id.btndateinitial);
-        button.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment datePicker = new DatepickerFragment();
@@ -63,7 +63,7 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        TextView textView = (TextView) findViewById(R.id.textView);
+        TextView textView = (TextView) findViewById(R.id.txtInitialinput);
         textView.setText(currentDateString);
     }
 

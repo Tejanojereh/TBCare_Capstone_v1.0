@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar1"
         layout="@layout/menu_login"
 
         android:layout_width="413dp"
