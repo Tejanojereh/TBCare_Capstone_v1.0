@@ -47,7 +47,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/security_answer_2"
+                android:id="@+id/security_answer_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorWhite"
@@ -89,7 +89,7 @@
 
 
         <Button
-            android:id="@+id/btnregister"
+            android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="30dp"

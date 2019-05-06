@@ -53,21 +53,17 @@
                 android:scaleType="fitCenter"
                 android:background="@null"
                 android:adjustViewBounds="true"
-                android:background="@null"
-                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/nurse" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/patientImgBtn"
                 android:layout_width="87dp"
                 android:layout_height="150dp"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@null"
-                android:layout_marginLeft="30dp"
                 android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
                 app:srcCompat="@drawable/patient" />
         </LinearLayout>
 

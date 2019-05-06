@@ -276,7 +276,7 @@
 
 
                 <Button
-                    android:id="@+id/btnregister"
+                    android:id="@+id/btnNext"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginTop="30dp"
@@ -284,7 +284,7 @@
                     android:backgroundTint="@color/colorAccent"
                     android:fontFamily="@font/roboto"
 
-                    android:text="Register"
+                    android:text="Next"
                     android:textColor="@color/colorWhite" />
 
                 <Space

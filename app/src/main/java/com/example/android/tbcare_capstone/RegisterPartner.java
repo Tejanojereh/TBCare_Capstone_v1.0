@@ -33,7 +33,7 @@ public class RegisterPartner extends AppCompatActivity {
         txtemail = findViewById(R.id.email);
         txtpass = findViewById(R.id.input_password);
         txtcpass = findViewById(R.id.input_confirmpassword);
-        btnregister = findViewById(R.id.btnregister);
+        btnregister = findViewById(R.id.btnNext);
         contact_no = findViewById(R.id.contact_no);
         sec_question_1 = (Spinner)findViewById(R.id.security_question_1);
         sec_question_2 = (Spinner)findViewById(R.id.security_question_2);

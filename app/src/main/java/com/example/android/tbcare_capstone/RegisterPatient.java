@@ -10,11 +10,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class Registerpatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class RegisterPatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
 
     @Override
@@ -23,12 +24,21 @@ public class Registerpatient extends AppCompatActivity implements TimePickerDial
         setContentView(R.layout.register_patient);
 
 
-        Button button= (Button) findViewById(R.id.btnintakefirst);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button first_intake = (Button) findViewById(R.id.btnintakefirst);
+        first_intake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment timePicker = new TimepickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+            }
+        });
+
+        Button secondIntake = (Button)findViewById(R.id.secondIntake);
+        secondIntake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timePicker2 = new TimepickerFragment();
+                timePicker2.show(getSupportFragmentManager(), "time picker");
             }
         });
 
@@ -43,6 +53,8 @@ public class Registerpatient extends AppCompatActivity implements TimePickerDial
             }
         });
 
+
+
     }
 
 
@@ -50,8 +62,9 @@ public class Registerpatient extends AppCompatActivity implements TimePickerDial
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        TextView textView = (TextView)findViewById(R.id.txtfirstintake);
-        textView.setText("Hour:"+hourOfDay+"Minute"+minute);
+        /*TextView textView = (TextView)findViewById(R.id.txtfirstintake);
+        textView.setText(hourOfDay+":"+minute);*/
+        Toast.makeText(this, view.toString(), Toast.LENGTH_LONG).show();
     }
 
 
