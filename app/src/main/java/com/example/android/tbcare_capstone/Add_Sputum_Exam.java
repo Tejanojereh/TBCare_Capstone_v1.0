@@ -7,6 +7,6 @@ public class Add_Sputum_Exam extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_sputum_exam);
+        setContentView(R.layout.register_patient_start);
     }
 }
