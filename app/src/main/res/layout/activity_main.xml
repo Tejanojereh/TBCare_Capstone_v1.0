@@ -13,8 +13,8 @@
         android:paddingRight="24dp">
 
         <ImageView
-            android:layout_width="372dp"
-            android:layout_height="197dp"
+            android:layout_width="422dp"
+            android:layout_height="287dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
             android:src="@drawable/lo" />
@@ -83,8 +83,8 @@
 
         <TextView
             android:id="@+id/link_signup"
-            android:layout_width="fill_parent"
-            android:layout_height="22dp"
+            android:layout_width="365dp"
+            android:layout_height="23dp"
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="Forgot Password?"
