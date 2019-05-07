@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">TBCare_Capstone</string>
+    <string name="app_name">Tb Sense</string>
+    <string name="Back">Back</string>
+    <string name="username">Username:</string>
+    <string name="email">Email:</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="confirmpass">Confirm Password</string>
+    <string name="idpartner">Partner ID</string>
+    <string name="idpatient">Case Number</string>
+    <string name="contactnum">Contact Number</string>
+    <string name="starttime">Start Time</string>
+    <string name="dateinput">Initial Date Input</string>
+    <string name="dateexpected">Expected Date</string>
+    <string name="intakefirst">First Intake</string>
+    <string name="intakesecond">Second Intake</string>
+    <string name="register">Register</string>
+    <string name="securityquestion1">Security Question1</string>
+    <string name="securityquestionans">Security Question1 Answer</string>
+    <string name="securityquestion2">Security Question2</string>
+    <string name="securityquestionans2">Security Question2 Answer</string>
+    <string name="fb_app_id">ID</string>
+    <string name="fb_app_name">APP_NAME</string>
+
+
+    <string name="securityquestionsprompt">Choose a security question</string>
+    <string name="title_activity_edit_note">Edit Your Note</string>
+
+    <string-array name="sec_arrays">
+        <item>What was your childhood nickname? </item>
+        <item>What is your maternal grandmother\'s maiden name?</item>
+        <item>In what city or town did your mother and father meet? </item>
+        <item>What is the last name of the teacher who gave you your first failing grade?</item>
+        <item>What is your favorite movie?</item>
+        <item>What was the name of the hospital where you were born?</item>
+        <item>Who is your childhood sports hero?</item>
+
+    </string-array>
+
 </resources>

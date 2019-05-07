@@ -1,5 +1,8 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.Class;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 
@@ -19,37 +22,42 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class WebService extends AppCompatActivity { //for the runOnUiThread
-    class WebServiceClass extends AsyncTask {
+public class WebServiceClass extends AsyncTask {
 
         private String Address;
         private String[] Value;
         private String[] ValueName;
         private org.json.JSONArray RecordResult;
+        private ProgressDialog progressDialog;
 
         public interface Listener{
             void OnTaskCompleted(JSONArray Result);
         }
 
         Listener listener;
+        Context activityContext;
 
-        public WebServiceClass(String address, String[] value, String[] valueName, Listener activityContext)
+        public WebServiceClass(String address, String[] value, String[] valueName, Listener activityContext, Context activity)
         {
             Address = address;
             Value = value;
             ValueName = valueName;
             RecordResult = new org.json.JSONArray();
             this.listener = activityContext;
+            this.activityContext = activity;
         }
 
-        /*public org.json.JSONArray WebServiceManager() //Will Return the Data
-        {
-            if(RecordResult.length() != 0)
-                return RecordResult;
-            else
-                return null;
-        }*/
 
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog = new ProgressDialog(this.activityContext);
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+    }
 
     @Override
         protected Object doInBackground(Object[] objects) {
@@ -88,13 +96,6 @@ import java.util.List;
                 JSONObject jsonObj = new JSONObject(message);
                 JSONArray RecordResult = jsonObj.getJSONArray("results");
 
-                /*runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        WebServiceManager();
-                    }
-                });*/
-
                 return RecordResult;
 
             }catch (final Exception e) {
@@ -114,7 +115,7 @@ import java.util.List;
             if (json instanceof JSONArray) {
                 RecordResult = (JSONArray) json;
             }
+            progressDialog.dismiss();
             listener.OnTaskCompleted(RecordResult);
         }
     }
-//}

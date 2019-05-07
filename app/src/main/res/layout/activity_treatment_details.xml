@@ -4,26 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/td" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="470dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:background="@android:color/background_dark"
+        android:layout_marginTop="88dp"
+        android:background="@color/colorWhite"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/TextView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:gravity="center_horizontal"
-            android:text="Treatment Details"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="21sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -33,7 +28,7 @@
             android:id="@+id/TxtPatient"
             android:layout_width="fill_parent"
             android:layout_height="132dp"
-            android:background="@drawable/containter_1"
+            android:background="@color/color2"
             android:gravity="center"
             android:text="PATIENT:"
             android:textColor="@android:color/black"
@@ -47,7 +42,7 @@
             android:id="@+id/TxtMedication"
             android:layout_width="fill_parent"
             android:layout_height="132dp"
-            android:background="@drawable/container_2"
+            android:background="@color/color1"
             android:gravity="center"
             android:text="MEDICATION: "
             android:textColor="@android:color/black"
@@ -61,21 +56,11 @@
             android:id="@+id/TxtTreatmentPartner"
             android:layout_width="fill_parent"
             android:layout_height="132dp"
-            android:background="@drawable/container_3"
+            android:background="@color/color3"
             android:gravity="center"
             android:text="TREATMENT PARTNER: "
             android:textColor="@android:color/black"
             android:textSize="20sp" />
-
-        <ImageButton
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/btn_back" />
 
         <!--<android.support.design.widget.NavigationView-->
         <!--android:id="@+id/nav_view"-->

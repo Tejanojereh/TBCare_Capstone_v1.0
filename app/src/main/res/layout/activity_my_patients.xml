@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeLayoutID"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linlay"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/normalbar"
+        layout="@layout/normalbar"
 
-    <LinearLayout
-        android:id="@+id/linearLayoutID"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/black"
-        android:orientation="vertical">
+        android:layout_height="76dp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:background="#2E8B57"
-            android:gravity="center_horizontal"
-            android:text="My Patients"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="21sp" />
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/listview1"
+        android:layout_height="match_parent" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-    </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

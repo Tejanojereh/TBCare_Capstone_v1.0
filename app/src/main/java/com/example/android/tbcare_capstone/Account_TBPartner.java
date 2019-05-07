@@ -1,7 +1,6 @@
 package com.example.android.tbcare_capstone;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,26 +8,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
 
-public class Account_TBPartner extends AppCompatActivity {
-    TextView fname,lname,mname,contact,uname;
-    ImageButton btn,back;
-    Bundle bundle;
-
+public class Account_TBPartner extends AppCompatActivity implements Listener {
+    private TextView fname,lname,mname,contact,uname;
+    private ImageButton btn,back;
+    private Bundle bundle;
+    private WebServiceClass webService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +41,33 @@ public class Account_TBPartner extends AppCompatActivity {
 
         });
 
+        String address = "http://tbcarephp.azurewebsites.net/retrieve_tbinfo.php";
+        String[] value = {bundle.getString("id")};
+        String[] valueName = {"P_ID"};
+        webService = new WebServiceClass(address, value, valueName, Account_TBPartner.this, this);
+        webService.execute();
 
-
-
-
-
-
-        new WebService_TBPartner().execute();
+        //new WebService_TBPartner().execute();
 
     }
-    public  class WebService_TBPartner extends AsyncTask
+
+    @Override
+    public void OnTaskCompleted(JSONArray Result) {
+
+        try {
+            JSONObject c = Result.getJSONObject(0);
+
+            fname.setText(c.getString("TP_Fname").toString());
+            c = Result.getJSONObject(1);
+            mname.setText("TP_Mname");
+            c = Result.getJSONObject(2);
+            lname.setText(c.getString("TP_Lname").toString());
+            c = Result.getJSONObject(3);
+            contact.setText(c.getString("TP_ContactNo").toString());
+        }
+        catch(Exception e) { Toast.makeText(Account_TBPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show(); }
+    }
+    /*public  class WebService_TBPartner extends AsyncTask
     {
         @Override
         protected Void doInBackground(Object... objects)
@@ -136,11 +143,5 @@ public class Account_TBPartner extends AppCompatActivity {
             }
 
             return null;
-        }
-
-
-
-    }
-
-
+        }*/
 }

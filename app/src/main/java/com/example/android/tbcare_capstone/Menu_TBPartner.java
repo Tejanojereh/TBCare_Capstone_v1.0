@@ -54,7 +54,7 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
                 intent = new Intent(Menu_TBPartner.this, Add_Sputum_Exam.class);
                 break;
             case R.id.nav_patients:
-                intent = new Intent(Menu_TBPartner.this, MyPatients.class);
+                intent = new Intent(Menu_TBPartner.this, My_patients.class);
                 break;
             case R.id.nav_log_out:
                 intent = new Intent(Menu_TBPartner.this, MainActivity.class);

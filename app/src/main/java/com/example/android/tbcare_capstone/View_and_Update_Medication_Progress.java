@@ -1,41 +1,35 @@
 package com.example.android.tbcare_capstone;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
-public class View_and_Update_Medication_Progress extends AppCompatActivity implements View.OnClickListener{
+import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
+
+public class View_and_Update_Medication_Progress extends AppCompatActivity implements View.OnClickListener, Listener{
 
     TextView txtOverallProgress, txtMedicationProgress, txtSputumResultAnalysis;
 
     HttpClient httpclient; HttpResponse httpresponse; HttpPost httppost;
     StringBuffer stringbuffer = null; InputStream inputstream; BufferedReader bufferedreader;
-    List<NameValuePair> nameValuePairs;
+//    List<NameValuePair> nameValuePairs;
 
     String[] tempStorage;
-    String Dtype, Idate, Ddate, ID, EDate, Eresult="";
+//    String Dtype, Idate, Ddate, ID, EDate, Eresult="";
     byte[] data;
     Bundle bundle;
     ImageButton back;
@@ -55,12 +49,31 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
 
         });
 
-        nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("TB_Case_No", bundle.getString("id")));
+//        nameValuePairs = new ArrayList<NameValuePair>();
+//        nameValuePairs.add(new BasicNameValuePair("TB_Case_No", bundle.getString("id")));
 
-        new ExecuteTask(this).execute();
-        new ExecuteTask2(this).execute();
-        new ExecuteTask3(this).execute();
+        String address = "http://tbcarephp.azurewebsites.net/getPatient_OverallProgress.php";
+        String[] value = new String[]{bundle.getString("id")};
+        String[] valueName = new String[]{"TB_Case_No"};
+        WebServiceClass wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this, this);
+        wbc.execute(); //First
+
+        address = "";
+        value = new String[]{bundle.getString("id")};
+        valueName = new String[]{"TB_Case_No"};
+        wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this, this);
+        wbc.execute(); //Second
+
+        address = "";
+        value = new String[]{bundle.getString("id")};
+        valueName = new String[]{"TB_Case_No"};
+        wbc = new WebServiceClass(address, value, valueName, View_and_Update_Medication_Progress.this, this);
+        wbc.execute(); //third
+
+
+//        new ExecuteTask(this).execute();
+//        new ExecuteTask2(this).execute();
+//        new ExecuteTask3(this).execute();
 
     }
 
@@ -73,7 +86,24 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
         txtSputumResultAnalysis = (TextView)findViewById(R.id.TxtSputumResultAnalysis);
     }
 
-    public class ExecuteTask extends AsyncTask{
+    @Override
+    public void OnTaskCompleted(JSONArray Result) {
+
+        try {
+            tempStorage = new String[Result.length()];
+
+            for(int i = 0; i< Result.length(); i++)
+            {
+                JSONObject c = Result.getJSONObject(i);
+                tempStorage[i] = c.getString("date");
+            }
+        }
+        catch(Exception e) {
+
+        }
+    }
+
+/*    public class ExecuteTask extends AsyncTask{
 
         Context context;
         public ExecuteTask(Context con) {context=con;}
@@ -125,9 +155,9 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
             }
             return null;
         }
-    }
+    }*/
 
-    public class ExecuteTask2 extends AsyncTask{
+/*    public class ExecuteTask2 extends AsyncTask{
 
         Context context;
         public ExecuteTask2(Context con) {context=con;}
@@ -178,10 +208,10 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
             }
             return null;
         }
-    }
+    }*/
 
     //Displaying Sputum Examination Result
-    public class ExecuteTask3 extends AsyncTask{
+/*    public class ExecuteTask3 extends AsyncTask{
 
         Context context;
         public ExecuteTask3(Context con) {context=con;}
@@ -242,5 +272,5 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
             }
             return null;
         }
-    }
+    }*/
 }
