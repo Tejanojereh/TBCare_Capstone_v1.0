@@ -8,6 +8,8 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.*;
 
+import com.example.android.tbcare_capstone.Class.PartnerClass;
+import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
 
@@ -40,8 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             //sign in
             case R.id.btn_login: {
+                PartnerClass partner = new PartnerClass();
+                partner.SetUsername(txtUsername.getText().toString());
+                partner.SetPassword(txtPassword.getText().toString());
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
-                String[] value = {txtUsername.getText().toString(), txtPassword.getText().toString()};
+                String[] value = {partner.GetUsername(), partner.GetPassword()};
                 String[] valueName = {"username", "password"};
                 WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
 
@@ -82,9 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void OnTaskCompleted(JSONArray Result) {
-//        data = Result;
-//        Toast.makeText(this, "GOT IT!", Toast.LENGTH_LONG).show();
-
+        PatientClass patient;
+        PartnerClass partner;
         if (Result != null) {
             try {
                 JSONObject object = Result.getJSONObject(0);
@@ -92,17 +96,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 object = Result.getJSONObject(1);
                 uname = object.getString("username");
 
-                if (uname.contains("TP"))
+                if (uname.contains("TP")) {
+                    partner = new PartnerClass();
                     intent = new Intent(MainActivity.this, Menu_TBPartner.class);
-
-                else {
-                    intent = new Intent(MainActivity.this, Menu_Patient.class);
+                    intent.putExtra("serial_data", partner);
                 }
-                Bundle bundle = new Bundle();
+                else {
+                    patient = new PatientClass();
+                    intent = new Intent(MainActivity.this, Menu_Patient.class);
+                    intent.putExtra("serial_data", patient);
+                }
+                /*Bundle bundle = new Bundle();
                 bundle.putString("id", uname);
-                intent.putExtras(bundle);
-                txtPassword.setText(" ");
-                txtUsername.setText(" ");
+                intent.putExtras(bundle);*/
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();

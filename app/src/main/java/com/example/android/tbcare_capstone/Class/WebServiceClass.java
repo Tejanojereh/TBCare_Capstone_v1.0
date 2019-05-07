@@ -106,7 +106,6 @@ public class WebServiceClass extends AsyncTask {
 
         @Override
         protected void onPostExecute(Object o) {
-        progressDialog.dismiss();
             Object json = null;
             try {
                 json = new JSONTokener(o.toString()).nextValue();
@@ -116,6 +115,7 @@ public class WebServiceClass extends AsyncTask {
             if (json instanceof JSONArray) {
                 RecordResult = (JSONArray) json;
             }
+            progressDialog.dismiss();
             listener.OnTaskCompleted(RecordResult);
         }
     }

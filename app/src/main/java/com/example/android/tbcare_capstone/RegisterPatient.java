@@ -17,6 +17,7 @@ import java.util.Calendar;
 
 public class RegisterPatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
+    int flag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
             public void onClick(View v) {
                 DialogFragment timePicker = new TimepickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+                flag = 0;
             }
         });
 
@@ -37,8 +39,9 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
         secondIntake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment timePicker2 = new TimepickerFragment();
-                timePicker2.show(getSupportFragmentManager(), "time picker");
+                DialogFragment timePicker = new TimepickerFragment();
+                timePicker.show(getSupportFragmentManager(), "time picker");
+                flag = 1;
             }
         });
 
@@ -62,9 +65,16 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        /*TextView textView = (TextView)findViewById(R.id.txtfirstintake);
-        textView.setText(hourOfDay+":"+minute);*/
-        Toast.makeText(this, view.toString(), Toast.LENGTH_LONG).show();
+        TextView firstIntakeView = (TextView)findViewById(R.id.txtfirstintake);
+        TextView secondIntakeView = (TextView)findViewById(R.id.txtsecintake);
+        if(flag == 0)
+        {
+            firstIntakeView.setText(hourOfDay+":"+minute);
+        }
+        else if(flag == 1)
+        {
+            secondIntakeView.setText(hourOfDay+":"+minute);
+        }
     }
 
 
@@ -74,7 +84,7 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        String currentDateString = DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
 
         TextView textView = (TextView) findViewById(R.id.txtInitialinput);
         textView.setText(currentDateString);
