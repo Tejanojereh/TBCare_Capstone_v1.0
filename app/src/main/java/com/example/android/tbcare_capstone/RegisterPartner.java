@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 public class RegisterPartner extends AppCompatActivity implements WebServiceClass.Listener {
 
-    private EditText txtname,txtemail,txtpass,txtcpass, partner_id, answer_1, answer_2, contact_no;
+    private EditText firstname, lastname, middlename, username, txtemail,txtpass,txtcpass, partner_id, answer_1, answer_2, contact_no;
     private Button btnregister;
     private ProgressBar loading;
     Spinner sec_question_1, sec_question_2;
@@ -33,7 +33,10 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
         setContentView(R.layout.register_partner);
 
         loading = findViewById(R.id.loading);
-        txtname = findViewById(R.id.input_name);
+        firstname = findViewById(R.id.input_nameF);
+        lastname = findViewById(R.id.input_nameL);
+        middlename = findViewById(R.id.input_nameM);
+        username = findViewById(R.id.input_username);
         txtemail = findViewById(R.id.email);
         partner_id = findViewById(R.id.partner_id);
         txtpass = findViewById(R.id.input_password);
@@ -65,9 +68,11 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                 {
                     PartnerClass partner = new PartnerClass();
                     // = txtname.getText().toString();
-                    partner.SetUsername("");
+                    partner.SetUsername(username.getText().toString());
                     partner.SetPassword(txtpass.getText().toString());
-                    partner.FirstName = txtname.getText().toString();
+                    partner.FirstName = firstname.getText().toString();
+                    partner.LastName = lastname.getText().toString();
+                    partner.MiddleName = middlename.getText().toString();
                     partner.Email = txtemail.getText().toString();
                     partner.TP_ID = partner_id.getText().toString();
                     partner.Contact_No = contact_no.getText().toString();
@@ -96,27 +101,33 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
     }
 
     @Override
-    public void OnTaskCompleted(JSONArray Result) {
-        if (Result != null) {
-            try {
-                JSONObject object = Result.getJSONObject(0);
-                String success = object.getString("success");
-                //Intent intent = new Intent(this, MainActivity.class);
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
+        if(flag)
+        {
+            if (Result != null) {
+                try {
+                    JSONObject object = Result.getJSONObject(0);
+                    String success = object.getString("success");
+                    //Intent intent = new Intent(this, MainActivity.class);
 
-                if(success.equals("true"))
-                {
-                    Toast.makeText(this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                    //startActivity(intent);
-                    finish();
-                }else if(success.equals("false")){
-                    Toast.makeText(this, "Error occured", Toast.LENGTH_LONG).show();
+                    if(success.equals("true"))
+                    {
+                        Toast.makeText(this, "Registered Successfully", Toast.LENGTH_LONG).show();
+                        //startActivity(intent);
+                        finish();
+                    }else if(success.equals("false")){
+                        Toast.makeText(this, "Error occured!", Toast.LENGTH_LONG).show();
 
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(RegisterPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
                 }
-            } catch (Exception e) {
-                Toast.makeText(RegisterPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(RegisterPartner.this, "Error occured!", Toast.LENGTH_LONG).show();
             }
-        } else {
-            Toast.makeText(RegisterPartner.this, "Error occured", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(RegisterPartner.this, "Error occured!", Toast.LENGTH_LONG).show();
         }
+
     }
 }

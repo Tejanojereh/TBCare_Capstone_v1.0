@@ -23,6 +23,13 @@ public class Menu_Patient extends AppCompatActivity {
     String id;
     Bundle bundle1;
     TextView user;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

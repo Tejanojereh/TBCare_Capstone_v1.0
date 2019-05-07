@@ -52,7 +52,7 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
     }
 
     @Override
-    public void OnTaskCompleted(JSONArray Result) {
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
 
         try {
             JSONObject c = Result.getJSONObject(0);

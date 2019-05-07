@@ -41,6 +41,12 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         menuItem.setChecked(true);
 
