@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="casenum">
+        <item>TB12345</item>
+        <item>TB12345</item>
+        <item>TB143345</item>
+
+    </string-array>
+
+    <string-array name="patientname">
+        <item>Gwen</item>
+        <item>Bill</item>
+        <item>Lee</item>
+
+    </string-array>
+
+</resources>

@@ -75,8 +75,8 @@ public class test extends AppCompatActivity {
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ListPatientsFragments(), "List");
-        adapter.addFragment(new ListPatientsRequestFragment(), "Tile");
+        adapter.addFragment(new ListPatientsFragments(), "My Patients");
+        adapter.addFragment(new ListPatientsRequestFragment(), "Pending Request of Patients");
 
         viewPager.setAdapter(adapter);
     }

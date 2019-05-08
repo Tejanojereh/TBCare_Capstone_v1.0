@@ -1,73 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/rectangle"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="805dp"
+    <android.support.constraint.Guideline
+        android:id="@+id/gd_logoup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="7dp"
+        app:layout_constraintGuide_percent="0.001" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gd_logodown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="353dp"
+        app:layout_constraintGuide_percent="0.45" />
+
+
+    <ImageView
+        android:layout_width="372dp"
+        android:layout_height="251dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/lo"
+        app:layout_constraintBottom_toTopOf="@+id/gd_logodown"
+        app:layout_constraintEnd_toEndOf="@id/gdright"
+        app:layout_constraintStart_toStartOf="@id/gdleft"
+        app:layout_constraintTop_toTopOf="@id/gd_logoup" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="24dp"
-        android:paddingTop="56dp"
-        android:paddingRight="24dp">
+        app:layout_constraintGuide_begin="56dp"
+        app:layout_constraintGuide_percent="0.01" />
 
-        <ImageView
-            android:layout_width="372dp"
-            android:layout_height="251dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/lo" />
+    <android.support.constraint.Guideline
+        android:id="@+id/gdright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.99" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="39dp" />
+    <android.support.constraint.Guideline
+        android:id="@+id/gddown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.9" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Choose Account Type:"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <android.support.constraint.Guideline
+        android:id="@+id/gd_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="141dp"
+        app:layout_constraintGuide_percent="0.5" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="164dp"
+        android:layout_height="272dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@id/imageButton2"
+        app:layout_constraintBottom_toTopOf="@+id/gddown"
+        app:layout_constraintEnd_toStartOf="@+id/gd_separator"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@+id/gd_logodown"
+        app:layout_constraintVertical_bias="0.432"
+        app:srcCompat="@drawable/nurse" />
 
-        <LinearLayout
-            android:layout_width="364dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="164dp"
+        android:layout_height="272dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="12dp"
 
-            <ImageButton
-                android:id="@+id/partnerImgBtn"
-                android:layout_width="123dp"
-                android:layout_height="150dp"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:background="@null"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/nurse" />
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/gddown"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="@+id/gd_logodown"
+        app:layout_constraintVertical_bias="0.432"
+        app:srcCompat="@drawable/patient" />
 
-            <ImageButton
-                android:id="@+id/patientImgBtn"
-                android:layout_width="87dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/patient" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

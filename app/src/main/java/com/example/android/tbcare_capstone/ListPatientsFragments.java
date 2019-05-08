@@ -31,15 +31,53 @@ public class ListPatientsFragments extends Fragment {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView avator;
         public TextView name;
-        public TextView description;
+        public TextView casenumber;
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.sample, parent, false));
+            super(inflater.inflate(R.layout.row_listview, parent, false));
+            casenumber = (TextView) itemView.findViewById(R.id.txtid);
+            name = (TextView) itemView.findViewById(R.id.txtname);
+
+
 
         }
     }
     /**
      * Adapter to display recycler view.
      */
+
+
+    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+        // Set numbers of List in RecyclerView.
+        private static final int LENGTH = 18;
+
+        private final String[] mCase;
+        private final String[] mPname;
+
+
+        public ContentAdapter(Context context) {
+            Resources resources = context.getResources();
+            mCase = resources.getStringArray(R.array.casenum);
+            mPname = resources.getStringArray(R.array.patientname);
+
+
+        }
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+
+            holder.casenumber.setText(mCase[position % mCase.length]);
+            holder.name.setText(mPname[position % mPname.length]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return LENGTH;
+        }
+    }
 
 
 
