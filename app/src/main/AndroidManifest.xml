@@ -21,7 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add_Sputum_Exam" />
         <activity android:name=".My_Schedule_Patient" />
         <activity android:name=".Menu_Patient" />
         <activity android:name=".Note_Patient" />
@@ -31,9 +30,10 @@
         <activity android:name=".Account_TBPartner" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".Partner_Info" />
-        <activity android:name=".My_patients" />
+        <activity android:name=".My_Patients" />
         <activity android:name=".Myaccount_partner" />
         <activity android:name=".RegisterPartner" />
+        <activity android:name=".test" />
         <activity android:name=".RegisterPatient" />
         <activity
             android:name=".EditNote"

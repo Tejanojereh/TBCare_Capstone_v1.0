@@ -32,21 +32,56 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_partner);
 
+        InstantiateControls();
+    }
+
+    @Override
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
+        if(flag)
+        {
+            if (Result != null) {
+                try {
+                    JSONObject object = Result.getJSONObject(0);
+                    String success = object.getString("success");
+                    //Intent intent = new Intent(this, MainActivity.class);
+
+                    if(success.equals("true"))
+                    {
+                        Toast.makeText(this, "Registered Successfully", Toast.LENGTH_LONG).show();
+                        //startActivity(intent);
+                        finish();
+                    }else if(success.equals("false")){
+                        Toast.makeText(this, "Error occured!", Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(RegisterPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(RegisterPartner.this, "Error occured!", Toast.LENGTH_LONG).show();
+            }
+        }else{
+            Toast.makeText(RegisterPartner.this, "Error occured!", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public void InstantiateControls(){
         loading = findViewById(R.id.loading);
         firstname = findViewById(R.id.input_nameF);
         lastname = findViewById(R.id.input_nameL);
         middlename = findViewById(R.id.input_nameM);
         username = findViewById(R.id.input_username);
-        txtemail = findViewById(R.id.email);
+        txtemail = findViewById(R.id.input_email);
         partner_id = findViewById(R.id.partner_id);
         txtpass = findViewById(R.id.input_password);
         txtcpass = findViewById(R.id.input_confirmpassword);
-        btnregister = findViewById(R.id.btnNext);
-        contact_no = findViewById(R.id.contact_no);
-        sec_question_1 = (Spinner)findViewById(R.id.security_question_1);
-        sec_question_2 = (Spinner)findViewById(R.id.security_question_2);
-        answer_1 = findViewById(R.id.security_answer_1);
-        answer_2 = findViewById(R.id.security_answer_2);
+        btnregister = findViewById(R.id.btnregister);
+        contact_no = findViewById(R.id.input_contactnum);
+        sec_question_1 = (Spinner)findViewById(R.id.question1);
+        sec_question_2 = (Spinner)findViewById(R.id.question2);
+        answer_1 = findViewById(R.id.answer1);
+        answer_2 = findViewById(R.id.answer2);
 
         ArrayList<String> list = new ArrayList<>();
         list.add("What was your childhood nickname?");
@@ -83,8 +118,8 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
 
                     String password = partner.GetPassword();
                     String address = "http://tbcarephp.azurewebsites.net/register_account.php";
-                    String[] value = {"PARTNER", partner.TP_ID, partner.FirstName, partner.FirstName, partner.Contact_No, partner.Email, partner.TP_ID, partner.GetPassword(), partner.Security_Question1, partner.Security_Answer1};
-                    String[] valueName = {"account_type", "partner_id", "firstname", "lastname", "contactNo", "email", "username", "password", "question", "answer"};
+                    String[] value = {"PARTNER", partner.TP_ID, partner.FirstName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername(), partner.GetPassword(), partner.Security_Question1, partner.Security_Answer1, partner.Security_Question2, partner.Security_Answer2};
+                    String[] valueName = {"account_type", "partner_id", "firstname", "lastname", "contactNo", "email", "username", "password", "question1", "answer1", "question2", "answer2"};
                     WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPartner.this, RegisterPartner.this);
 
                     wbc.execute();
@@ -98,36 +133,5 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                 btnregister.setVisibility(View.GONE);
             }*/
         });
-    }
-
-    @Override
-    public void OnTaskCompleted(JSONArray Result, boolean flag) {
-        if(flag)
-        {
-            if (Result != null) {
-                try {
-                    JSONObject object = Result.getJSONObject(0);
-                    String success = object.getString("success");
-                    //Intent intent = new Intent(this, MainActivity.class);
-
-                    if(success.equals("true"))
-                    {
-                        Toast.makeText(this, "Registered Successfully", Toast.LENGTH_LONG).show();
-                        //startActivity(intent);
-                        finish();
-                    }else if(success.equals("false")){
-                        Toast.makeText(this, "Error occured!", Toast.LENGTH_LONG).show();
-
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(RegisterPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(RegisterPartner.this, "Error occured!", Toast.LENGTH_LONG).show();
-            }
-        }else{
-            Toast.makeText(RegisterPartner.this, "Error occured!", Toast.LENGTH_LONG).show();
-        }
-
     }
 }

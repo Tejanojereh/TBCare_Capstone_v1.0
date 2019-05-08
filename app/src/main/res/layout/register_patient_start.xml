@@ -359,7 +359,7 @@
 
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/question1"
                     style="?android:attr/spinnerItemStyle"
                     android:layout_width="387dp"
                     android:layout_height="48dp"
@@ -377,7 +377,7 @@
                     app:passwordToggleEnabled="true">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_secquestion"
+                        android:id="@+id/answer1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -396,7 +396,7 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/spinnersec2"
+                    android:id="@+id/question2"
                     style="?android:attr/spinnerItemStyle"
                     android:layout_width="387dp"
                     android:layout_height="48dp"
@@ -414,7 +414,7 @@
                     app:passwordToggleEnabled="true">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_secquestion2"
+                        android:id="@+id/answer2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"

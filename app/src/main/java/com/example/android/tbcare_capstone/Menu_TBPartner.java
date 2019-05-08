@@ -2,6 +2,7 @@ package com.example.android.tbcare_capstone;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,31 +13,38 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class Menu_TBPartner extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import com.example.android.tbcare_capstone.Class.PartnerClass;
+import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
+
+import java.util.List;
+
+public class Menu_TBPartner extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView;
     Intent intent;
-    TextView user;
-
-    Bundle bundle1;
-    String id;
+    TextView user_id, user_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_tbpartner);
-        navigationView = (NavigationView) findViewById(R.id.nav_viewtb);
+        setContentView(R.layout.activity_home_tbpartner);
+        navigationView = (NavigationView) findViewById(R.id.navigation);
+
         navigationView.setNavigationItemSelectedListener(this);
 
-        bundle1=getIntent().getExtras();
-        id= bundle1.getString("id");
+        SharedPreferences s = getSharedPreferences("session", 0);
+        Gson gson = new Gson();
+        String json = s.getString("class", "");
+        PartnerClass partner = gson.fromJson(json, PartnerClass.class);
 
-
-        user=findViewById(R.id.user_id);
         View headerView = LayoutInflater.from(this).inflate(R.layout.nav_header, null);
-        TextView userName = (TextView) headerView.findViewById(R.id.user_id);
-        userName.setText(id);
-
+        TextView userName = (TextView) headerView.findViewById(R.id.user_name);
+        user_id=headerView.findViewById(R.id.user_id);
+        userName.setText(partner.GetUsername());
+        user_id.setText(partner.TP_ID);
         navigationView.addHeaderView(headerView);
     }
 
@@ -56,13 +64,18 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
             case R.id.nav_account:
                 intent = new Intent(Menu_TBPartner.this, Account_TBPartner.class);
                 break;
-            case R.id.nav_add:
-                intent = new Intent(Menu_TBPartner.this, Add_Sputum_Exam.class);
-                break;
             case R.id.nav_patients:
-                intent = new Intent(Menu_TBPartner.this, My_patients.class);
+                intent = new Intent(Menu_TBPartner.this, My_Patients.class);
                 break;
             case R.id.nav_log_out:
+                SharedPreferences s = getSharedPreferences("session", 0);
+                SharedPreferences.Editor editor = s.edit();
+                int id = 0;
+                String account_type = "";
+                editor.putInt("account_id", id);
+                editor.putString("account_type", account_type);
+                editor.putString("class", "");
+                editor.apply();
                 intent = new Intent(Menu_TBPartner.this, MainActivity.class);
                 break;
 
@@ -70,16 +83,15 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
 
         }
 
-        Bundle bundle=new Bundle();
+        /*Bundle bundle=new Bundle();
          bundle1= getIntent().getExtras();
 
         id= bundle1.getString("id");
 
         bundle.putString("id",id);
-        intent.putExtras(bundle);
+        intent.putExtras(bundle);*/
 
         startActivity(intent);
-
         return false;
     }
 }

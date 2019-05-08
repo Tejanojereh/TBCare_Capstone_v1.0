@@ -2,8 +2,8 @@ package com.example.android.tbcare_capstone.Class;
 
 public class BaseClass extends Account {
     public int ID;
-    public String Username;
-    public String Password;
+    private String Username;
+    private String Password;
     public String Contact_No;
     public String Security_Question1;
     public String Security_Question2;

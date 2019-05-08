@@ -1,20 +1,22 @@
 package com.example.android.tbcare_capstone;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
 import com.example.android.tbcare_capstone.Class.BaseClass;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.PatientClass;
-import com.example.android.tbcare_capstone.Class.Utility.SessionClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnregister;
     private PatientClass patient;
     private PartnerClass partner;
+    private BaseClass base;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(session != 0){
             if(session_account_type.equals("PARTNER")){
                 intent = new Intent(MainActivity.this, Menu_TBPartner.class);
-                intent.putExtra("serial_data", partner);
                 startActivity(intent);
+                finish();
             }
         }
 
@@ -59,14 +62,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             //sign in
             case R.id.btn_login: {
-                BaseClass base = new PartnerClass();
-                //partner.SetUsername(txtUsername.getText().toString());
-                //base.SetUsername(txtUsername.getText().toString());
-                base.SetUsername("");
+                base = new BaseClass();
+                base.SetUsername(txtUsername.getText().toString());
                 base.SetPassword(txtPassword.getText().toString());
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
                 //String[] value = {base.GetUsername(), base.GetPassword()};
-                String[] value = {txtUsername.getText().toString(), base.GetPassword()};
+                String[] value = {base.GetUsername(), base.GetPassword()};
                 String[] valueName = {"username", "password"};
                 WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
 
@@ -76,10 +77,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
 
             //forgot password
-            case R.id.link_signup: {
-                Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
+            case R.id.forgotpassBtn: {
+                /*Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
                 intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
-                startActivity(intent);
+                startActivity(intent);*/
+                View view = LayoutInflater.from(this).inflate(R.layout.forgotpass_changepassword, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Forgot password?")
+                        .setView(view)
+                        .setNegativeButton("Cancel", null);
+                AlertDialog alert = builder.create();
+                alert.show();
             }
             break;
             case R.id.btnregisterm: {
@@ -94,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtUsername = (EditText) findViewById(R.id.email);
         txtPassword = (EditText) findViewById(R.id.input_password);
         imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
-        imgBtnForgotPassword = (TextView) findViewById(R.id.link_signup);
+        imgBtnForgotPassword = (TextView) findViewById(R.id.forgotpassBtn);
         btnregister = findViewById(R.id.btnregisterm);
 
         btnregister.setOnClickListener(this);
@@ -124,8 +132,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if (account_type.equals("PARTNER")) {
                         partner = new PartnerClass();
+                        partner.ID = id;
+                        partner.SetUsername(base.GetUsername());
+                        partner.TP_ID = object.getString("TP_ID");
+                        partner.FirstName = object.getString("Firstname");
+                        partner.LastName = object.getString("lastname");
+                        partner.Contact_No = object.getString("contact_no");
+                        partner.Email = object.getString("email");
                         intent = new Intent(MainActivity.this, Menu_TBPartner.class);
-                        intent.putExtra("serial_data", partner);
                     }
                     else {
                         patient = new PatientClass();
@@ -137,6 +151,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     SharedPreferences.Editor editor = s.edit();
                     editor.putInt("account_id", id);
                     editor.putString("account_type", account_type);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(partner);
+                    editor.putString("class", json);
                     editor.apply();
                     startActivity(intent);
                     finish();

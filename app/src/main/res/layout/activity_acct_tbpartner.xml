@@ -95,6 +95,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_firstname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -117,6 +118,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_Middlename"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -138,6 +140,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_lastname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -159,6 +162,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -180,6 +184,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_ContactNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -201,6 +206,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_partner_ID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -222,6 +228,7 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/myAcc_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
@@ -251,7 +258,7 @@
 
 
     <ImageButton
-        android:id="@+id/button"
+        android:id="@+id/btn_Back"
         android:layout_width="47dp"
         android:layout_height="52dp"
         android:layout_marginStart="20dp"
