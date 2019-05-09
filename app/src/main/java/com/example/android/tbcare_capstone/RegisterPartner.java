@@ -1,6 +1,5 @@
 package com.example.android.tbcare_capstone;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -76,7 +75,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
         partner_id = findViewById(R.id.partner_id);
         txtpass = findViewById(R.id.input_password);
         txtcpass = findViewById(R.id.input_confirmpassword);
-        btnregister = findViewById(R.id.btnregister);
+        btnregister = findViewById(R.id.register);
         contact_no = findViewById(R.id.input_contactnum);
         sec_question_1 = (Spinner)findViewById(R.id.question1);
         sec_question_2 = (Spinner)findViewById(R.id.question2);
@@ -102,7 +101,6 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                 if(txtpass.getText().toString().equals(txtcpass.getText().toString()))
                 {
                     PartnerClass partner = new PartnerClass();
-                    // = txtname.getText().toString();
                     partner.SetUsername(username.getText().toString());
                     partner.SetPassword(txtpass.getText().toString());
                     partner.FirstName = firstname.getText().toString();
@@ -115,8 +113,6 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     partner.Security_Question2 = sec_question_2.getSelectedItem().toString();
                     partner.Security_Answer1 = answer_1.getText().toString();
                     partner.Security_Answer2 = answer_2.getText().toString();
-
-                    String password = partner.GetPassword();
                     String address = "http://tbcarephp.azurewebsites.net/register_account.php";
                     String[] value = {"PARTNER", partner.TP_ID, partner.FirstName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername(), partner.GetPassword(), partner.Security_Question1, partner.Security_Answer1, partner.Security_Question2, partner.Security_Answer2};
                     String[] valueName = {"account_type", "partner_id", "firstname", "lastname", "contactNo", "email", "username", "password", "question1", "answer1", "question2", "answer2"};

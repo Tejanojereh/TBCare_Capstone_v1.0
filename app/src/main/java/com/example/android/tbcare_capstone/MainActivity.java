@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 finish();
             }
+            else if(session_account_type.equals("PATIENT")) {
+                intent = new Intent(MainActivity.this, Menu_Patient.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
     }
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             break;
             case R.id.btnregisterm: {
-                intent = new Intent(MainActivity.this, Choose_Account_Type.class);
+                 intent = new Intent(MainActivity.this, Choose_Account_Type.class);
                 startActivity(intent);
             }
             break;

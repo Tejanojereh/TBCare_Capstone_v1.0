@@ -312,14 +312,14 @@
                 <Spinner
                     android:id="@+id/question1"
                     style="?android:attr/spinnerItemStyle"
-                    android:layout_width="387dp"
+                    android:layout_width="298dp"
                     android:layout_height="48dp"
                     android:layout_weight="1"
-                    android:dropDownWidth="fill_parent"
+                    android:dropDownWidth="wrap_content"
                     android:ellipsize="marquee"
                     android:singleLine="false"
 
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dialog" />
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -349,14 +349,14 @@
                 <Spinner
                     android:id="@+id/question2"
                     style="?android:attr/spinnerItemStyle"
-                    android:layout_width="387dp"
-                    android:layout_height="48dp"
+                    android:layout_width="298dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:dropDownWidth="fill_parent"
+                    android:dropDownWidth="wrap_content"
                     android:ellipsize="marquee"
                     android:singleLine="false"
 
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dialog" />
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -385,7 +385,7 @@
 
 
                 <Button
-                    android:id="@+id/btnregister"
+                    android:id="@+id/register"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginTop="30dp"
