@@ -25,6 +25,8 @@
 
     <string name="securityquestionsprompt">Choose a security question</string>
     <string name="title_activity_edit_note">Edit Your Note</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
     <string-array name="sec_arrays">
         <item>What was your childhood nickname? </item>

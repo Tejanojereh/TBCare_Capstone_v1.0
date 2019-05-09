@@ -3,6 +3,7 @@ package com.example.android.tbcare_capstone;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class Myaccount_partner extends AppCompatActivity {
         private DrawerLayout drawer;
+    ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
