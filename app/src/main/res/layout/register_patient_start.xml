@@ -10,6 +10,8 @@
 
     android:orientation="vertical">
 
+    <!--RWGISTER PATIENT-->
+
     <include
         android:id="@+id/toolbar1"
         layout="@layout/menu_login"

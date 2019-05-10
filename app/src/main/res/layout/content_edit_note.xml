@@ -8,6 +8,8 @@
     tools:context=".EditNote"
     tools:showIn="@layout/activity_edit_note">
 
+    <!--CREATE NOTES-->
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="0dp"

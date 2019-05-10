@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_partner2">
 
+    <!--CHOOSE A PARTNER-->
+
     <android.support.constraint.Guideline
         android:id="@+id/up"
         android:layout_width="wrap_content"

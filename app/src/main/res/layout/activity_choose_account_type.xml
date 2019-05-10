@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/rectangle"
     android:orientation="vertical">
-
+    <!--CHOOSE ACCOUNT TYPE-->
     <android.support.constraint.Guideline
         android:id="@+id/gd_logoup"
         android:layout_width="wrap_content"
@@ -95,9 +95,10 @@
         android:id="@+id/imageButton2"
         android:layout_width="164dp"
         android:layout_height="272dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
 
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
@@ -105,10 +106,9 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/gddown"
         app:layout_constraintEnd_toStartOf="@+id/gdright"
-        app:layout_constraintHorizontal_bias="0.823"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="@+id/gd_logodown"
-        app:layout_constraintVertical_bias="0.432"
+        app:layout_constraintVertical_bias="0.4"
         app:srcCompat="@drawable/patient" />
 
 </android.support.constraint.ConstraintLayout>

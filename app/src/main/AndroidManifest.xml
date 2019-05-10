@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/n_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -19,7 +19,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.tbcare_capstone.Notes" />
         </activity>
-        <activity android:name=".test">
+        <activity android:name=".Treatment_details">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

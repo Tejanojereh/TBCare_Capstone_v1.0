@@ -6,6 +6,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
+    <!--DEVICE OUTPUT SPUTUM RESULTS_LIST VIEW FORMAT-->
 
     <LinearLayout
         android:id="@+id/linearLayoutID"

@@ -11,9 +11,8 @@
     android:orientation="vertical"
 
 
-
     >
-
+    <!--RWGISTER intake Patient -->
     <include
         android:id="@+id/toolbar1"
         layout="@layout/menu_login"

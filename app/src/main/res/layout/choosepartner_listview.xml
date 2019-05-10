@@ -7,6 +7,7 @@
     android:padding="16dp">
 
 
+    <!--CHOOSE A PARTNER_LIST VIEW FORMAT-->
     <LinearLayout
         android:id="@+id/linearLayoutID"
         android:layout_width="match_parent"

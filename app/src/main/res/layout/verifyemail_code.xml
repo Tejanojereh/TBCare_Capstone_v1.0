@@ -7,6 +7,8 @@
     android:background="@drawable/bg_verify"
     android:fitsSystemWindows="true">
 
+    <!--VERIFY EMAIL CODE-->
+
     <android.support.constraint.Guideline
         android:id="@+id/gdupper"
         android:layout_width="wrap_content"

@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_patient_start);
+        setContentView(R.layout.activity_main);
 
 
         btnregister = findViewById(R.id.btnregisterm);

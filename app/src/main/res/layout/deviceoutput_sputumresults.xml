@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_cloud">
 
+    <!--DEVICE OUTPUT SPUTUM RESULTS-->
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
