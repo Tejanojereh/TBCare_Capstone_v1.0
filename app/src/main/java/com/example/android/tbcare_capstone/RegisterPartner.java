@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
@@ -27,13 +28,18 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
     private ProgressBar loading;
     Spinner sec_question_1, sec_question_2;
     private Button btnSubmit;
+    PartnerClass partner;
+
+    String code="";
+    Random rand = new Random();
+    int digit=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_partner);
 
         loading = findViewById(R.id.loading);
-        txtname = findViewById(R.id.input_name);
+        //txtname = findViewById(R.id.input_name);
         txtemail = findViewById(R.id.email);
         partner_id = findViewById(R.id.partner_id);
         txtpass = findViewById(R.id.input_password);
@@ -63,7 +69,8 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
             public void onClick(View v) {
                 if(txtpass.getText().toString().equals(txtcpass.getText().toString()))
                 {
-                    PartnerClass partner = new PartnerClass();
+                    partner = new PartnerClass();
+
                     // = txtname.getText().toString();
                     partner.SetUsername("");
                     partner.SetPassword(txtpass.getText().toString());
@@ -76,6 +83,21 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     partner.Security_Answer1 = answer_1.getText().toString();
                     partner.Security_Answer2 = answer_2.getText().toString();
 
+
+
+
+
+
+                    for(int i=0;i<5;i++)
+                    {
+                        digit=rand.nextInt(10);
+                        code+=String.valueOf(digit);
+
+                    }
+
+                    //for email
+
+
                     String password = partner.GetPassword();
                     String address = "http://tbcarephp.azurewebsites.net/register_account.php";
                     String[] value = {"PARTNER", partner.TP_ID, partner.FirstName, partner.FirstName, partner.Contact_No, partner.Email, partner.TP_ID, partner.GetPassword(), partner.Security_Question1, partner.Security_Answer1};
@@ -83,6 +105,11 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPartner.this, RegisterPartner.this);
 
                     wbc.execute();
+
+
+
+
+
                 }
                 else
                     Toast.makeText(RegisterPartner.this, "Password does not match", Toast.LENGTH_LONG).show();
@@ -107,6 +134,12 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                 {
                     Toast.makeText(this, "Registered Successfully", Toast.LENGTH_LONG).show();
                     //startActivity(intent);
+                    Intent it= new Intent(Intent.ACTION_SEND);
+                    it.putExtra(Intent.EXTRA_EMAIL, new String[]{partner.Email});
+                    it.putExtra(Intent.EXTRA_SUBJECT, "Verify your TBSense account.");
+                    it.putExtra(Intent.EXTRA_TEXT, "Hi"+partner.FirstName+ " "+partner.LastName+"! Please verify your account using this code:"+ code);
+                    it.setType("message/rfc822");
+                    startActivity(Intent.createChooser(it, "Email sent"));
                     finish();
                 }else if(success.equals("false")){
                     Toast.makeText(this, "Error occured", Toast.LENGTH_LONG).show();

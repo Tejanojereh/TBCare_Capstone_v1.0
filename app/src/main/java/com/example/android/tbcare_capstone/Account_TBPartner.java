@@ -24,7 +24,7 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_tbpartner);
         fname=findViewById(R.id.firstname);
-        lname=findViewById(R.id.lastname);
+        lname =findViewById(R.id.lastname);
         mname=findViewById(R.id.middlename);
         uname=findViewById(R.id.username);
         contact=findViewById(R.id.contactnumber);
