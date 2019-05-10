@@ -21,6 +21,9 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Listener {
 
@@ -71,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 base.SetUsername(txtUsername.getText().toString());
                 base.SetPassword(txtPassword.getText().toString());
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
-                //String[] value = {base.GetUsername(), base.GetPassword()};
                 String[] value = {base.GetUsername(), base.GetPassword()};
                 String[] valueName = {"username", "password"};
                 WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
@@ -135,6 +137,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     id = Integer.parseInt(object.getString("ID"));
                     account_type = object.getString("account_type");
 
+                    SharedPreferences s = getSharedPreferences("session", 0);
+                    SharedPreferences.Editor editor = s.edit();
+                    editor.putInt("account_id", id);
+                    editor.putString("account_type", account_type);
+                    Gson gson = new Gson();
+
                     if (account_type.equals("PARTNER")) {
                         partner = new PartnerClass();
                         partner.ID = id;
@@ -144,22 +152,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         partner.LastName = object.getString("lastname");
                         partner.Contact_No = object.getString("contact_no");
                         partner.Email = object.getString("email");
+
+                        String json = gson.toJson(partner);
+                        editor.putString("class", json);
+                        editor.apply();
+
                         intent = new Intent(MainActivity.this, Menu_TBPartner.class);
                     }
-                    else {
+                    else if(account_type.equals("PATIENT")){
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        SimpleDateFormat print = new SimpleDateFormat("MM-dd-yyyy");
                         patient = new PatientClass();
+                        patient.ID = id;
+                        patient.SetUsername(base.GetUsername());
+                        patient.TB_CASE_NO = object.getString("TB_CASE_NO");
+                        patient.Disease_Classification = object.getString("disease_classification");
+                        patient.Registration_Group = object.getString("registration_group");
+                        JSONObject t = object.getJSONObject("treatment_date_start");
+                        Date temp = df.parse(t.getString("date"));
+                        patient.Treatment_Date_Start = print.parse(print.format(temp));
+                        patient.Contact_No = object.getString("contact_no");
+
+                        String json = gson.toJson(patient);
+                        editor.putString("class", json);
+                        editor.apply();
+
                         intent = new Intent(MainActivity.this, Menu_Patient.class);
-                        intent.putExtra("serial_data", patient);
                     }
 
-                    SharedPreferences s = getSharedPreferences("session", 0);
-                    SharedPreferences.Editor editor = s.edit();
-                    editor.putInt("account_id", id);
-                    editor.putString("account_type", account_type);
-                    Gson gson = new Gson();
-                    String json = gson.toJson(partner);
-                    editor.putString("class", json);
-                    editor.apply();
+
+
                     startActivity(intent);
                     finish();
 

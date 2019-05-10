@@ -9,4 +9,5 @@ public class PatientClass extends BaseClass implements Serializable {
     public String Registration_Group;
     public Date Treatment_Date_Start;
     public float Weight;
+    public String Partner_id;
 }

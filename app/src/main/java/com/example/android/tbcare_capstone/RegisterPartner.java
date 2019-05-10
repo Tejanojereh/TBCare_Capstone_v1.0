@@ -50,7 +50,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                         //startActivity(intent);
                         finish();
                     }else if(success.equals("false")){
-                        Toast.makeText(this, "Error occured!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, object.getString("message"), Toast.LENGTH_LONG).show();
 
                     }
                 } catch (Exception e) {
@@ -98,7 +98,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
         btnregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtpass.getText().toString().equals(txtcpass.getText().toString()))
+                if(Validator())
                 {
                     PartnerClass partner = new PartnerClass();
                     partner.SetUsername(username.getText().toString());
@@ -120,8 +120,6 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
 
                     wbc.execute();
                 }
-                else
-                    Toast.makeText(RegisterPartner.this, "Password does not match", Toast.LENGTH_LONG).show();
             }
 
             /*private void Register(){
@@ -130,4 +128,63 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
             }*/
         });
     }
+
+    private boolean Validator(){
+        boolean flag = true;
+        if(username.length()==0)
+        {
+            username.requestFocus();
+            username.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if(answer_2.length() == 0){
+            answer_2.requestFocus();
+            answer_2.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if(answer_1.length() == 0){
+            answer_1.requestFocus();
+            answer_1.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if(partner_id.length() == 0){
+            partner_id.requestFocus();
+            partner_id.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if(firstname.length() == 0){
+            firstname.requestFocus();
+            firstname.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if(lastname.length() == 0){
+            lastname.requestFocus();
+            lastname.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if(txtemail.length() == 0){
+            txtemail.requestFocus();
+            txtemail.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        if (!txtemail.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
+
+            txtemail.setError("Invalid Email Address");
+
+        }
+        if(txtpass.length() < 8){
+            txtpass.requestFocus();
+            txtpass.setError("Password must be 8 characters or more");
+            flag = false;
+        }
+        else if(!txtpass.getText().toString().equals(txtcpass.getText().toString()))
+        {
+            txtcpass.requestFocus();
+            txtcpass.setError("PASSWORD DOESN'T MATCH");
+            flag = false;
+        }
+
+        return flag;
+    }
+
 }

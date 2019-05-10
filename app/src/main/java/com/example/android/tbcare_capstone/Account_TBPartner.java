@@ -76,7 +76,7 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
 
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
-        String json = s.getString("partner", "");
+        String json = s.getString("class", "");
 
         PartnerClass partner = gson.fromJson(json, PartnerClass.class);
 

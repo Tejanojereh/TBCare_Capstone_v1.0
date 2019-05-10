@@ -23,7 +23,7 @@ public class BaseClass extends Account {
     public void SetPassword(String value)
     {
         try {
-            this.Password = encrypt(this.Username, value);
+            this.Password = hash(value);
         } catch (Exception e) {
             e.printStackTrace();
         }

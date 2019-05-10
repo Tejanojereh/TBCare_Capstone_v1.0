@@ -15,7 +15,11 @@ import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RegisterPatientStart extends AppCompatActivity implements WebServiceClass.Listener {
 
@@ -62,24 +66,34 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
             @Override
             public void onClick(View v) {
                 if(Validator()){
+                    Date c = Calendar.getInstance().getTime();
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+                    try {
+                        Date today = df.parse(df.format(c));
+                        PatientClass patient = new PatientClass();
+                        patient.SetUsername(username.getText().toString());
+                        patient.SetPassword(password.getText().toString());
+                        patient.TB_CASE_NO = patient_id.getText().toString();
+                        patient.Weight = Float.parseFloat(weight.getText().toString());
+                        patient.Contact_No = contactNo.getText().toString();
+                        patient.Disease_Classification = "Sample";
+                        patient.Registration_Group = "Sample";
+                        patient.Treatment_Date_Start = today;
+                        patient.Security_Question1 = question1.getSelectedItem().toString();
+                        patient.Security_Question2 = question2.getSelectedItem().toString();
+                        patient.Security_Answer1 = answer1.getText().toString();
+                        patient.Security_Answer2 = answer2.getText().toString();
 
-                    PatientClass patient = new PatientClass();
-                    patient.SetUsername(username.getText().toString());
-                    patient.SetPassword(password.getText().toString());
-                    patient.TB_CASE_NO = patient_id.getText().toString();
-                    patient.Weight = Float.parseFloat(weight.getText().toString());
-                    patient.Contact_No = contactNo.getText().toString();
-                    patient.Security_Question1 = question1.getSelectedItem().toString();
-                    patient.Security_Question2 = question2.getSelectedItem().toString();
-                    patient.Security_Answer1 = answer1.getText().toString();
-                    patient.Security_Answer2 = answer2.getText().toString();
+                        String address = "http://tbcarephp.azurewebsites.net/register_account.php";
+                        String[] value = {"PATIENT", patient.TB_CASE_NO, Float.toString(patient.Weight), df.format(patient.Treatment_Date_Start), patient.Registration_Group, patient.Disease_Classification, patient.Contact_No, patient.GetUsername(), patient.GetPassword(), patient.Security_Question1, patient.Security_Answer1, patient.Security_Question2, patient.Security_Answer2};
+                        String[] valueName = {"account_type", "patient_id", "weight", "treatment_date_start", "registration_group", "disease_classification", "contactNo", "username", "password", "question1", "answer1", "question2", "answer2"};
+                        WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPatientStart.this, RegisterPatientStart.this);
 
-                    String address = "http://tbcarephp.azurewebsites.net/register_account.php";
-                    String[] value = {"PATIENT", patient.TB_CASE_NO, Float.toString(patient.Weight), patient.Contact_No, patient.GetUsername(), patient.GetPassword(), patient.Security_Question1, patient.Security_Answer1, patient.Security_Question2, patient.Security_Answer2};
-                    String[] valueName = {"account_type", "patient_id", "weight", "contactNo", "username", "password", "question1", "answer1", "question2", "answer2"};
-                    WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPatientStart.this, RegisterPatientStart.this);
+                        wbc.execute();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
-                    wbc.execute();
                 }
 
 
@@ -104,7 +118,7 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
                         //startActivity(intent);
                         finish();
                     }else if(success.equals("false")){
-                        Toast.makeText(this, "Error occured!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, object.getString("message"), Toast.LENGTH_LONG).show();
 
                     }
                 } catch (Exception e) {
