@@ -19,7 +19,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.tbcare_capstone.Notes" />
         </activity>
-        <activity android:name=".test">
+        <activity android:name=".Treatment_details">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
