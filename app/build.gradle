@@ -41,7 +41,9 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 
+    implementation 'com.github.jaredrummler:material-spinner:1.0.8'
 
+    implementation 'com.github.ganfra:material-spinner:2.0.0'
 
 }
 
