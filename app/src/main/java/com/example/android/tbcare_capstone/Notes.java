@@ -26,6 +26,8 @@ public class Notes extends AppCompatActivity {
     static ArrayAdapter arrayAdapter;
     static Set<String> set;
 
+    //DYNMAMIC NOTES
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -27,6 +27,7 @@ import java.util.List;
 
 public class test extends AppCompatActivity {
 
+    //MAIN ACTIVITY OF OPTION B
 
     ActionBarDrawerToggle mDrawerToggle;
 
@@ -168,6 +169,7 @@ public class test extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 
 
 

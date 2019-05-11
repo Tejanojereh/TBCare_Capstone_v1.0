@@ -16,13 +16,16 @@ import android.widget.TextView;
 
 public class ListPatientsFragments extends Fragment {
 
+    //LIST OF PATIENTS FRAGMENTS(TAB CONTAINER LAYOUT OPTION B)
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_viewpatient, container, false);
 
-
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+        recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return recyclerView;

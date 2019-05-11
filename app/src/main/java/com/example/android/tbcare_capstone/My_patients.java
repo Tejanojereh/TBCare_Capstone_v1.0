@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class My_patients extends AppCompatActivity {
 
+    //OPTION A- VIEW MY PATIENTS
+
 ListView listView;
 String patientsid[] = {"TB234321", "TB343234"};
 String patientsname[] = {"Chi", "Chow"};

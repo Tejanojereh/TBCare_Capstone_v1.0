@@ -25,6 +25,8 @@ public class Myaccount_partner extends AppCompatActivity {
         private DrawerLayout drawer;
     ActionBarDrawerToggle mDrawerToggle;
 
+    //DASHBOARD_ PARTNER SIDE
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

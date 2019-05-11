@@ -27,6 +27,9 @@
     <string name="title_activity_edit_note">Edit Your Note</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    
+    <string name="sampleid">TB12453</string>
+    <string name="samplenamepatient">Elisse</string>
 
 
 </resources>

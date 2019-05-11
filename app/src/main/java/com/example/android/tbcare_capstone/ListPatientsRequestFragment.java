@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class ListPatientsRequestFragment extends Fragment {
 
-
+//LIST OF PATIENTS REQUEST FRAGMENTS(TAB CONTAINER LAYOUT OPTION B)
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
