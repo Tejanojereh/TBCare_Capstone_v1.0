@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".My_Partner_Info"></activity>
+        <activity android:name=".My_Patients"></activity>
+        <activity android:name=".My_Partner_Info" />
         <activity android:name=".ChoosePartner" />
         <activity android:name=".RegisterPatientStart" />
         <activity android:name=".Choose_Account_Type" />
@@ -32,7 +33,6 @@
         <activity android:name=".Account_TBPartner" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".Partner_Info" />
-        <activity android:name=".My_Patients" />
         <activity android:name=".Myaccount_partner" />
         <activity android:name=".RegisterPartner" />
         <activity android:name=".test" />
