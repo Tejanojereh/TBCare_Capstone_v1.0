@@ -9,7 +9,7 @@
 
     <!--VIEW MY PARTNER INFO_PATIENTS SIDE-->
     <TextView
-        android:id="@+id/txtname"
+        android:id="@+id/tp_name"
         android:layout_width="230dp"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
@@ -109,6 +109,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tp_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -130,6 +131,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tp_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -151,6 +153,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tp_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -167,11 +170,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/username"
+                    android:text="No. of Patients Handled"
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tp_patients_hanled"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -195,7 +199,7 @@
 
 
     <android.support.design.button.MaterialButton
-        android:id="@+id/button"
+        android:id="@+id/backBtn"
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Colored"

@@ -94,6 +94,9 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
             case R.id.nav_patients:
                 intent = new Intent(Menu_Patient.this, My_Patients.class);
                 break;*/
+            case R.id.nav_tp:
+                intent = new Intent(Menu_Patient.this, My_Partner_Info.class);
+                break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);
                 SharedPreferences.Editor editor = s.edit();
@@ -160,10 +163,17 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         Toast.makeText(this, "You have no partner assigned", Toast.LENGTH_LONG).show();
                         intent = new Intent(this, ChoosePartner.class);
                         startActivity(intent);
-                        //finish();
+                        finish();
                     }
                     else if(hasPartner.equals("true")){
-                        patient.Partner_id = object.getString("TP_ID");
+                        patient.Partner_id = object.getString("partner_id");
+                        SharedPreferences s = getSharedPreferences("session", 0);
+                        SharedPreferences.Editor editor = s.edit();
+                        Gson gson = new Gson();
+                        String json = gson.toJson(patient);
+                        editor.putString("class", json);
+                        editor.apply();
+
                     }
                 } catch (JSONException e) {
                     Toast.makeText(this, e.getMessage().toString(), Toast.LENGTH_LONG);;

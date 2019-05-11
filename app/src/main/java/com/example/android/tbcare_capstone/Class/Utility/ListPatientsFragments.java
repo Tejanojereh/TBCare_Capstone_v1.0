@@ -2,8 +2,6 @@ package com.example.android.tbcare_capstone.Class.Utility;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,8 +35,10 @@ public class ListPatientsFragments extends Fragment {
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.row_listview, parent, false));
             casenumber = (TextView) itemView.findViewById(R.id.txtid);
-            name = (TextView) itemView.findViewById(R.id.txtname);
+            name = (TextView) itemView.findViewById(R.id.tp_name);
 
+            casenumber.setText("HI");
+            name.setText("hello");
 
 
         }

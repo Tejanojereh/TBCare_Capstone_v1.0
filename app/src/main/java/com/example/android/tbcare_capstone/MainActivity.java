@@ -18,6 +18,7 @@ import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
 import com.google.gson.Gson;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void InstantiateControl() {
-        txtUsername = (EditText) findViewById(R.id.email);
+        txtUsername = (EditText) findViewById(R.id.input_username);
         txtPassword = (EditText) findViewById(R.id.input_password);
         imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
         imgBtnForgotPassword = (TextView) findViewById(R.id.forgotpassBtn);
@@ -186,10 +187,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     finish();
 
                 } catch (Exception e) {
-                    Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    JSONObject object = null;
+                    try {
+                        object = Result.getJSONObject(0);
+                        Toast.makeText(MainActivity.this, object.getString("message"), Toast.LENGTH_LONG).show();
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
                 }
             } else {
-                Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
+
             }
         }
         else

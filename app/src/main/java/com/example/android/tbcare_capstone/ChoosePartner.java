@@ -3,6 +3,7 @@ package com.example.android.tbcare_capstone;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -19,7 +20,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.tbcare_capstone.Class.Utility.FinalizePartnerFragment;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 
 import org.apache.http.HttpResponse;
@@ -138,7 +138,7 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.choosepartner_listview, parent, false);
             TextView ids = row.findViewById(R.id.txtid);
-            TextView names = row.findViewById(R.id.txtname);
+            TextView names = row.findViewById(R.id.tp_name);
             TextView patientsHandled = row.findViewById(R.id.txtpatientshandled);
 
             ids.setText(pid[position]);
@@ -244,6 +244,7 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
                         builder.setMessage("You have now selected a partner. Once the partner approves your request, you will receive your medication details.")
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        Intent intent = new Intent(ChoosePartner.this, Menu_Patient.class);
                                         finish();
                                     }
                                 });

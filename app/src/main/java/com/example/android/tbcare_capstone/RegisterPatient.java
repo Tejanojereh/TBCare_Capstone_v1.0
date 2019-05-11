@@ -37,7 +37,7 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
             }
         });
 
-        Button secondIntake = (Button)findViewById(R.id.secondIntake);
+        Button secondIntake = (Button)findViewById(R.id.btnintakesec);
         secondIntake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

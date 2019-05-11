@@ -54,7 +54,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                 JSONObject object = Result.getJSONObject(0);
                 patients_no = object.getString("patients_no");
                 Toast.makeText(this, "You have no patients at the moment", Toast.LENGTH_LONG).show();
-                finish();
+                //finish();
             } catch (JSONException e) {
                 for (int i = 0; i < Result.length(); i++) {
                     try {
@@ -103,7 +103,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row_listview, parent, false);
             TextView ids = row.findViewById(R.id.txtid);
-            TextView names = row.findViewById(R.id.txtname);
+            TextView names = row.findViewById(R.id.tp_name);
 
             ids.setText(pid[position]);
             names.setText(pname[position]);

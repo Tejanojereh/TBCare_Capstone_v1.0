@@ -65,14 +65,14 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         contact=findViewById(R.id.myAcc_ContactNo);
         partner_id=findViewById(R.id.myAcc_partner_ID);
         //btn= findViewById(R.id.btnsave);
-        back = (ImageButton) findViewById(R.id.btn_Back);
+        /*back = (ImageButton) findViewById(R.id.btn_Back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
 
-        });
+        });*/
 
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
