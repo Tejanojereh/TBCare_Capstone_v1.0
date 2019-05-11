@@ -87,7 +87,7 @@ public class View_and_Update_Medication_Progress extends AppCompatActivity imple
     }
 
     @Override
-    public void OnTaskCompleted(JSONArray Result) {
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
 
         try {
             tempStorage = new String[Result.length()];

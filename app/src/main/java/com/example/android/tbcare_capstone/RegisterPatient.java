@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.DatePicker;
-import android.widget.Toast;
+
+import com.example.android.tbcare_capstone.Class.Utility.DatepickerFragment;
+import com.example.android.tbcare_capstone.Class.Utility.TimepickerFragment;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -35,7 +37,7 @@ public class RegisterPatient extends AppCompatActivity implements TimePickerDial
             }
         });
 
-        Button secondIntake = (Button)findViewById(R.id.secondIntake);
+        Button secondIntake = (Button)findViewById(R.id.btnintakesec);
         secondIntake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

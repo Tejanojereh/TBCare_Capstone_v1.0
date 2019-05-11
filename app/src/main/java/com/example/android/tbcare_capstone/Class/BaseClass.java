@@ -2,8 +2,8 @@ package com.example.android.tbcare_capstone.Class;
 
 public class BaseClass extends Account {
     public int ID;
-    public String Username;
-    public String Password;
+    private String Username;
+    private String Password;
     public String Contact_No;
     public String Security_Question1;
     public String Security_Question2;
@@ -23,7 +23,7 @@ public class BaseClass extends Account {
     public void SetPassword(String value)
     {
         try {
-            this.Password = encrypt(this.Username, value);
+            this.Password = hash(value);
         } catch (Exception e) {
             e.printStackTrace();
         }

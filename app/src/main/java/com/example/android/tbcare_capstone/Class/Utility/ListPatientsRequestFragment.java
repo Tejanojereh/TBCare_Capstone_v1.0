@@ -1,9 +1,5 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.Class.Utility;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ListPatientsFragments extends Fragment {
+import com.example.android.tbcare_capstone.R;
+
+public class ListPatientsRequestFragment extends Fragment {
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,3 +44,4 @@ public class ListPatientsFragments extends Fragment {
 
 
 }
+

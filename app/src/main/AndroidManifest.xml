@@ -2,17 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.tbcare_capstone">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/n_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterPatientStart"></activity>
+        <activity android:name=".My_Patients"></activity>
+        <activity android:name=".My_Partner_Info" />
+        <activity android:name=".ChoosePartner" />
+        <activity android:name=".RegisterPatientStart" />
         <activity android:name=".Choose_Account_Type" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -21,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add_Sputum_Exam" />
         <activity android:name=".My_Schedule_Patient" />
         <activity android:name=".Menu_Patient" />
         <activity android:name=".Note_Patient" />
@@ -31,9 +33,9 @@
         <activity android:name=".Account_TBPartner" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".Partner_Info" />
-        <activity android:name=".My_patients" />
         <activity android:name=".Myaccount_partner" />
         <activity android:name=".RegisterPartner" />
+        <activity android:name=".test" />
         <activity android:name=".RegisterPatient" />
         <activity
             android:name=".EditNote"

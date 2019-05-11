@@ -1,6 +1,7 @@
 package com.example.android.tbcare_capstone;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,48 +12,35 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
+import com.google.gson.Gson;
 
 public class Account_TBPartner extends AppCompatActivity implements Listener {
-    private TextView fname,lname,mname,contact,uname;
+    private TextView fname,lname,mname,contact,uname, email, partner_id;
     private ImageButton btn,back;
     private Bundle bundle;
     private WebServiceClass webService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_tbpartner);
-        fname=findViewById(R.id.firstname);
-        lname =findViewById(R.id.lastname);
-        mname=findViewById(R.id.middlename);
-        uname=findViewById(R.id.username);
-        contact=findViewById(R.id.contactnumber);
-        //btn= findViewById(R.id.btnsave);
-        back = (ImageButton) findViewById(R.id.btn_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Account_TBPartner.this, Menu_TBPartner.class );
+        setContentView(R.layout.activity_acct_tbpartner);
 
-                startActivity(intent);
+        InitiateControls();
 
-            }
-
-        });
-
-        String address = "http://tbcarephp.azurewebsites.net/retrieve_tbinfo.php";
+        /*String address = "http://tbcarephp.azurewebsites.net/retrieve_tbinfo.php";
         String[] value = {bundle.getString("id")};
         String[] valueName = {"P_ID"};
         webService = new WebServiceClass(address, value, valueName, Account_TBPartner.this, this);
-        webService.execute();
+        webService.execute();*/
 
         //new WebService_TBPartner().execute();
 
     }
 
     @Override
-    public void OnTaskCompleted(JSONArray Result) {
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
 
         try {
             JSONObject c = Result.getJSONObject(0);
@@ -67,81 +55,37 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         }
         catch(Exception e) { Toast.makeText(Account_TBPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show(); }
     }
-    /*public  class WebService_TBPartner extends AsyncTask
-    {
-        @Override
-        protected Void doInBackground(Object... objects)
-        {
-            byte[] data;
-            HttpPost httpPost;
-            StringBuffer buffer;
-            HttpResponse response;
-            HttpClient httpclient;
-            InputStream inputStream;
-            final String message;
 
-            List<NameValuePair> nameValuePairs;
-            nameValuePairs= new ArrayList<NameValuePair>(1);
-            bundle = getIntent().getExtras();
-            nameValuePairs.add(new BasicNameValuePair("P_ID",bundle.getString("id")));
-
-            uname.setText(bundle.getString("id"));
-            try
-            {
-                httpclient = new DefaultHttpClient();
-                httpPost = new HttpPost("http://tbcarephp.azurewebsites.net/retrieve_tbinfo.php");
-
-                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                response=httpclient.execute(httpPost);
-                inputStream=response.getEntity().getContent();
-
-                data= new byte[256];
-                buffer=new StringBuffer();
-                int len=0;
-
-                while(-1!=(len=inputStream.read(data))) {
-                    buffer.append(new String(data, 0, len));
-
-
-                }
-                String s= buffer.toString();
-                JSONObject jsonObj= new JSONObject(s);
-              final   JSONArray record = jsonObj.getJSONArray("results");
-
-                    runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-
-
-                            try {
-
-                                     JSONObject c = record.getJSONObject(0);
-                                     fname.setText(c.getString("TP_Fname").toString());
-                                     c = record.getJSONObject(1);
-                                     mname.setText("TP_Mname");
-                                     c = record.getJSONObject(2);
-                                    lname.setText(c.getString("TP_Lname").toString());
-                                     c = record.getJSONObject(3);
-                                contact.setText(c.getString("TP_ContactNo").toString());
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                    });
-
-            }catch (final Exception e){
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(Account_TBPartner.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+    private void InitiateControls(){
+        fname=findViewById(R.id.myAcc_firstname);
+        lname=findViewById(R.id.myAcc_lastname);
+        mname=findViewById(R.id.myAcc_Middlename);
+        uname=findViewById(R.id.myAcc_username);
+        email = findViewById(R.id.myAcc_email);
+        contact=findViewById(R.id.myAcc_ContactNo);
+        partner_id=findViewById(R.id.myAcc_partner_ID);
+        //btn= findViewById(R.id.btnsave);
+        /*back = (ImageButton) findViewById(R.id.btn_Back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
 
-            return null;
-        }*/
+        });*/
+
+        SharedPreferences s = getSharedPreferences("session", 0);
+        Gson gson = new Gson();
+        String json = s.getString("class", "");
+
+        PartnerClass partner = gson.fromJson(json, PartnerClass.class);
+
+        fname.setText(partner.FirstName);
+        lname.setText(partner.LastName);
+        mname.setText(partner.MiddleName);
+        uname.setText(partner.GetUsername());
+        email.setText(partner.Email);
+        contact.setText(partner.Contact_No);
+        partner_id.setText(partner.TP_ID);
+    }
 }

@@ -1,34 +1,29 @@
 package com.example.android.tbcare_capstone;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
+import com.example.android.tbcare_capstone.Class.BaseClass;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
+import com.google.gson.Gson;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Listener {
@@ -36,17 +31,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText txtUsername, txtPassword;
     private TextView imgBtnForgotPassword;
     private AppCompatButton imgBtnSignIn;
-    private String id, uname;
+    private String account_type;
+    private int id;
     private ProgressDialog progressDialog;
     private Intent intent;
     private Button button;
     private Button btnregister;
+    private PatientClass patient;
+    private PartnerClass partner;
+    private BaseClass base;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InstantiateControl();
+        SharedPreferences s = getSharedPreferences("session", 0);
+        int session = s.getInt("account_id", 0);
+        String session_account_type = s.getString("account_type", "");
+        if(session != 0){
+            if(session_account_type.equals("PARTNER")){
+                intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+                startActivity(intent);
+                finish();
+            }
+            else if(session_account_type.equals("PATIENT")) {
+                intent = new Intent(MainActivity.this, Menu_Patient.class);
+                startActivity(intent);
+                finish();
+            }
+        }
+
     }
 
     @Override
@@ -56,11 +71,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             //sign in
             case R.id.btn_login: {
-                PartnerClass partner = new PartnerClass();
-                partner.SetUsername(txtUsername.getText().toString());
-                partner.SetPassword(txtPassword.getText().toString());
+                base = new BaseClass();
+                base.SetUsername(txtUsername.getText().toString());
+                base.SetPassword(txtPassword.getText().toString());
                 String address = "http://tbcarephp.azurewebsites.net/login.php";
-                String[] value = {partner.GetUsername(), partner.GetPassword()};
+                String[] value = {base.GetUsername(), base.GetPassword()};
                 String[] valueName = {"username", "password"};
                 WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
 
@@ -70,14 +85,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
 
             //forgot password
-            case R.id.link_signup: {
-                Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
+            case R.id.forgotpassBtn: {
+                /*Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
                 intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
-                startActivity(intent);
+                startActivity(intent);*/
+                View view = LayoutInflater.from(this).inflate(R.layout.forgotpass_changepassword, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Forgot password?")
+                        .setView(view)
+                        .setNegativeButton("Cancel", null);
+                AlertDialog alert = builder.create();
+                alert.show();
             }
             break;
             case R.id.btnregisterm: {
-                intent = new Intent(MainActivity.this, Choose_Account_Type.class);
+                 intent = new Intent(MainActivity.this, Choose_Account_Type.class);
                 startActivity(intent);
             }
             break;
@@ -85,10 +107,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void InstantiateControl() {
-        txtUsername = (EditText) findViewById(R.id.email);
+        txtUsername = (EditText) findViewById(R.id.input_username);
         txtPassword = (EditText) findViewById(R.id.input_password);
         imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
-        imgBtnForgotPassword = (TextView) findViewById(R.id.link_signup);
+        imgBtnForgotPassword = (TextView) findViewById(R.id.forgotpassBtn);
         btnregister = findViewById(R.id.btnregisterm);
 
         btnregister.setOnClickListener(this);
@@ -100,34 +122,86 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    public void OnTaskCompleted(JSONArray Result) {
-        PatientClass patient;
-        PartnerClass partner;
-        if (Result != null) {
-            try {
-                JSONObject object = Result.getJSONObject(0);
-                id = object.getString("id");
-                object = Result.getJSONObject(1);
-                uname = object.getString("username");
-
-                if (uname.contains("TP")) {
-                    partner = new PartnerClass();
-                    intent = new Intent(MainActivity.this, Menu_TBPartner.class);
-                    intent.putExtra("serial_data", partner);
-                } else {
-                    patient = new PatientClass();
-                    intent = new Intent(MainActivity.this, Menu_Patient.class);
-                    intent.putExtra("serial_data", patient);
-                }
-                /*Bundle bundle = new Bundle();
-                bundle.putString("id", uname);
-                intent.putExtras(bundle);*/
-                startActivity(intent);
-            } catch (Exception e) {
-                Toast.makeText(MainActivity.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
-            }
-        } else {
-            Toast.makeText(MainActivity.this, "Incorrect username or password!", Toast.LENGTH_LONG).show();
-        }
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
+
+    @Override
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
+        if(flag)
+        {
+
+            if (Result != null) {
+                try {
+                    JSONObject object = Result.getJSONObject(0);
+                    id = Integer.parseInt(object.getString("ID"));
+                    account_type = object.getString("account_type");
+
+                    SharedPreferences s = getSharedPreferences("session", 0);
+                    SharedPreferences.Editor editor = s.edit();
+                    editor.putInt("account_id", id);
+                    editor.putString("account_type", account_type);
+                    Gson gson = new Gson();
+
+                    if (account_type.equals("PARTNER")) {
+                        partner = new PartnerClass();
+                        partner.ID = id;
+                        partner.SetUsername(base.GetUsername());
+                        partner.TP_ID = object.getString("TP_ID");
+                        partner.FirstName = object.getString("Firstname");
+                        partner.LastName = object.getString("lastname");
+                        partner.Contact_No = object.getString("contact_no");
+                        partner.Email = object.getString("email");
+
+                        String json = gson.toJson(partner);
+                        editor.putString("class", json);
+                        editor.apply();
+
+                        intent = new Intent(MainActivity.this, Menu_TBPartner.class);
+                    }
+                    else if(account_type.equals("PATIENT")){
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        SimpleDateFormat print = new SimpleDateFormat("MM-dd-yyyy");
+                        patient = new PatientClass();
+                        patient.ID = id;
+                        patient.SetUsername(base.GetUsername());
+                        patient.TB_CASE_NO = object.getString("TB_CASE_NO");
+                        patient.Disease_Classification = object.getString("disease_classification");
+                        patient.Registration_Group = object.getString("registration_group");
+                        JSONObject t = object.getJSONObject("treatment_date_start");
+                        Date temp = df.parse(t.getString("date"));
+                        patient.Treatment_Date_Start = print.parse(print.format(temp));
+                        patient.Contact_No = object.getString("contact_no");
+
+                        String json = gson.toJson(patient);
+                        editor.putString("class", json);
+                        editor.apply();
+
+                        intent = new Intent(MainActivity.this, Menu_Patient.class);
+                    }
+
+
+
+                    startActivity(intent);
+                    finish();
+
+                } catch (Exception e) {
+                    JSONObject object = null;
+                    try {
+                        object = Result.getJSONObject(0);
+                        Toast.makeText(MainActivity.this, object.getString("message"), Toast.LENGTH_LONG).show();
+                    } catch (JSONException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            } else {
+
+            }
+        }
+        else
+            Toast.makeText(MainActivity.this, "Error occured!", Toast.LENGTH_LONG).show();
+
+    }
+
 }

@@ -30,10 +30,12 @@ public class Choose_Account_Type extends AppCompatActivity implements View.OnCli
             case R.id.partnerImgBtn:
                 intent = new Intent(this, RegisterPartner.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.patientImgBtn:
                 intent = new Intent(this, RegisterPatientStart.class);
                 startActivity(intent);
+                finish();
                 break;
         }
     }

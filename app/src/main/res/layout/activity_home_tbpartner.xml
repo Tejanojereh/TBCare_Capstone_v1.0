@@ -1,53 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.DrawerLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white">
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.android.tbcare_capstone.Myaccount_partner"
+   >
+
+    <!--DASHBOARD of TB PARTNER with NAV MENU-->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gd_logoup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="7dp"
+        app:layout_constraintGuide_percent="0.001" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- include your toolbar layout-->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color1"
+
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="TB SENSE" />
 
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="260dp"
-        android:layout_height="131dp"
-        android:layout_above="@+id/imageView6"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="76dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/date" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="260dp"
-        android:layout_height="131dp"
-        android:layout_above="@+id/imageView7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/tph" />
+        <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="260dp"
-        android:layout_height="131dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:srcCompat="@drawable/tur" />
+            <android.support.constraint.ConstraintLayout
 
-</android.support.constraint.ConstraintLayout>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/gdright2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="363dp"
+                    app:layout_constraintGuide_percent="0.99" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/gddown2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.98" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/gdleft2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="56dp"
+                    app:layout_constraintGuide_percent="0.01" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="58dp"
+                    app:layout_constraintGuide_percent="0.02" />
+
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/gdicon1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_end="608dp" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/icon1d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.23" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/numdown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.34" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/glnumleft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/glnumright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.9" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="299dp"
+                    android:layout_height="237dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/glnumright"
+                    app:layout_constraintStart_toStartOf="@+id/glnumleft"
+                    app:layout_constraintTop_toTopOf="@+id/guideline">
+
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barChart"
+                        android:layout_width="274dp"
+                        android:layout_height="201dp" />
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/imageView"
+
+                    android:layout_width="296dp"
+                    android:layout_height="194dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/db1"
+                    app:layout_constraintEnd_toStartOf="@+id/glnumright"
+                    app:layout_constraintHorizontal_bias="0.411"
+                    app:layout_constraintStart_toStartOf="@+id/glnumleft"
+                    app:layout_constraintTop_toTopOf="@id/gdtempup" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="275dp"
+                    android:layout_height="58dp"
+
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="15"
+                    android:textAlignment="center"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView3"
+                    app:layout_constraintEnd_toEndOf="@+id/glnumright"
+                    app:layout_constraintHorizontal_bias="0.586"
+                    app:layout_constraintStart_toStartOf="@id/glnumleft"
+                    app:layout_constraintTop_toTopOf="@id/guideline2temp"
+                    app:layout_constraintVertical_bias="0.523" />
+
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="338dp"
+                    android:layout_height="48dp"
+
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="PATIENTS HANDLED"
+                    android:textAlignment="center"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toTopOf="@+id/gddown2"
+                    app:layout_constraintEnd_toStartOf="@+id/gdright2"
+                    app:layout_constraintHorizontal_bias="0.489"
+                    app:layout_constraintStart_toStartOf="@+id/gdleft2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/gdtempup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.4" />
+
+                <android.support.constraint.Guideline
+                    android:id="@+id/guideline2temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp"
+                    app:layout_constraintGuide_percent="0.58"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+
+
+        </FrameLayout>
+
+
+
+</LinearLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_view_tbpartner" />
+
+
+
+
+</android.support.v4.widget.DrawerLayout>

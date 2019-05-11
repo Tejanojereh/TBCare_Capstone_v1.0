@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-
+    <!--OPTION A: VIEW MY PATIENTS-->
     <LinearLayout
         android:id="@+id/linearLayoutID"
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/txtname"
+            android:id="@+id/tp_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/name"

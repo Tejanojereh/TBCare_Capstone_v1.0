@@ -29,9 +29,10 @@ public class WebServiceClass extends AsyncTask {
         private String[] ValueName;
         private org.json.JSONArray RecordResult;
         private ProgressDialog progressDialog;
+        private boolean flag = true;
 
         public interface Listener{
-            void OnTaskCompleted(JSONArray Result);
+            void OnTaskCompleted(JSONArray Result, boolean flag);
         }
 
         Listener listener;
@@ -99,6 +100,7 @@ public class WebServiceClass extends AsyncTask {
                 return RecordResult;
 
             }catch (final Exception e) {
+                flag = false;
                 return null;
             }
         }
@@ -106,16 +108,23 @@ public class WebServiceClass extends AsyncTask {
 
         @Override
         protected void onPostExecute(Object o) {
-            Object json = null;
-            try {
-                json = new JSONTokener(o.toString()).nextValue();
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if(flag)
+            {
+                Object json = null;
+                try {
+                    json = new JSONTokener(o.toString()).nextValue();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (json instanceof JSONArray) {
+                    RecordResult = (JSONArray) json;
+                }
+                progressDialog.dismiss();
+                listener.OnTaskCompleted(RecordResult, flag);
+            }else{
+                progressDialog.dismiss();
+                listener.OnTaskCompleted(RecordResult, flag);
             }
-            if (json instanceof JSONArray) {
-                RecordResult = (JSONArray) json;
-            }
-            progressDialog.dismiss();
-            listener.OnTaskCompleted(RecordResult);
+
         }
     }
