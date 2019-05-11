@@ -14,7 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class My_patients extends AppCompatActivity {
+public class My_Patients extends AppCompatActivity {
 
     //OPTION A- VIEW MY PATIENTS
 
@@ -36,10 +36,10 @@ String patientsname[] = {"Chi", "Chow"};
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position ==0){
-                    Toast.makeText(My_patients.this, "Description1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(My_Patients.this, "Description1", Toast.LENGTH_SHORT).show();
                 }
                 if (position ==0){
-                    Toast.makeText(My_patients.this, "Description2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(My_Patients.this, "Description2", Toast.LENGTH_SHORT).show();
                 }
             }
         });
