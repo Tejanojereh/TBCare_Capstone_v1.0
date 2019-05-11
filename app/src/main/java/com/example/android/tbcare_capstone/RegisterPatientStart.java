@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RegisterPatientstart extends AppCompatActivity implements WebServiceClass.Listener {
+public class RegisterPatientStart extends AppCompatActivity implements WebServiceClass.Listener {
 
     Button btnRegister;
     Spinner question1, question2;
@@ -87,7 +87,7 @@ public class RegisterPatientstart extends AppCompatActivity implements WebServic
                         String address = "http://tbcarephp.azurewebsites.net/register_account.php";
                         String[] value = {"PATIENT", patient.TB_CASE_NO, Float.toString(patient.Weight), df.format(patient.Treatment_Date_Start), patient.Registration_Group, patient.Disease_Classification, patient.Contact_No, patient.GetUsername(), patient.GetPassword(), patient.Security_Question1, patient.Security_Answer1, patient.Security_Question2, patient.Security_Answer2};
                         String[] valueName = {"account_type", "patient_id", "weight", "treatment_date_start", "registration_group", "disease_classification", "contactNo", "username", "password", "question1", "answer1", "question2", "answer2"};
-                        WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPatientstart.this, RegisterPatientstart.this);
+                        WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPatientStart.this, RegisterPatientStart.this);
 
                         wbc.execute();
                     } catch (ParseException e) {
@@ -122,13 +122,13 @@ public class RegisterPatientstart extends AppCompatActivity implements WebServic
 
                     }
                 } catch (Exception e) {
-                    Toast.makeText(RegisterPatientstart.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterPatientStart.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(RegisterPatientstart.this, "Error occured!", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterPatientStart.this, "Error occured!", Toast.LENGTH_LONG).show();
             }
         }else{
-            Toast.makeText(RegisterPatientstart.this, "Error occured!", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegisterPatientStart.this, "Error occured!", Toast.LENGTH_LONG).show();
         }
     }
 
