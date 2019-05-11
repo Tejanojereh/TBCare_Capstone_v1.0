@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <!--OPTION A: VIEW MY PATIENTS-->
+    <LinearLayout
+        android:id="@+id/linearLayoutID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/normalbar"
+        android:padding="16dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/idpatient"
+            android:textColor="@color/darkgray"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textColor="@color/color1"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+</LinearLayout>

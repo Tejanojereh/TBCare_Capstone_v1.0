@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rectangle"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!--FORGOT PASSWORD SECURITY-->
+
+    <include
+        android:id="@+id/toolbar1"
+        layout="@layout/menu_login"
+
+        android:layout_width="413dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="608dp"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_weight="1"
+            android:text="Security Questions:"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            style="?android:attr/spinnerItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_weight="1"
+            android:dropDownWidth="fill_parent"
+            android:ellipsize="marquee"
+            android:singleLine="false"
+            android:spinnerMode="dropdown" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/input_secquestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorWhite"
+                android:hint="@string/securityquestionans"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+
+                android:textColorHint="#80FFFFFF" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/spinner3"
+            style="?android:attr/spinnerItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:dropDownWidth="fill_parent"
+            android:ellipsize="marquee"
+            android:singleLine="false"
+            android:spinnerMode="dropdown" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/input_secquestion2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:backgroundTint="@color/colorWhite"
+                android:hint="@string/securityquestionans2"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+
+                android:textColorHint="#80FFFFFF" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <Button
+            android:id="@+id/btnregister"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_reverse"
+            android:backgroundTint="@color/colorAccent"
+            android:fontFamily="@font/roboto"
+
+            android:text="Register"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+</LinearLayout>
