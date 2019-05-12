@@ -87,17 +87,10 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId())
         {
-
-            /*case R.id.nav_account:
-                intent = new Intent(Menu_Patient.this, Account_TBPartner.class);
-                break;
-            case R.id.nav_patients:
-                intent = new Intent(Menu_Patient.this, My_Patients.class);
-                break;*/
             case R.id.nav_tp:
                 intent = new Intent(Menu_Patient.this, My_Partner_Info.class);
                 break;
-            case R.id.nav_ChangePass:
+            case R.id.nav_ChangePassword:
                 intent = new Intent(Menu_Patient.this, ChangePasswordActivity.class);
                 break;
             case R.id.nav_log_out:
@@ -123,6 +116,12 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
         bundle.putString("id",id);
         intent.putExtras(bundle);*/
+        /*case R.id.nav_account:
+                intent = new Intent(Menu_Patient.this, Account_TBPartner.class);
+                break;
+            case R.id.nav_patients:
+                intent = new Intent(Menu_Patient.this, My_Patients.class);
+                break;*/
 
         startActivity(intent);
         return false;

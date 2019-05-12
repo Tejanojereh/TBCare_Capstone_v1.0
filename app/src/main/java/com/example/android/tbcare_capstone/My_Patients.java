@@ -1,10 +1,12 @@
 package com.example.android.tbcare_capstone;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +27,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
 
     ListView listView;
     String patientsid[];
-    String patientsname[];
+    String patientsdisease[];
     String id;
 
     @Override
@@ -49,7 +51,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         {
             String patients_no;
             patientsid = new String[Result.length()];
-            patientsname = new String[Result.length()];
+            patientsdisease = new String[Result.length()];
             try {
                 JSONObject object = Result.getJSONObject(0);
                 patients_no = object.getString("patients_no");
@@ -60,23 +62,18 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                     try {
                         JSONObject object = Result.getJSONObject(i);
                         patientsid[i] = object.getString("TB_CASE_NO").toString();
-                        patientsname[i] = object.getString("contact_no").toString();
+                        patientsdisease[i] = object.getString("disease_classification").toString();
                     } catch (JSONException er) {
                         er.printStackTrace();
                     }
                 }
                 listView = findViewById(R.id.listview1);
-                MyAdapter adapter = new MyAdapter(this, patientsid, patientsname);
+                MyAdapter adapter = new MyAdapter(this, patientsid, patientsdisease);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        if (position == 0) {
-                            Toast.makeText(My_Patients.this, "Description1", Toast.LENGTH_SHORT).show();
-                        }
-                        if (position == 0) {
-                            Toast.makeText(My_Patients.this, "Description2", Toast.LENGTH_SHORT).show();
-                        }
+
                     }
                 });
             }
@@ -87,13 +84,13 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
 
         Context context;
         String pid[];
-        String pname[];
+        String patientsdisease[];
 
-        MyAdapter(Context c, String id[], String name[]) {
+        MyAdapter(Context c, String id[], String patientsdisease[]) {
             super(c, R.layout.row_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.pid = id;
-            this.pname = name;
+            this.patientsdisease = patientsdisease;
 
         }
 
@@ -106,7 +103,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             TextView names = row.findViewById(R.id.tp_name);
 
             ids.setText(pid[position]);
-            names.setText(pname[position]);
+            names.setText(patientsdisease[position]);
 
 
             return row;
