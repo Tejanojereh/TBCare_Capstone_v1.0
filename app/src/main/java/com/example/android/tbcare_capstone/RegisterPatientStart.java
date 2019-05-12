@@ -1,27 +1,33 @@
 package com.example.android.tbcare_capstone;
 
+import android.app.DatePickerDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.PatientClass;
+import com.example.android.tbcare_capstone.Class.Utility.DatepickerFragment;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RegisterPatientStart extends AppCompatActivity implements WebServiceClass.Listener {
+public class RegisterPatientStart extends AppCompatActivity implements WebServiceClass.Listener, DatePickerDialog.OnDateSetListener {
 
     Button btnRegister;
     Spinner question1, question2;
@@ -69,6 +75,8 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
                     Date c = Calendar.getInstance().getTime();
                     SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
                     try {
+                        DialogFragment datePicker = new DatepickerFragment();
+                        datePicker.show(getSupportFragmentManager(), "date picker");
                         Date today = df.parse(df.format(c));
                         PatientClass patient = new PatientClass();
                         patient.SetUsername(username.getText().toString());
@@ -173,6 +181,18 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
         }
 
         return flag;
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+
+        TextView textView = (TextView) findViewById(R.id.txtRegisterdate);
+        textView.setText(currentDateString);
     }
 
 }
