@@ -18,6 +18,9 @@
 
         <!--android:icon="@drawable/patient"-->
         <item
+            android:id="@+id/nav_ChangePass"
+            android:title="Change Password" />
+        <item
             android:id="@+id/nav_log_out"
             android:title="Log Out" />
         <!--android:icon="@drawable/logout"-->

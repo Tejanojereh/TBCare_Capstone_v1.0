@@ -18,7 +18,7 @@ import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
 import com.google.gson.Gson;
 
 public class Account_TBPartner extends AppCompatActivity implements Listener {
-    private TextView fname,lname,mname,contact,uname, email, partner_id;
+    private TextView fname,lname,mname,contact,uname, email, partner_id, header_name;
     private ImageButton btn,back;
     private Bundle bundle;
     private WebServiceClass webService;
@@ -60,6 +60,7 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         fname=findViewById(R.id.myAcc_firstname);
         lname=findViewById(R.id.myAcc_lastname);
         mname=findViewById(R.id.myAcc_Middlename);
+        header_name=findViewById(R.id.tp_name);
         uname=findViewById(R.id.myAcc_username);
         email = findViewById(R.id.myAcc_email);
         contact=findViewById(R.id.myAcc_ContactNo);
@@ -77,12 +78,19 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
         String json = s.getString("class", "");
-
+        String name = "";
         PartnerClass partner = gson.fromJson(json, PartnerClass.class);
 
+        if(partner.MiddleName.equals(""))
+        {
+            name = partner.FirstName +" "+partner.MiddleName+" "+partner.LastName;
+        }
+        else
+            name = partner.FirstName +" "+partner.LastName;
         fname.setText(partner.FirstName);
         lname.setText(partner.LastName);
         mname.setText(partner.MiddleName);
+        header_name.setText(name);
         uname.setText(partner.GetUsername());
         email.setText(partner.Email);
         contact.setText(partner.Contact_No);

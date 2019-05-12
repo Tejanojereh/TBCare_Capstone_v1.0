@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (account_type.equals("PARTNER")) {
                         partner = new PartnerClass();
                         partner.ID = id;
+                        partner.Partner_id = object.getString("account_id");
                         partner.SetUsername(base.GetUsername());
                         partner.TP_ID = object.getString("TP_ID");
                         partner.FirstName = object.getString("Firstname");
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         partner.Contact_No = object.getString("contact_no");
                         partner.Email = object.getString("email");
 
+                        editor.putString("id", partner.Partner_id);
                         String json = gson.toJson(partner);
                         editor.putString("class", json);
                         editor.apply();
@@ -165,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SimpleDateFormat print = new SimpleDateFormat("MM-dd-yyyy");
                         patient = new PatientClass();
                         patient.ID = id;
+                        patient.Patient_id = object.getString("account_id");
                         patient.SetUsername(base.GetUsername());
                         patient.TB_CASE_NO = object.getString("TB_CASE_NO");
                         patient.Disease_Classification = object.getString("disease_classification");
@@ -174,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         patient.Treatment_Date_Start = print.parse(print.format(temp));
                         patient.Contact_No = object.getString("contact_no");
 
+                        editor.putString("id", patient.Patient_id);
                         String json = gson.toJson(patient);
                         editor.putString("class", json);
                         editor.apply();

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterPatientstart"></activity>
+        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".RegisterPatientStart" />
         <activity android:name=".My_Patients" />
         <activity android:name=".My_Partner_Info" />
         <activity android:name=".ChoosePartner" />

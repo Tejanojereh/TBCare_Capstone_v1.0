@@ -97,6 +97,9 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
             case R.id.nav_tp:
                 intent = new Intent(Menu_Patient.this, My_Partner_Info.class);
                 break;
+            case R.id.nav_ChangePass:
+                intent = new Intent(Menu_Patient.this, ChangePasswordActivity.class);
+                break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);
                 SharedPreferences.Editor editor = s.edit();
