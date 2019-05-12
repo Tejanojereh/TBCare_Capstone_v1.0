@@ -10,6 +10,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
 
 
@@ -42,5 +46,6 @@ dependencies {
     implementation 'com.github.jaredrummler:material-spinner:1.0.8'
 
     implementation 'com.github.ganfra:material-spinner:2.0.0'
+    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.0'
 
 }

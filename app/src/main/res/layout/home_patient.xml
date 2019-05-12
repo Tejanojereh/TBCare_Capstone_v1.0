@@ -11,7 +11,7 @@
     tools:context="com.example.android.tbcare_capstone.Myaccount_partner"
     >
 
-    <!--DASHBOARD_PATIENT SIDE (INCOMPLETE)-->
+    <!--DASHBOARD_PATIENT SIDE ()-->
 
     <android.support.constraint.Guideline
         android:id="@+id/gd_logoup2"
@@ -142,6 +142,45 @@
                     android:orientation="horizontal"
                     app:layout_constraintGuide_begin="20dp"
                     app:layout_constraintGuide_percent="0.58"/>
+
+                <com.ramijemli.percentagechartview.PercentageChartView
+                    android:id="@+id/view_id"
+                    android:layout_width="276dp"
+                    android:layout_height="474dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/gdright2"
+                    app:layout_constraintHorizontal_bias="0.494"
+                    app:layout_constraintStart_toStartOf="@+id/gdleft2"
+                    app:layout_constraintTop_toTopOf="@+id/icon1d"
+                    app:pcv_animDuration="800"
+                    app:pcv_backgroundBarColor="@color/color3"
+                    app:pcv_animInterpolator="anticipate_overshoot"
+                    app:pcv_mode="ring"
+                    app:pcv_textSize="40dp"
+                    app:pcv_textColor="@color/darkgray"
+                    app:pcv_orientation="counter_clockwise"
+                    app:pcv_progress="10"
+                    app:pcv_startAngle="90" />
+
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="25dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="MY PROGRESS"
+                    app:layout_constraintBottom_toTopOf="@+id/icon1d"
+                    app:layout_constraintEnd_toStartOf="@+id/glnumright"
+                    app:layout_constraintStart_toStartOf="@+id/glnumleft"
+                    app:layout_constraintTop_toTopOf="@+id/guideline" />
 
             </android.support.constraint.ConstraintLayout>
 
