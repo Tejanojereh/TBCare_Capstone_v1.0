@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_pink">
+
+    <!--VIEW MY ACCOUNT (PARTNER SIDE) w/edit-->
+    <TextView
+        android:id="@+id/txtname"
+        android:layout_width="230dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Gwyneth Escarda"
+        android:textAlignment="center"
+        android:textColor="#E2DBE4"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/gdcut1"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@id/gd1"
+        app:layout_constraintVertical_bias="0.945" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdcut1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdcut2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="165dp"
+        app:layout_constraintGuide_percent="0.27" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="358dp"
+        android:layout_height="375dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@+id/gdcut2"
+        app:layout_constraintVertical_bias="0.22">
+
+        <ScrollView
+
+            android:layout_width="353dp"
+            android:layout_height="346dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="First Name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/fname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Gwyneth"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Middle Name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/mname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="A"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last Name"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Escarda"
+                    android:id="@+id/lname"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="gaescarda@live.mcl.edu.ph"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contactnum"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtcontact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="09173344367"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/idpatient"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="TB124123"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txt_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="50kg"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/darkgray" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtusername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="gwenesc"
+                    android:textColor="@color/darkgray"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+    </LinearLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.88" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="62dp"
+        android:layout_height="59dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+
+
+
