@@ -24,7 +24,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
     private EditText firstname, lastname, middlename, username, txtemail,txtpass,txtcpass, partner_id, answer_1, answer_2, contact_no;
     private Button btnregister;
     private ProgressBar loading;
-    Spinner sec_question_1, sec_question_2;
+    private Spinner sec_question_1, sec_question_2;
     private Button btnSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
         username = findViewById(R.id.input_username);
         txtemail = findViewById(R.id.input_email);
         partner_id = findViewById(R.id.partner_id);
-        txtpass = findViewById(R.id.usernameTxt);
+        txtpass = findViewById(R.id.input_password);
         txtcpass = findViewById(R.id.input_confirmpassword);
         btnregister = findViewById(R.id.btnregister);
         contact_no = findViewById(R.id.input_contactnum);

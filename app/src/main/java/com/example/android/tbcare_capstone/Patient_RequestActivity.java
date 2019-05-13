@@ -6,11 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,74 +38,82 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChoosePartner extends AppCompatActivity implements WebServiceClass.Listener {
+public class Patient_RequestActivity extends AppCompatActivity implements WebServiceClass.Listener {
 
-
-    String[] pid;
-    String[] pname;
-    String[] patientshandled;
-    String[] account_Pid;
-    ListView lv;
+    ListView listView;
+    String patients_number[];
+    String patientsdisease[];
+    String[] patient_id;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.choosepartner);
+        setContentView(R.layout.activity_my_patients);
 
-        String address = "http://tbcarephp.azurewebsites.net/retrieve_partnerList.php";
-        String[] value = {};
-        String[] valueName = {};
-        WebServiceClass wbc = new WebServiceClass(address, value, valueName, ChoosePartner.this, ChoosePartner.this);
+        SharedPreferences s = getSharedPreferences("session", 0);
+        id = Integer.toString(s.getInt("account_id", 0));
+        String address = "http://tbcarephp.azurewebsites.net/retrieve_patientList.php";
+        String[] value = {id};
+        String[] valueName = {"id"};
+        WebServiceClass wbc = new WebServiceClass(address, value, valueName, Patient_RequestActivity.this, Patient_RequestActivity.this);
 
         wbc.execute();
-
     }
 
     @Override
     public void OnTaskCompleted(JSONArray Result, boolean flag) {
-
-        pid = new String[Result.length()];
-        pname = new String[Result.length()];
-        patientshandled = new String[Result.length()];
-        account_Pid = new String[Result.length()];
         if(flag)
         {
-            if(Result != null)
-            {
-                for(int i = 0; i < Result.length(); i++)
-                {
+            String patients_no;
+            patients_number = new String[Result.length()];
+            patientsdisease = new String[Result.length()];
+            patient_id = new String[Result.length()];
+            try {
+                JSONObject object = Result.getJSONObject(0);
+                patients_no = object.getString("patients_no");
+                Toast.makeText(this, "You have no patient requests at the moment", Toast.LENGTH_LONG).show();
+                //finish();
+            } catch (JSONException e) {
+                for (int i = 0; i < Result.length(); i++) {
                     try {
-
                         JSONObject object = Result.getJSONObject(i);
-                        pid[i] = object.getString("TP_ID");
-                        pname[i] = object.getString("Firstname") +" "+ object.getString("Lastname");
-                        patientshandled[i] = object.getString("no_patients");
-                        account_Pid[i] = object.getString("ID");
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        if(object.getString("status").equals("PENDING")){
+                            patient_id[i] = object.getString("ID");
+                            patients_number[i] = object.getString("TB_CASE_NO").toString();
+                            patientsdisease[i] = object.getString("disease_classification").toString();
+                        }
+                    } catch (JSONException er) {
+                        er.printStackTrace();
                     }
                 }
-                lv = findViewById(R.id.listview1);
-                ChoosePartner.MyAdapter adapter = new ChoosePartner.MyAdapter(this, pid, pname, patientshandled);
-                lv.setAdapter(adapter);
-                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                listView = findViewById(R.id.listview1);
+                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ChoosePartner.this);
-                        builder.setMessage("Do you want to pick "+pname[position]+" as your partner?")
-                                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Patient_RequestActivity.this);
+                        builder.setMessage(patients_number[position]+" is requesting you to be his/her partner?")
+                                .setPositiveButton("ACCEPT", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         SharedPreferences s = getSharedPreferences("session", 0);
                                         String account_id = Integer.toString(s.getInt("account_id", 0));
-                                        String address = "http://tbcarephp.azurewebsites.net/set_partner.php";
-                                        String[] value = {account_id, account_Pid[position]};
-                                        String[] valueName = {"patient_id", "partner_id"};
-                                        new FinalizePartner(address, value, valueName).execute();
+                                        String address = "http://tbcarephp.azurewebsites.net/decline_patient.php";
+                                        String[] value = {account_id, patient_id[position]};
+                                        String[] valueName = {"partner_id", "patient_id"};
+                                        WebServiceClass service = new WebServiceClass(address, value, valueName, Patient_RequestActivity.this, Patient_RequestActivity.this);
+                                        service.execute();
                                     }
                                 })
-                                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                .setNegativeButton("DECLINE", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
+                                        SharedPreferences s = getSharedPreferences("session", 0);
+                                        String account_id = Integer.toString(s.getInt("account_id", 0));
+                                        String address = "http://tbcarephp.azurewebsites.net/decline_patient.php";
+                                        String[] value = {account_id, patient_id[position]};
+                                        String[] valueName = {"partner_id", "patient_id"};
+                                        new PartnerAction(address, value, valueName).execute();
                                     }
                                 });
                         AlertDialog alert = builder.create();
@@ -119,16 +127,14 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
     class MyAdapter extends ArrayAdapter<String> {
 
         Context context;
-        String[] pid;
-        String[] pname;
-        String[] patientshandled;
+        String pid[];
+        String patientsdisease[];
 
-        MyAdapter(Context c, String id[], String name[], String[] patientshandled) {
-            super(c, R.layout.choosepartner_listview, R.id.linearLayoutID, id);
+        MyAdapter(Context c, String id[], String patientsdisease[]) {
+            super(c, R.layout.row_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.pid = id;
-            this.pname = name;
-            this.patientshandled = patientshandled;
+            this.patientsdisease = patientsdisease;
 
         }
 
@@ -136,15 +142,12 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
         @Override
         public View getView(int position, @Nullable View convertview, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = layoutInflater.inflate(R.layout.choosepartner_listview, parent, false);
+            View row = layoutInflater.inflate(R.layout.row_listview, parent, false);
             TextView ids = row.findViewById(R.id.txtid);
             TextView names = row.findViewById(R.id.tp_name);
-            TextView patientsHandled = row.findViewById(R.id.txtpatientshandled);
 
             ids.setText(pid[position]);
-            names.setText(pname[position]);
-            patientsHandled.setText(patientshandled[position]);
-
+            names.setText(patientsdisease[position]);
 
 
             return row;
@@ -152,7 +155,9 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
 
     }
 
-    class FinalizePartner extends AsyncTask {
+
+
+    class PartnerAction extends AsyncTask {
 
         private String Address;
         private String[] Value;
@@ -162,7 +167,7 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
         private boolean flag = true;
 
 
-        public FinalizePartner(String address, String[] value, String[] valueName)
+        public PartnerAction(String address, String[] value, String[] valueName)
         {
             Address = address;
             Value = value;
@@ -173,7 +178,7 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(ChoosePartner.this);
+            progressDialog = new ProgressDialog(Patient_RequestActivity.this);
             progressDialog.setCancelable(false);
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setMessage("Please wait...");
@@ -240,11 +245,11 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
                     String message = success.getString("success");
                     if(message.equals("true"))
                     {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(ChoosePartner.this);
-                        builder.setMessage("You have now selected a partner. Once the partner approves your request, you will receive your medication details.")
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Patient_RequestActivity.this);
+                        builder.setMessage("Patient declined.")
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        Intent intent = new Intent(ChoosePartner.this, Menu_Patient.class);
+                                        Intent intent = new Intent(Patient_RequestActivity.this, Patient_RequestActivity.class);
                                         startActivity(intent);
                                         finish();
                                     }
@@ -252,6 +257,8 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
                         AlertDialog alert = builder.create();
                         alert.show();
                     }
+                    else
+                        Toast.makeText(Patient_RequestActivity.this, "Error occured", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -263,4 +270,5 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
 
         }
     }
+
 }

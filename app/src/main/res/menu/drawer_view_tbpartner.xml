@@ -13,6 +13,9 @@
             android:title="My Patients" />
 
         <item
+            android:id="@+id/nav_requests"
+            android:title="Patient Request" />
+        <item
             android:id="@+id/nav_reac"
             android:title="Reactions and Recommendations" />
 
