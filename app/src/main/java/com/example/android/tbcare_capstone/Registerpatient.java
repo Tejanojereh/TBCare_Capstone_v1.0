@@ -13,7 +13,7 @@ import android.widget.DatePicker;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-
+import fr.ganfra.materialspinner.MaterialSpinner;
 public class Registerpatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
 

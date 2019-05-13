@@ -8,7 +8,7 @@ public class Treatment_details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.patient_myschedule);
+        setContentView(R.layout.myprogress);
     }
 
 }
