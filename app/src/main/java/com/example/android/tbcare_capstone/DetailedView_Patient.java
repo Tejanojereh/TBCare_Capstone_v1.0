@@ -10,12 +10,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.github.clans.fab.FloatingActionMenu;
 
 
 public class DetailedView_Patient extends AppCompatActivity {
 
-    FloatingActionMenu materialDesignFAM;
+
     FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
     private Boolean isFABOpen = false;
 
