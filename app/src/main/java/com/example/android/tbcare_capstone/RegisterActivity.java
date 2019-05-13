@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtpass = findViewById(R.id.input_password);
         txtcpass = findViewById(R.id.input_confirmpassword);
         btnregister = findViewById(R.id.btnregister);
-        spinner1 = (Spinner)findViewById(R.id.spinner2);
+        spinner1 = (Spinner)findViewById(R.id.spn_group);
 
         ArrayList<String> list = new ArrayList<>();
         list.add("What was your childhood nickname?");
