@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-
+import android.support.v7.widget.AppCompatSpinner;
 import java.util.ArrayList;
 
 
@@ -18,7 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText txtname,txtemail,txtpass,txtcpass;
     private Button btnregister;
     private ProgressBar loading;
-    Spinner spinner1;
+    AppCompatSpinner spinner1;
     private Button btnSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtpass = findViewById(R.id.input_password);
         txtcpass = findViewById(R.id.input_confirmpassword);
         btnregister = findViewById(R.id.btnregister);
-        spinner1 = (Spinner)findViewById(R.id.spn_group);
+        spinner1 = (AppCompatSpinner)findViewById(R.id.spn_group);
 
         ArrayList<String> list = new ArrayList<>();
         list.add("What was your childhood nickname?");

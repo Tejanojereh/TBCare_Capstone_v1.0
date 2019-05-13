@@ -10,10 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.DatePicker;
-
+import android.widget.Spinner;
 import java.text.DateFormat;
 import java.util.Calendar;
-import fr.ganfra.materialspinner.MaterialSpinner;
+import android.support.v7.widget.AppCompatSpinner;
 public class Registerpatient extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
 

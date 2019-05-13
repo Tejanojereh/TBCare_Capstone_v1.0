@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -168,10 +169,7 @@
                 </android.support.design.widget.TextInputLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+
 
 
                     <android.support.design.widget.TextInputLayout
@@ -199,13 +197,11 @@
                     </android.support.design.widget.TextInputLayout>
 
 
-                </LinearLayout>
-
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinnerweight"
                     style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="271dp"
-                    android:layout_height="?android:attr/dropdownListPreferredItemHeight"
+                    android:layout_height="61dp"
 
                     />
                 <Space
