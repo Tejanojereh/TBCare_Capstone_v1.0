@@ -325,55 +325,7 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
 
-                <TextView
-                    android:id="@+id/txtRegisterdate"
-                    android:layout_width="266dp"
-                    android:layout_height="44dp"
-                    android:layout_marginTop="10dp"
-                    android:background="#8888"
-                    android:clickable="false"
-                    android:drawableLeft="@drawable/ic_calendar"
-                    android:ellipsize="none"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-
-                    android:text="Register Date Input:"
-                    android:textAlignment="center"
-                    android:textSize="22sp"
-
-                    />
-
-
-                <Button
-                    android:id="@+id/btndateregister"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/btn_reverse"
-                    android:backgroundTint="@color/colorAccent"
-                    android:fontFamily="@font/roboto"
-                    android:text="Register Date Input"
-
-
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spn_group"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:autofillHints="Registration Group"
-                    android:dropDownWidth="30dp"
-                    android:ellipsize="marquee"
-                    android:singleLine="false"
-                    android:spinnerMode="dropdown" />
 
                 <Space
                     android:layout_width="match_parent"
