@@ -42,8 +42,7 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tbpartner);
-        navigationView = (NavigationView) findViewById(R.id.navigation);
-        navigationView.setNavigationItemSelectedListener(this);
+
 
         InstantiateControls();
     }
@@ -55,6 +54,8 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     }
 
     public void InstantiateControls(){
+        navigationView = (NavigationView) findViewById(R.id.navigation);
+        navigationView.setNavigationItemSelectedListener(this);
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
         String json = s.getString("class", "");

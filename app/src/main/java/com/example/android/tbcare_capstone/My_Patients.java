@@ -23,12 +23,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class My_Patients extends AppCompatActivity implements WebServiceClass.Listener {
 
-    ListView listView;
-    String patientsid[];
-    String patientsdisease[];
-    String id;
+    private ListView listView;
+    private String[] patients_number;
+    private String[] patientsdisease;
+    private String[] patient_id;
+    private String[] weight;
+    private String[] treatment_date;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,25 +57,40 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         if(flag)
         {
             String patients_no;
-            patientsid = new String[Result.length()];
+            patients_number = new String[Result.length()];
             patientsdisease = new String[Result.length()];
+            patient_id = new String[Result.length()];
+            weight = new String[Result.length()];
+            treatment_date = new String[Result.length()];
             try {
                 JSONObject object = Result.getJSONObject(0);
                 patients_no = object.getString("patients_no");
                 Toast.makeText(this, "You have no patients at the moment", Toast.LENGTH_LONG).show();
-                //finish();
+                finish();
             } catch (JSONException e) {
                 for (int i = 0; i < Result.length(); i++) {
                     try {
                         JSONObject object = Result.getJSONObject(i);
-                        patientsid[i] = object.getString("TB_CASE_NO").toString();
+                        patient_id[i] = object.getString("ID");
+                        patients_number[i] = object.getString("TB_CASE_NO").toString();
                         patientsdisease[i] = object.getString("disease_classification").toString();
+                        weight[i] = object.getString("weight");
+                        JSONObject o = object.getJSONObject("treatment_date_start");
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+                        SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
+                        try {
+                            Date d = df.parse(o.getString("date"));
+
+                            treatment_date[i] = final_format.format(d);
+                        } catch (ParseException e1) {
+                            e1.printStackTrace();
+                        }
                     } catch (JSONException er) {
                         er.printStackTrace();
                     }
                 }
                 listView = findViewById(R.id.listview1);
-                MyAdapter adapter = new MyAdapter(this, patientsid, patientsdisease);
+                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease, weight, treatment_date);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -83,14 +105,18 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
     class MyAdapter extends ArrayAdapter<String> {
 
         Context context;
-        String pid[];
-        String patientsdisease[];
+        String[] pid;
+        String[] patientsdisease;
+        String[] p_weight;
+        String[] p_treatment_date;
 
-        MyAdapter(Context c, String id[], String patientsdisease[]) {
+        MyAdapter(Context c, String[] id, String[] patientsdisease, String[] patientweight, String[] date) {
             super(c, R.layout.row_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.pid = id;
             this.patientsdisease = patientsdisease;
+            this.p_weight = patientweight;
+            this.p_treatment_date = date;
 
         }
 
@@ -101,9 +127,13 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             View row = layoutInflater.inflate(R.layout.row_listview, parent, false);
             TextView ids = row.findViewById(R.id.txtid);
             TextView names = row.findViewById(R.id.tp_name);
+            TextView tp_weight = row.findViewById(R.id.tp_weight);
+            TextView tp_date_start = row.findViewById(R.id.tp_date_started);
 
             ids.setText(pid[position]);
-            names.setText(patientsdisease[position]);
+            names.setText("Classification: "+patientsdisease[position]);
+            tp_weight.setText("Weight: "+p_weight[position]+"kg");
+            tp_date_start.setText("Treatment Date Start: "+p_treatment_date[position]);
 
 
             return row;
