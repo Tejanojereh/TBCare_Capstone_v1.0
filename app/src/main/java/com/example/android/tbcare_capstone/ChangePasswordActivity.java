@@ -22,13 +22,13 @@ public class ChangePasswordActivity extends AppCompatActivity implements WebServ
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forgotpass_changepassword);
+        setContentView(R.layout.changepass);
 
         InstantiateControls();
     }
 
     public void InstantiateControls(){
-        oldPass = findViewById(R.id.input_password);
+        oldPass = findViewById(R.id.usernameTxt);
         newPass = findViewById(R.id.input_newpassword);
         confirmPass = findViewById(R.id.input_confirmpassword);
         submitBtn = findViewById(R.id.submitBtn);

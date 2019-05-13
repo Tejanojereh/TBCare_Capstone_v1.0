@@ -45,7 +45,7 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
     public void InstantiateControls(){
         btnRegister = findViewById(R.id.btnregister);
         username = findViewById(R.id.input_username);
-        password = findViewById(R.id.input_password);
+        password = findViewById(R.id.usernameTxt);
         confirmPass = findViewById(R.id.input_confirmpassword);
         contactNo = findViewById(R.id.input_contactnum);
         weight = findViewById(R.id.input_weight);

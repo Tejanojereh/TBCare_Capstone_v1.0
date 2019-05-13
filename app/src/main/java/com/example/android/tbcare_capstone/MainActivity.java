@@ -1,13 +1,11 @@
 package com.example.android.tbcare_capstone;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             //sign in
-            case R.id.btn_login: {
+            case R.id.submitBtn: {
                 base = new BaseClass();
                 base.SetUsername(txtUsername.getText().toString());
                 base.SetPassword(txtPassword.getText().toString());
@@ -84,18 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             break;
 
-            //forgot password
             case R.id.forgotpassBtn: {
-                /*Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
-                intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
-                startActivity(intent);*/
-                View view = LayoutInflater.from(this).inflate(R.layout.forgotpass_changepassword, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Forgot password?")
-                        .setView(view)
-                        .setNegativeButton("Cancel", null);
-                AlertDialog alert = builder.create();
-                alert.show();
+                intent = new Intent(MainActivity.this, ForgotPassword.class);
+                startActivity(intent);
             }
             break;
             case R.id.btnregisterm: {
@@ -108,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void InstantiateControl() {
         txtUsername = (EditText) findViewById(R.id.input_username);
-        txtPassword = (EditText) findViewById(R.id.input_password);
-        imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
+        txtPassword = (EditText) findViewById(R.id.usernameTxt);
+        imgBtnSignIn = (AppCompatButton) findViewById(R.id.submitBtn);
         imgBtnForgotPassword = (TextView) findViewById(R.id.forgotpassBtn);
         btnregister = findViewById(R.id.btnregisterm);
 

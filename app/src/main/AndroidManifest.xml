@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".ForgotPassword_ChangePassActivity"></activity>
+        <activity android:name=".Answer_Security_QuestionsActivity" />
+        <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".RegisterPatientStart" />
         <activity android:name=".My_Patients" />
         <activity android:name=".My_Partner_Info" />
@@ -30,7 +32,7 @@
         <activity android:name=".Note_Patient" />
         <activity android:name=".Menu_TBPartner" />
         <activity android:name=".View_and_Update_Medication_Progress" />
-        <activity android:name=".ForgotPassword_tbpartner" />
+        <activity android:name=".ForgotPassword" />
         <activity android:name=".Account_TBPartner" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".Partner_Info" />

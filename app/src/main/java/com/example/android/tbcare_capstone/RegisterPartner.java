@@ -73,7 +73,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
         username = findViewById(R.id.input_username);
         txtemail = findViewById(R.id.input_email);
         partner_id = findViewById(R.id.partner_id);
-        txtpass = findViewById(R.id.input_password);
+        txtpass = findViewById(R.id.usernameTxt);
         txtcpass = findViewById(R.id.input_confirmpassword);
         btnregister = findViewById(R.id.btnregister);
         contact_no = findViewById(R.id.input_contactnum);
