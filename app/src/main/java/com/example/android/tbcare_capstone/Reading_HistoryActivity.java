@@ -73,7 +73,7 @@ public class Reading_HistoryActivity extends AppCompatActivity implements WebSer
                         listView.setAdapter(adapter);
                     }
                     else if(hasIntake.equals("false")){
-                        Toast.makeText(this, object1.getString("message"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "No PH Reading history", Toast.LENGTH_SHORT).show();
                         finish();
                     }
 

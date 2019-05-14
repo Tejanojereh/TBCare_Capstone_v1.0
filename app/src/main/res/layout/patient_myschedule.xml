@@ -58,7 +58,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Medication 1"
+        android:text="Medication 1: QuadMax"
         android:textAlignment="center"
         android:textColor="@color/darkgray"
         android:textSize="20sp"
@@ -87,7 +87,7 @@
             style="@style/TextAppearance.AppCompat.Inverse"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:text="StartDate:"
+            android:text="Start Date:"
             android:textAlignment="center" />
 
         <TextView
@@ -95,7 +95,7 @@
             style="@style/TextAppearance.AppCompat.Inverse"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:text="EndDate:"
+            android:text="End Date:"
             android:textAlignment="center" />
 
 
@@ -155,7 +155,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Medication 2"
+        android:text="Medication 2: DuoMax"
         android:textAlignment="center"
         android:textColor="@color/darkgray"
         android:textSize="20sp"

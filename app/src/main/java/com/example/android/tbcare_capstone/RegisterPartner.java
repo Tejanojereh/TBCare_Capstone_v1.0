@@ -105,7 +105,11 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     partner.SetPassword(txtpass.getText().toString());
                     partner.FirstName = firstname.getText().toString();
                     partner.LastName = lastname.getText().toString();
-                    partner.MiddleName = middlename.getText().toString();
+                    if(middlename.getText().toString().equals("")){
+                        partner.MiddleName = "";
+                    }else{
+                        partner.MiddleName = middlename.getText().toString();
+                    }
                     partner.Email = txtemail.getText().toString();
                     partner.TP_ID = partner_id.getText().toString();
                     partner.Contact_No = contact_no.getText().toString();
@@ -114,8 +118,8 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     partner.Security_Answer1 = answer_1.getText().toString();
                     partner.Security_Answer2 = answer_2.getText().toString();
                     String address = "http://tbcarephp.azurewebsites.net/register_account.php";
-                    String[] value = {"PARTNER", partner.TP_ID, partner.FirstName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername(), partner.GetPassword(), partner.Security_Question1, partner.Security_Answer1, partner.Security_Question2, partner.Security_Answer2};
-                    String[] valueName = {"account_type", "partner_id", "firstname", "lastname", "contactNo", "email", "username", "password", "question1", "answer1", "question2", "answer2"};
+                    String[] value = {"PARTNER", partner.TP_ID, partner.FirstName, partner.MiddleName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername(), partner.GetPassword(), partner.Security_Question1, partner.Security_Answer1, partner.Security_Question2, partner.Security_Answer2};
+                    String[] valueName = {"account_type", "partner_id", "firstname", "middlename", "lastname", "contactNo", "email", "username", "password", "question1", "answer1", "question2", "answer2"};
                     WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPartner.this, RegisterPartner.this);
 
                     wbc.execute();

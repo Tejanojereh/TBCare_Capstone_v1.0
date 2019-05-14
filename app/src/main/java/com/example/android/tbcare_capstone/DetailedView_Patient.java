@@ -1,5 +1,6 @@
 package com.example.android.tbcare_capstone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +24,12 @@ import java.util.Date;
 public class DetailedView_Patient extends AppCompatActivity implements WebServiceClass.Listener {
 
 
-    FloatingActionButton intakeHistory, ph_ReadingHistory, patientProgress;
-    TextView patient_case_num, patient_case_numTxtView, contactNo, weight, disease_classification, regGroup, treatmentDate_start;
+    private FloatingActionButton intakeHistory, ph_ReadingHistory, patientProgress;
+    private TextView patient_case_num, patient_case_numTxtView, contactNo, weight, disease_classification, regGroup, treatmentDate_start;
 
 
     private Boolean isFABOpen = false;
-
+    private String patient_id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
         InstantiateControls();
 
         Bundle bundle = getIntent().getExtras();
-        String patient_id = bundle.getString("patient_id");
+        patient_id = bundle.getString("patient_id");
 
 
         String address = "http://tbcarephp.azurewebsites.net/retrieve_patientInfo.php";
@@ -64,6 +65,28 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
                 }else{
                     closeFABMenu();
                 }
+            }
+        });
+
+        ph_ReadingHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedView_Patient.this, Reading_HistoryActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("patient_id", patient_id);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        intakeHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedView_Patient.this, Intake_HistoryActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("patient_id", patient_id);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 

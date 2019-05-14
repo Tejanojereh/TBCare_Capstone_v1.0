@@ -74,6 +74,16 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                         patients_number[i] = object.getString("TB_CASE_NO").toString();
                         patientsdisease[i] = object.getString("disease_classification").toString();
                         weight[i] = object.getString("weight");
+                        JSONObject o = object.getJSONObject("treatment_date_start");
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+                        SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
+                        try {
+                            Date d = df.parse(o.getString("date"));
+                            treatment_date[i] = final_format.format(d);;
+                        } catch (ParseException e1) {
+                            e1.printStackTrace();
+                        }
+
 
                     } catch (JSONException er) {
                         er.printStackTrace();

@@ -338,6 +338,7 @@
                     android:autofillHints="Security Question 1"
 
 
+                    android:spinnerMode="dialog"
                     app:ms_arrow_tint="@android:color/white"
                     app:ms_dropdown_height="wrap_content"
                     app:ms_dropdown_max_height="350dp"
@@ -379,7 +380,7 @@
                     android:ellipsize="marquee"
                     android:singleLine="false"
 
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dialog" />
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

@@ -49,7 +49,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_patienttest);
+        setContentView(R.layout.home_patient);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar); // get the reference of Toolbar
         setSupportActionBar(toolbar); // Setting/replace toolbar as the ActionBar
@@ -66,6 +66,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
         });
 
         SharedPreferences s = getSharedPreferences("session", 0);
+        id = Integer.toString(s.getInt("account_id", 0));
         Gson gson = new Gson();
         String json = s.getString("class", "");
         patient = gson.fromJson(json, PatientClass.class);
@@ -88,6 +89,12 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
         switch (menuItem.getItemId())
         {
+            case R.id.nav_schedule:
+                intent = new Intent(Menu_Patient.this, My_Schedule_Patient.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("patient_id", id);
+                intent.putExtras(bundle);
+                break;
             case R.id.nav_tp:
                 intent = new Intent(Menu_Patient.this, My_Partner_Info.class);
                 break;
