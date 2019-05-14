@@ -27,15 +27,17 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu_TBPartner extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Menu_TBPartner extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, WebServiceClass.Listener {
 
     NavigationView navigationView;
     Intent intent;
-    TextView user_id, user_name;
+    TextView user_id, user_name, patientsHandledTxtView;
     BarChart barChart;
 
     @Override
@@ -45,8 +47,19 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
 
 
         InstantiateControls();
+        CheckPartnerHandled();
     }
 
+    public void CheckPartnerHandled(){
+        SharedPreferences s = getSharedPreferences("session", 0);
+        int id = s.getInt("account_id", 0);
+        String address = "http://tbcarephp.azurewebsites.net/check_handled_patients.php";
+        String[] value = {Integer.toString(id)};
+        String[] valueName = {"ID"};
+
+        WebServiceClass service = new WebServiceClass(address, value, valueName, Menu_TBPartner.this, Menu_TBPartner.this);
+        service.execute();
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -54,6 +67,7 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     }
 
     public void InstantiateControls(){
+        patientsHandledTxtView = findViewById(R.id.patientsHandledTxtView);
         navigationView = (NavigationView) findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(this);
         SharedPreferences s = getSharedPreferences("session", 0);
@@ -186,4 +200,21 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
 
     }
 
+    @Override
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
+        if(flag)
+        {
+            if(Result != null)
+            {
+                try {
+                    JSONObject object = Result.getJSONObject(0);
+                    String patients_handled = object.getString("patients_handled");
+                    patientsHandledTxtView.setText(patients_handled);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
 }

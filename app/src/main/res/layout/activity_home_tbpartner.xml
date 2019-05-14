@@ -160,7 +160,7 @@
                     app:layout_constraintTop_toTopOf="@id/gdtempup" />
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/patientsHandledTxtView"
                     android:layout_width="275dp"
                     android:layout_height="58dp"
 
