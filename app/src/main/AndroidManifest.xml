@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Set_PatientMedicationActivity"></activity>
+        <activity android:name=".Intake_HistoryActivity"></activity>
+        <activity android:name=".Reading_HistoryActivity" />
+        <activity android:name=".DetailedView_Patient" />
+        <activity android:name=".Patient_Setintake" />
+        <activity android:name=".Set_PatientMedicationActivity" />
         <activity android:name=".Patient_RequestActivity" />
         <activity android:name=".ForgotPassword_ChangePassActivity" />
         <activity android:name=".Answer_Security_QuestionsActivity" />
@@ -40,7 +44,6 @@
         <activity android:name=".Partner_Info" />
         <activity android:name=".Myaccount_partner" />
         <activity android:name=".RegisterPartner" />
-        <activity android:name=".test" />
         <activity android:name=".RegisterPatient" />
         <activity
             android:name=".EditNote"

@@ -19,7 +19,6 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Set_PatientMedicationActivity extends AppCompatActivity implements WebServiceClass.Listener {
 
@@ -45,7 +44,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
         treatment_date_start = findViewById(R.id.date_startedTxt);
         intake1 = findViewById(R.id.spinnerintakes);
         intake2 = findViewById(R.id.spinnerintakes2);
-        submit = findViewById(R.id.setBtn);
+        submit = findViewById(R.id.backBtn);
 
         SharedPreferences s = getSharedPreferences("session", 0);
         partner_id = Integer.toString(s.getInt("account_id", 0));

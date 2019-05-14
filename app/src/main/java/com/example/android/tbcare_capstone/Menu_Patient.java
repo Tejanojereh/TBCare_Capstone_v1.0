@@ -1,9 +1,10 @@
 package com.example.android.tbcare_capstone;
 
-import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.design.widget.NavigationView;
@@ -153,15 +154,6 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                     hasPartner = object.getString("hasPartner");
 
                     if(hasPartner.equals("false")){
-
-                        /*View view = LayoutInflater.from(this).inflate(R.layout.choosepartner, null);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        builder.setMessage("Choose your partner")
-                                .setView(view)
-                                .setNegativeButton("Cancel", null);
-                        AlertDialog alert = builder.create();
-                        alert.show();*/
-                        //go to intent
                         Toast.makeText(this, "You have no partner assigned", Toast.LENGTH_LONG).show();
                         intent = new Intent(this, ChoosePartner.class);
                         startActivity(intent);
@@ -175,6 +167,25 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         String json = gson.toJson(patient);
                         editor.putString("class", json);
                         editor.apply();
+                        object = Result.getJSONObject(1);
+                        if(Integer.parseInt(object.getString("intakeSchedule").toString()) == 0)
+                        {
+                            object = Result.getJSONObject(2);
+                            int numberofIntake = Integer.parseInt(object.getString("number_of_intake"));
+                            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
+                            builder.setMessage("Good day! Your partner has already accepted your request. Time to set up your medication intake. Please input your first intake for the day, and we'll calculate it based on the number of intakes your partner gave you.")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent intent = new Intent(Menu_Patient.this, Patient_Setintake.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putInt("number_of_intakes", numberofIntake);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
 
                     }
                 } catch (JSONException e) {

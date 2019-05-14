@@ -9,7 +9,7 @@
 
     <!--VIEW MY ACCOUNT (PARTNER SIDE) w/edit-->
     <TextView
-        android:id="@+id/txtname"
+        android:id="@+id/patient_case_num"
         android:layout_width="230dp"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
@@ -97,43 +97,19 @@
 
                 android:orientation="vertical">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:text="First Name"
+                    android:text="Disease Classification"
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/fname"
+                    android:id="@+id/classificationTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Gwyneth"
-                    android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/darkgray" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Middle Name"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/mname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="A"
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
 
@@ -146,19 +122,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Last Name"
+                    android:text="Registration Group"
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/lname"
+                    android:id="@+id/regGroupTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Escarda"
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
-
 
                 <android.support.v4.view.ViewPager
                     android:layout_width="match_parent"
@@ -169,16 +143,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/email"
+                    android:text="Date Enrolled"
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtemail"
+                    android:id="@+id/treatmentDateStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="gaescarda@live.mcl.edu.ph"
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
 
@@ -218,7 +191,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtid"
+                    android:id="@+id/patient_case_numTxtView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
@@ -248,28 +221,6 @@
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
 
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/darkgray" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/username"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/txtusername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="gwenesc"
-                    android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -297,7 +248,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_edit"
+        android:src="@android:drawable/ic_dialog_info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gdright"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
@@ -345,7 +296,7 @@
         app:layout_constraintEnd_toStartOf="@+id/gdright">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab1"
+            android:id="@+id/intakeHistory"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="bottom|end"
@@ -371,7 +322,7 @@
         >
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab2"
+            android:id="@+id/ph_readingHistoryFab"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="bottom|end"
@@ -394,7 +345,7 @@
         tools:layout_editor_absoluteY="546dp"
         >
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab3"
+        android:id="@+id/progressFab"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_gravity="bottom|end"

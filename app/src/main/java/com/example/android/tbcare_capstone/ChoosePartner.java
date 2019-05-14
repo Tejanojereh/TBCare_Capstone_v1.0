@@ -18,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 
@@ -137,7 +136,7 @@ public class ChoosePartner extends AppCompatActivity implements WebServiceClass.
         public View getView(int position, @Nullable View convertview, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.choosepartner_listview, parent, false);
-            TextView ids = row.findViewById(R.id.txtid);
+            TextView ids = row.findViewById(R.id.patient_case_numTxtView);
             TextView names = row.findViewById(R.id.tp_name);
             TextView patientsHandled = row.findViewById(R.id.txtpatientshandled);
 

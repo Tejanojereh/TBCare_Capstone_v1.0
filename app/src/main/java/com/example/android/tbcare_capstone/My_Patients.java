@@ -1,12 +1,11 @@
 package com.example.android.tbcare_capstone;
 
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,16 +74,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                         patients_number[i] = object.getString("TB_CASE_NO").toString();
                         patientsdisease[i] = object.getString("disease_classification").toString();
                         weight[i] = object.getString("weight");
-                        JSONObject o = object.getJSONObject("treatment_date_start");
-                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-                        SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
-                        try {
-                            Date d = df.parse(o.getString("date"));
 
-                            treatment_date[i] = final_format.format(d);
-                        } catch (ParseException e1) {
-                            e1.printStackTrace();
-                        }
                     } catch (JSONException er) {
                         er.printStackTrace();
                     }
@@ -95,7 +85,11 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                        Intent intent = new Intent(My_Patients.this, DetailedView_Patient.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("patient_id", patient_id[position]);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                 });
             }
@@ -125,7 +119,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         public View getView(int position, @Nullable View convertview, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row_listview, parent, false);
-            TextView ids = row.findViewById(R.id.txtid);
+            TextView ids = row.findViewById(R.id.patient_case_numTxtView);
             TextView names = row.findViewById(R.id.tp_name);
             TextView tp_weight = row.findViewById(R.id.tp_weight);
             TextView tp_date_start = row.findViewById(R.id.tp_date_started);

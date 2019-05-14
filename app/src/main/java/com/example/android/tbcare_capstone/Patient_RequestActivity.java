@@ -249,7 +249,7 @@ public class Patient_RequestActivity extends AppCompatActivity implements WebSer
         public View getView(int position, @Nullable View convertview, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row_listview, parent, false);
-            TextView ids = row.findViewById(R.id.txtid);
+            TextView ids = row.findViewById(R.id.patient_case_numTxtView);
             TextView names = row.findViewById(R.id.tp_name);
             TextView tp_weight = row.findViewById(R.id.tp_weight);
             TextView tp_date_start = row.findViewById(R.id.tp_date_started);

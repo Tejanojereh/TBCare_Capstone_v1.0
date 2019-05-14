@@ -100,8 +100,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="319dp"
-        android:layout_height="41dp"
+        android:layout_width="304dp"
+        android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
@@ -114,16 +114,16 @@
         <TextView
             android:id="@+id/lbldatestart"
             style="@style/TextAppearance.AppCompat.Inverse"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
             android:text="Treatment Date Started:"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/txtstartdate"
             style="@style/TextAppearance.AppCompat.Inverse"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="152dp"
+            android:layout_height="42dp"
             android:text="May 18, 2019"
             android:textAlignment="center" />
 
@@ -132,8 +132,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="319dp"
-        android:layout_height="50dp"
+        android:layout_width="308dp"
+        android:layout_height="47dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
@@ -146,16 +146,16 @@
         <TextView
             android:id="@+id/lblenddate"
             style="@style/TextAppearance.AppCompat.Inverse"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="147dp"
+            android:layout_height="45dp"
             android:text="Treatment Date End:"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/txttime"
             style="@style/TextAppearance.AppCompat.Inverse"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
+            android:layout_width="167dp"
+            android:layout_height="46dp"
             android:text="Aug, 18, 2019"
             android:textAlignment="center" />
 

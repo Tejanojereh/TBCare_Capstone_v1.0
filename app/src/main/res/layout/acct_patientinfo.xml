@@ -9,7 +9,7 @@
 
     <!--VIEW MY ACCOUNT (PARTNER SIDE) w/edit-->
     <TextView
-        android:id="@+id/txtname"
+        android:id="@+id/patient_case_num"
         android:layout_width="230dp"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
@@ -219,7 +219,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtid"
+                    android:id="@+id/patient_case_numTxtView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
