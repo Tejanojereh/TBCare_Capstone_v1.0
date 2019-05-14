@@ -22,36 +22,36 @@ public class AcceptPendingConfirmation extends AppCompatActivity implements Date
         setContentView(R.layout.partner_acceptpendingconfirmation);
 
 
-        Button btn = (Button) findViewById(R.id.dp_med1);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogFragment datePicker = new DatepickerFragment();
-                datePicker.show(getSupportFragmentManager(), "date picker");
+       // Button btn = (Button) findViewById(R.id.dp_med1);
+       //btn.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+         //   public void onClick(View v) {
+              //  DialogFragment datePicker = new DatepickerFragment();
+             //   datePicker.show(getSupportFragmentManager(), "date picker");
             }
-        });
+      //  });
 
 
-    }
+   // }
 
 
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+     //   Calendar c = Calendar.getInstance();
+     //   c.set(Calendar.YEAR, year);
+     //   c.set(Calendar.MONTH, month);
+     //   c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+      //  String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        TextView textView = (TextView) findViewById(R.id.lblmed1);
-        textView.setText(currentDateString);
+       // TextView textView = (TextView) findViewById(R.id.lblmed1);
+      //  textView.setText(currentDateString);
     }
 
 
     public void showDatePicker(View v) {
-        DialogFragment newFragment = new MyDatePickerSampleFragment();
-        newFragment.show(getSupportFragmentManager(), "date picker");
+      //  DialogFragment newFragment = new MyDatePickerSampleFragment();
+      //  newFragment.show(getSupportFragmentManager(), "date picker");
     }
 
 }

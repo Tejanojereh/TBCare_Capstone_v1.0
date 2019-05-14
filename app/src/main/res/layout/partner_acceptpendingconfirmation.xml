@@ -66,7 +66,7 @@
         app:layout_constraintVertical_bias="0.294" />
 
     <TextView
-        android:id="@+id/lblmed1"
+        android:id="@+id/txtDisease"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="148dp"
         android:layout_height="64dp"
@@ -75,7 +75,7 @@
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
-        android:text="Medication 1 from:"
+        android:text="Disease Classification:"
         android:textAlignment="center"
         android:textColor="#EE050000"
         android:textSize="14sp"
@@ -84,27 +84,63 @@
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
-    <Button
-        android:id="@+id/dp_med1"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-        android:layout_width="136dp"
-        android:layout_height="54dp"
+    <TextView
+        android:id="@+id/txtDatestart"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/colorAccent"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#00250808"
         android:fontFamily="@font/roboto"
-
-        android:text="Initial Date Input"
-
-        android:textColor="@color/colorWhite"
+        android:text="Date Started:"
+        android:textAlignment="center"
+        android:textColor="#EE050000"
         android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/txtDisease" />
 
+
+    <TextView
+        android:id="@+id/txtDateend"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Date Ended:"
+
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/guideline13"></Button>
+        app:layout_constraintTop_toBottomOf="@+id/txtWeight" />
 
+    <TextView
+        android:id="@+id/txtWeight"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Weight:"
+
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <TextView
         android:id="@+id/lblintakes"
@@ -112,7 +148,7 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
@@ -123,45 +159,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/lblmed1" />
-
-
-    <TextView
-        android:id="@+id/lblmed2"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:layout_width="148dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="24dp"
-        android:background="#00250808"
-        android:fontFamily="@font/roboto"
-        android:text="Medication 2 from:"
-        android:textAlignment="center"
-        android:textColor="#EE050000"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline31" />
-
-    <Button
-        android:id="@+id/dp_med2"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-        android:layout_width="136dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="8dp"
-        android:onClick="showDatePicker"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/roboto"
-        android:text="Initial Date Input"
-        android:textColor="@color/colorWhite"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.844"
-        app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/guideline31"></Button>
 
 
     <TextView
@@ -170,7 +168,7 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
@@ -181,7 +179,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/lblmed2" />
+        app:layout_constraintTop_toBottomOf="@+id/lblintakes" />
 
 
     <Button
@@ -214,13 +212,13 @@
         android:layout_width="149dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toBottomOf="@+id/dp_med1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline31" />
 
     <LinearLayout
         android:id="@+id/widget_horizontal_white_bar"
@@ -243,13 +241,13 @@
         android:layout_width="149dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toBottomOf="@+id/dp_med2" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerintakes" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline15"
