@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_sched"
+    android:fitsSystemWindows="true">
+
+    <!--My schedule-->
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdupper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdbelow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdtitleup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.98" />
+
+    <TextView
+        android:id="@+id/txtmed1"
+        android:layout_width="325dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Medication 1"
+        android:textAlignment="center"
+        android:textColor="@color/darkgray"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gdtitleup"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="319dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@id/guideline2">
+
+        <TextView
+            android:id="@+id/txtstartdate"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="StartDate:"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtenddate"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="EndDate:"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="319dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/lbltime"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Time:"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txttime"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="8:00AM"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/widget_horizontal_white_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:layout_marginBottom="8dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintVertical_bias="0.0"></LinearLayout>
+
+
+    <TextView
+        android:id="@+id/txtmed2"
+        android:layout_width="325dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Medication 2"
+        android:textAlignment="center"
+        android:textColor="@color/darkgray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.534"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/widget_horizontal_white_bar" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2nd"
+        android:layout_width="319dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/txtmed2">
+
+        <TextView
+            android:id="@+id/txtstartdate2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="167dp"
+            android:layout_height="51dp"
+            android:text="StartDate:"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtenddate2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="EndDate:"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3rd"
+        android:layout_width="319dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2nd">
+
+        <TextView
+            android:id="@+id/lbltime2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="167dp"
+            android:layout_height="51dp"
+            android:text="Time:"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txttime2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="8:00AM"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="199dp"
+        android:layout_height="40dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto"
+        android:padding="12dp"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/gdbelow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@+id/guideline6"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/gdtitledown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.9"/>
+</android.support.constraint.ConstraintLayout>

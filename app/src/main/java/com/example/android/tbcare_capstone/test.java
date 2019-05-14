@@ -1,5 +1,6 @@
 package com.example.android.tbcare_capstone;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -26,14 +27,20 @@ import java.util.List;
 
 public class test extends AppCompatActivity {
 
+    //MAIN ACTIVITY OF OPTION B
 
     ActionBarDrawerToggle mDrawerToggle;
 
     private DrawerLayout mDrawerLayout;
     private boolean mToolBarNavigationListenerIsRegistered = false;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences s = getSharedPreferences("session", 0);
+        id = s.getInt("account_id", 0);
+
         setContentView(R.layout.homemenu_patient);
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -132,8 +139,12 @@ public class test extends AppCompatActivity {
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
+        ListPatientsFragments fragments = new ListPatientsFragments();
+        Bundle bundle = new Bundle();
+        bundle.putInt("account_id", this.id);
+        fragments.setArguments(bundle);
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ListPatientsFragments(), "My Patients");
+        adapter.addFragment(fragments, "My Patients");
         adapter.addFragment(new ListPatientsRequestFragment(), "Pending Request of Patients");
 
         viewPager.setAdapter(adapter);
@@ -167,6 +178,7 @@ public class test extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 
 
 

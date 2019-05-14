@@ -42,9 +42,20 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tbpartner);
+
+
+        InstantiateControls();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    public void InstantiateControls(){
         navigationView = (NavigationView) findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(this);
-
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
         String json = s.getString("class", "");
@@ -62,23 +73,22 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         menuItem.setChecked(true);
 
         switch (menuItem.getItemId())
         {
-
+            case R.id.nav_requests:
+                intent = new Intent(Menu_TBPartner.this, Patient_RequestActivity.class);
+                break;
             case R.id.nav_account:
                 intent = new Intent(Menu_TBPartner.this, Account_TBPartner.class);
                 break;
             case R.id.nav_patients:
                 intent = new Intent(Menu_TBPartner.this, My_Patients.class);
+                break;
+            case R.id.nav_ChangePass:
+                intent = new Intent(Menu_TBPartner.this, ChangePasswordActivity.class);
                 break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);

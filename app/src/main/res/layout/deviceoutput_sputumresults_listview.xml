@@ -18,17 +18,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txtdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textColor="@color/darkgray"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/txttime"
+            android:id="@+id/txtdatetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Time"

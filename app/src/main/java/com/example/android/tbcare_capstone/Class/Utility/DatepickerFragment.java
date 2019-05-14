@@ -9,6 +9,9 @@ import android.support.v4.app.DialogFragment;
 
 import java.util.Calendar;
 
+
+//SET SAMPLE DATEPICKERFRAGMENT
+
 public class DatepickerFragment extends DialogFragment {
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);

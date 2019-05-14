@@ -6,6 +6,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="logo_w_h">100dp</dimen>
     <dimen name="md_keylines">16dp</dimen>
+    <dimen name="article_keylines">72dp</dimen>
 
-
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_105">105dp</dimen>
+    <dimen name="standard_155">155dp</dimen>
 </resources>

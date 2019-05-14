@@ -66,6 +66,12 @@ public class My_Partner_Info extends AppCompatActivity implements WebServiceClas
 
                 try {
                     JSONObject object = Result.getJSONObject(0);
+                    /*if(partner.MiddleName.equals(""))
+                    {
+                        name = partner.FirstName +" "+partner.MiddleName+" "+partner.LastName;
+                    }
+                    else
+                        name = partner.FirstName +" "+partner.LastName;*/
                     name.setText(object.getString("firstname") +" "+ object.getString("lastname"));
                     email.setText(object.getString("email"));
                     contact_no.setText(object.getString("contact_no"));

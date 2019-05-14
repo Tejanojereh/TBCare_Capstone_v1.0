@@ -6,13 +6,23 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".Notification"
         android:allowBackup="true"
         android:icon="@drawable/n_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Intake_HistoryActivity"></activity>
+        <activity android:name=".Reading_HistoryActivity" />
+        <activity android:name=".DetailedView_Patient" />
+        <activity android:name=".Patient_Setintake" />
+        <activity android:name=".Set_PatientMedicationActivity" />
+        <activity android:name=".Patient_RequestActivity" />
+        <activity android:name=".ForgotPassword_ChangePassActivity" />
+        <activity android:name=".Answer_Security_QuestionsActivity" />
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".RegisterPatientStart" />
+        <activity android:name=".My_Patients" />
 
         <activity android:name=".My_Patients"></activity>
         <activity android:name=".My_Partner_Info" />
@@ -31,7 +41,7 @@
         <activity android:name=".Note_Patient" />
         <activity android:name=".Menu_TBPartner" />
         <activity android:name=".View_and_Update_Medication_Progress" />
-        <activity android:name=".ForgotPassword_tbpartner" />
+        <activity android:name=".ForgotPassword" />
         <activity android:name=".Account_TBPartner" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".Partner_Info" />
@@ -52,9 +62,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-
     </application>
-
 
 </manifest>

@@ -23,6 +23,8 @@ public class EditNote extends AppCompatActivity implements TextWatcher {
 
     int noteId;
 
+    //EDIT/CREATE NOTE
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_end="659dp"
-        app:layout_constraintGuide_percent="0.095" />
+        app:layout_constraintGuide_percent="0.09" />
 
 
     <android.support.constraint.Guideline
@@ -67,24 +67,25 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="29dp" />
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="330dp"
-        android:layout_height="545dp"
+        android:layout_width="299dp"
+        android:layout_height="363dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline22"
         app:layout_constraintEnd_toStartOf="@id/guideline5_Sr"
         app:layout_constraintStart_toStartOf="@+id/guideline4_Sl"
-        app:layout_constraintTop_toTopOf="@+id/guideline2_Tdown">
+        app:layout_constraintTop_toTopOf="@+id/guideline19">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -97,99 +98,7 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="14dp" />
-
-                <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_nameF"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-
-                        android:background="@drawable/bg_overlay"
-                        android:backgroundTint="@color/colorWhite"
-                        android:drawableLeft="@drawable/user"
-                        android:hint="First Name"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="#FFFFFF"
-                        android:textCursorDrawable="@drawable/ic_cursorset"
-                        android:visibility="visible" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_nameM"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-
-                        android:background="@drawable/bg_overlay"
-                        android:backgroundTint="@color/colorWhite"
-                        android:drawableLeft="@drawable/user"
-                        android:hint="Middle Name"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="#FFFFFF"
-                        android:textCursorDrawable="@drawable/ic_cursorset"
-                        android:visibility="visible" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_nameL"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-
-                        android:background="@drawable/bg_overlay"
-                        android:backgroundTint="@color/colorWhite"
-                        android:drawableLeft="@drawable/user"
-                        android:hint="Last Name"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="#FFFFFF"
-                        android:textCursorDrawable="@drawable/ic_cursorset"
-                        android:visibility="visible" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-
-                        android:background="@drawable/bg_overlay"
-                        android:backgroundTint="@color/colorWhite"
-                        android:drawableLeft="@drawable/email"
-                        android:hint="@string/email"
-                        android:inputType="text"
-                        android:padding="16dp"
-                        android:textColor="#FFFFFF"
-                        android:textCursorDrawable="@drawable/ic_cursorset"
-                        android:visibility="visible" />
-
-                </android.support.design.widget.TextInputLayout>
+                    android:layout_height="70dp" />
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -267,46 +176,47 @@
                     android:orientation="horizontal">
 
 
+                    <android.support.design.widget.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/input_weight"
+                            android:layout_width="254dp"
+                            android:layout_height="77dp"
+                            android:layout_marginLeft="10dp"
+
+                            android:background="@drawable/bg_overlay"
+                            android:backgroundTint="@color/colorWhite"
+                            android:drawableLeft="@drawable/weight"
+                            android:hint="Enter your Weight"
+                            android:inputType="number"
+                            android:padding="16dp"
+                            android:textColor="#FFFFFF"
+                            android:textCursorDrawable="@drawable/ic_cursorset"
+                            android:visibility="visible" />
+
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/spinnerweight"
+                        style="?android:attr/spinnerItemStyle"
+                        android:layout_width="387dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+
+                        android:dropDownWidth="fill_parent"
+                        android:ellipsize="marquee"
+
+
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+
+                <Space
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_weight"
-                        android:layout_width="212dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-
-                        android:background="@drawable/bg_overlay"
-                        android:backgroundTint="@color/colorWhite"
-                        android:drawableLeft="@drawable/weight"
-                        android:hint="Enter your Weight"
-                        android:inputType="number"
-                        android:padding="16dp"
-                        android:textColor="#FFFFFF"
-                        android:textCursorDrawable="@drawable/ic_cursorset"
-                        android:visibility="visible" />
-
-
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/spinnerweight"
-                    style="?android:attr/spinnerItemStyle"
-                    android:layout_width="387dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-
-                    android:dropDownWidth="fill_parent"
-                    android:ellipsize="marquee"
-
-
-                    android:spinnerMode="dropdown" />
-            </LinearLayout>
+                    android:layout_height="20dp" />
 
 
                 <android.support.design.widget.TextInputLayout
@@ -316,7 +226,7 @@
                     app:passwordToggleEnabled="true">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/input_password"
+                        android:id="@+id/usernameTxt"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
@@ -359,18 +269,74 @@
 
                 </android.support.design.widget.TextInputLayout>
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/txtRegisterdate"
+                    android:layout_width="266dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#8888"
+                    android:clickable="false"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:ellipsize="none"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+
+                    android:text="Register Date Input:"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+
+                    />
+
+
+                <Button
+                    android:id="@+id/btndateregister"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_reverse"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/roboto"
+                    android:text="Register Date Input"
+
+
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite" />
+
+                <Spinner
+                    android:id="@+id/spn_group"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:autofillHints="Registration Group"
+                    android:dropDownWidth="30dp"
+                    android:ellipsize="marquee"
+                    android:singleLine="false"
+                    android:spinnerMode="dialog" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
 
                 <Spinner
                     android:id="@+id/question1"
-                    style="?android:attr/spinnerItemStyle"
-                    android:layout_width="387dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:dropDownWidth="fill_parent"
-                    android:ellipsize="marquee"
-                    android:singleLine="false"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="Security Question 1"
 
-                    android:spinnerMode="dropdown" />
+
+                    android:spinnerMode="dialog"
+                    app:ms_arrow_tint="@android:color/white"
+                    app:ms_dropdown_height="wrap_content"
+                    app:ms_dropdown_max_height="350dp"
+                    app:ms_multiline="false"
+                    app:ms_text_color="@android:color/white" />
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -399,15 +365,15 @@
 
                 <Spinner
                     android:id="@+id/question2"
-                    style="?android:attr/spinnerItemStyle"
-                    android:layout_width="387dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:dropDownWidth="fill_parent"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:dropDownWidth="30dp"
                     android:ellipsize="marquee"
                     android:singleLine="false"
 
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dialog" />
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -435,18 +401,6 @@
                 </android.support.design.widget.TextInputLayout>
 
 
-                <Button
-                    android:id="@+id/btnregister"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginTop="30dp"
-
-
-                    android:background="@drawable/btn_rounded"
-                    android:fontFamily="@font/roboto"
-
-                    android:text="Register" />
-
                 <Space
                     android:layout_width="fill_parent"
                     android:layout_height="48dp" />
@@ -454,7 +408,41 @@
             </LinearLayout>
         </ScrollView>
 
-
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="168dp"
+        android:layout_height="43dp"
+
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_rounded"
+        android:fontFamily="@font/roboto"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5_Sr"
+        app:layout_constraintStart_toStartOf="@+id/guideline4_Sl"
+        app:layout_constraintTop_toTopOf="@+id/guideline22" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.89"/>
 
 </android.support.constraint.ConstraintLayout>

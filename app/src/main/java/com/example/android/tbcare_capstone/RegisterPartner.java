@@ -26,7 +26,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
     private EditText firstname, lastname, middlename, username, txtemail,txtpass,txtcpass, partner_id, answer_1, answer_2, contact_no;
     private Button btnregister;
     private ProgressBar loading;
-    Spinner sec_question_1, sec_question_2;
+    private Spinner sec_question_1, sec_question_2;
     private Button btnSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -32,8 +32,8 @@
 
             <ListView
                 android:id="@+id/listview1"
-                android:layout_width="393dp"
-                android:layout_height="574dp" />
+                android:layout_width="match_parent"
+                android:layout_height="583dp" />
 
         </FrameLayout>
     </LinearLayout>
@@ -43,7 +43,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/drawermenu"
-        app:headerLayout="@layout/nav_header"/>
+        app:menu="@menu/drawer_view_tbpartner" />
 
 </android.support.v4.widget.DrawerLayout>

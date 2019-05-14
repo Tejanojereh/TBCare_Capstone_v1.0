@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.285">
 
         <EditText
-            android:id="@+id/input_password"
+            android:id="@+id/usernameTxt"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:backgroundTint="@color/colorWhite"
@@ -81,7 +81,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_login"
+        android:id="@+id/submitBtn"
         android:layout_width="273dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
@@ -111,7 +111,7 @@
         app:layout_constraintEnd_toStartOf="@+id/rightgd"
         app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/submitBtn" />
 
 
     <TextView

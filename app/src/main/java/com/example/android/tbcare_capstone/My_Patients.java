@@ -1,6 +1,7 @@
 package com.example.android.tbcare_capstone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,12 +22,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class My_Patients extends AppCompatActivity implements WebServiceClass.Listener {
 
-    ListView listView;
-    String patientsid[];
-    String patientsname[];
-    String id;
+    private ListView listView;
+    private String[] patients_number;
+    private String[] patientsdisease;
+    private String[] patient_id;
+    private String[] weight;
+    private String[] treatment_date;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,35 +56,40 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         if(flag)
         {
             String patients_no;
-            patientsid = new String[Result.length()];
-            patientsname = new String[Result.length()];
+            patients_number = new String[Result.length()];
+            patientsdisease = new String[Result.length()];
+            patient_id = new String[Result.length()];
+            weight = new String[Result.length()];
+            treatment_date = new String[Result.length()];
             try {
                 JSONObject object = Result.getJSONObject(0);
                 patients_no = object.getString("patients_no");
                 Toast.makeText(this, "You have no patients at the moment", Toast.LENGTH_LONG).show();
-                //finish();
+                finish();
             } catch (JSONException e) {
                 for (int i = 0; i < Result.length(); i++) {
                     try {
                         JSONObject object = Result.getJSONObject(i);
-                        patientsid[i] = object.getString("TB_CASE_NO").toString();
-                        patientsname[i] = object.getString("contact_no").toString();
+                        patient_id[i] = object.getString("ID");
+                        patients_number[i] = object.getString("TB_CASE_NO").toString();
+                        patientsdisease[i] = object.getString("disease_classification").toString();
+                        weight[i] = object.getString("weight");
+
                     } catch (JSONException er) {
                         er.printStackTrace();
                     }
                 }
                 listView = findViewById(R.id.listview1);
-                MyAdapter adapter = new MyAdapter(this, patientsid, patientsname);
+                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease, weight, treatment_date);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        if (position == 0) {
-                            Toast.makeText(My_Patients.this, "Description1", Toast.LENGTH_SHORT).show();
-                        }
-                        if (position == 0) {
-                            Toast.makeText(My_Patients.this, "Description2", Toast.LENGTH_SHORT).show();
-                        }
+                        Intent intent = new Intent(My_Patients.this, DetailedView_Patient.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("patient_id", patient_id[position]);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
                 });
             }
@@ -86,14 +99,18 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
     class MyAdapter extends ArrayAdapter<String> {
 
         Context context;
-        String pid[];
-        String pname[];
+        String[] pid;
+        String[] patientsdisease;
+        String[] p_weight;
+        String[] p_treatment_date;
 
-        MyAdapter(Context c, String id[], String name[]) {
+        MyAdapter(Context c, String[] id, String[] patientsdisease, String[] patientweight, String[] date) {
             super(c, R.layout.row_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.pid = id;
-            this.pname = name;
+            this.patientsdisease = patientsdisease;
+            this.p_weight = patientweight;
+            this.p_treatment_date = date;
 
         }
 
@@ -102,11 +119,15 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         public View getView(int position, @Nullable View convertview, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = layoutInflater.inflate(R.layout.row_listview, parent, false);
-            TextView ids = row.findViewById(R.id.txtid);
+            TextView ids = row.findViewById(R.id.patient_case_numTxtView);
             TextView names = row.findViewById(R.id.tp_name);
+            TextView tp_weight = row.findViewById(R.id.tp_weight);
+            TextView tp_date_start = row.findViewById(R.id.tp_date_started);
 
             ids.setText(pid[position]);
-            names.setText(pname[position]);
+            names.setText("Classification: "+patientsdisease[position]);
+            tp_weight.setText("Weight: "+p_weight[position]+"kg");
+            tp_date_start.setText("Treatment Date Start: "+p_treatment_date[position]);
 
 
             return row;

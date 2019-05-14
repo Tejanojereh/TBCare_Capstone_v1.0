@@ -28,6 +28,9 @@
     <string name="open">open</string>
     <string name="close">close</string>
 
+    <string name="sampleid">TB12453</string>
+    <string name="samplenamepatient">Elisse</string>
+
     <string-array name="sec_arrays">
         <item>What was your childhood nickname? </item>
         <item>What is your maternal grandmother\'s maiden name?</item>

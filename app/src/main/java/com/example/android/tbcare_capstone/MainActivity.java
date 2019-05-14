@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InstantiateControl();
-
-
         SharedPreferences s = getSharedPreferences("session", 0);
         int session = s.getInt("account_id", 0);
         String session_account_type = s.getString("account_type", "");
@@ -67,8 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-
-
     }
 
     @Override
@@ -77,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()) {
             //sign in
-            case R.id.btn_login: {
+            case R.id.submitBtn: {
                 base = new BaseClass();
                 base.SetUsername(txtUsername.getText().toString());
                 base.SetPassword(txtPassword.getText().toString());
@@ -91,18 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             break;
 
-            //forgot password
             case R.id.forgotpassBtn: {
-                /*Toast.makeText(this, "Forgot Password", Toast.LENGTH_SHORT).show();
-                intent = new Intent(MainActivity.this, ForgotPassword_tbpartner.class);
-                startActivity(intent);*/
-                View view = LayoutInflater.from(this).inflate(R.layout.forgotpass_changepassword, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Forgot password?")
-                        .setView(view)
-                        .setNegativeButton("Cancel", null);
-                AlertDialog alert = builder.create();
-                alert.show();
+                intent = new Intent(MainActivity.this, ForgotPassword.class);
+                startActivity(intent);
             }
             break;
             case R.id.btnregisterm: {
@@ -115,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void InstantiateControl() {
         txtUsername = (EditText) findViewById(R.id.input_username);
-        txtPassword = (EditText) findViewById(R.id.input_password);
-        imgBtnSignIn = (AppCompatButton) findViewById(R.id.btn_login);
+        txtPassword = (EditText) findViewById(R.id.usernameTxt);
+        imgBtnSignIn = (AppCompatButton) findViewById(R.id.submitBtn);
         imgBtnForgotPassword = (TextView) findViewById(R.id.forgotpassBtn);
         btnregister = findViewById(R.id.btnregisterm);
 
@@ -154,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (account_type.equals("PARTNER")) {
                         partner = new PartnerClass();
                         partner.ID = id;
+                        partner.Partner_id = object.getString("account_id");
                         partner.SetUsername(base.GetUsername());
                         partner.TP_ID = object.getString("TP_ID");
                         partner.FirstName = object.getString("Firstname");
@@ -161,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         partner.Contact_No = object.getString("contact_no");
                         partner.Email = object.getString("email");
 
+                        editor.putString("id", partner.Partner_id);
                         String json = gson.toJson(partner);
                         editor.putString("class", json);
                         editor.apply();
@@ -172,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         SimpleDateFormat print = new SimpleDateFormat("MM-dd-yyyy");
                         patient = new PatientClass();
                         patient.ID = id;
+                        patient.Patient_id = object.getString("account_id");
                         patient.SetUsername(base.GetUsername());
                         patient.TB_CASE_NO = object.getString("TB_CASE_NO");
                         patient.Disease_Classification = object.getString("disease_classification");
@@ -181,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         patient.Treatment_Date_Start = print.parse(print.format(temp));
                         patient.Contact_No = object.getString("contact_no");
 
+                        editor.putString("id", patient.Patient_id);
                         String json = gson.toJson(patient);
                         editor.putString("class", json);
                         editor.apply();

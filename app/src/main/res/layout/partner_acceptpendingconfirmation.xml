@@ -63,14 +63,14 @@
 
     <TextView
         android:id="@+id/lblintakes"
-        android:layout_width="184dp"
-        android:layout_height="74dp"
+        android:layout_width="182dp"
+        android:layout_height="82dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="52dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
-        android:text="Number of Medicine 1 Intakes"
+        android:text="Number of dosage for Rifampicin + Isoniazid-Film Coated Tablet(Anti Tuberculosis) (Duomax)"
         android:textAlignment="center"
         android:textColor="#EE050000"
         android:textSize="16sp"
@@ -81,14 +81,14 @@
 
     <TextView
         android:id="@+id/lblintakes2"
-        android:layout_width="184dp"
-        android:layout_height="67dp"
+        android:layout_width="188dp"
+        android:layout_height="102dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
-        android:text="Number of Medicine 2 Intakes"
+        android:text="Number of dosage for Rifampicin+ Isoniazid+ Pyrazinamide+ Ethambutol HCI (Quadmax)"
         android:textAlignment="center"
         android:textColor="#EE050000"
         android:textSize="16sp"
@@ -100,7 +100,7 @@
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -126,28 +126,28 @@
     <Spinner
         android:id="@+id/spinnerintakes"
         style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="166dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <Spinner
         android:id="@+id/spinnerintakes2"
         style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="166dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
         app:layout_constraintTop_toBottomOf="@+id/spinnerintakes" />
 
@@ -158,4 +158,49 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/disease_classification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/weightTxt"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="0.952" />
+
+    <TextView
+        android:id="@+id/weightTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="48dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/lblintakes"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="@+id/guideline9" />
+
+    <TextView
+        android:id="@+id/date_startedTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/guideline13"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
