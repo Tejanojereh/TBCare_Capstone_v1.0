@@ -2,6 +2,7 @@ package com.example.android.tbcare_capstone;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+import java.util.Random;
 
 import java.util.ArrayList;
 
@@ -48,6 +50,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     {
                         Toast.makeText(this, "Registered Successfully", Toast.LENGTH_LONG).show();
                         //startActivity(intent);
+
                         finish();
                     }else if(success.equals("false")){
                         Toast.makeText(this, object.getString("message"), Toast.LENGTH_LONG).show();
@@ -100,6 +103,22 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
             public void onClick(View v) {
                 if(Validator())
                 {
+                    Random r= new Random();
+                    String code="";
+                    int rand=0;
+
+                    for (int i=0; i<5;i++)
+                    {
+
+                      rand=  r.nextInt(10);
+                      code+=Integer.toString(rand);
+
+                    }
+
+
+
+
+
                     PartnerClass partner = new PartnerClass();
                     partner.SetUsername(username.getText().toString());
                     partner.SetPassword(txtpass.getText().toString());
@@ -119,6 +138,19 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                     WebServiceClass wbc = new WebServiceClass(address, value, valueName, RegisterPartner.this, RegisterPartner.this);
 
                     wbc.execute();
+
+
+                  /*  Intent intent = new Intent (Intent.ACTION_SEND);
+                    intent.setType("text/html");
+                    intent.putExtra(Intent.EXTRA_EMAIL,partner.Email);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "Verify your account");
+                    intent.putExtra(Intent.EXTRA_TEXT, "Hello,"+ partner.FirstName+"! Please verify your account using this code:"+code);
+                    startActivity(Intent.createChooser(intent, "Send Email"));*/
+
+
+
+
+
                 }
             }
 

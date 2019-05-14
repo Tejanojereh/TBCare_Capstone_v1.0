@@ -1,7 +1,10 @@
 package com.example.android.tbcare_capstone;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InstantiateControl();
+
+
         SharedPreferences s = getSharedPreferences("session", 0);
         int session = s.getInt("account_id", 0);
         String session_account_type = s.getString("account_type", "");
@@ -61,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
             }
         }
+
+
 
     }
 

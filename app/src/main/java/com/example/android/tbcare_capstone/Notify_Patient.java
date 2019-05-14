@@ -1,6 +1,9 @@
 package com.example.android.tbcare_capstone;
 
+import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -44,12 +47,29 @@ public class Notify_Patient extends AppCompatActivity{
     protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
+        NotificationManager NM;
+        NM=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notify = new Notification(android.R.drawable.stat_notify_more,"Notif",System.currentTimeMillis());
+
         //for notification
-        NotificationCompat.Builder mBuilder= new NotificationCompat.Builder(this);
-        mBuilder.setContentTitle("It's time for medicine!");
-        mBuilder.setContentText("Have you taken your medicine?");
-        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(1,mBuilder.build());
+        Boolean bool= true;
+
+        if(bool)
+        {
+            NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+          //  Notification notify=new Notification.Builder
+            //        (getApplicationContext()).setContentTitle("Abc").setContentText("Def").
+              //      setContentTitle("aaa").build();
+
+            notify.flags |= Notification.FLAG_AUTO_CANCEL;
+            notif.notify(0, notify);
+        }
+
+
+
+
+
+
 
     }
 
