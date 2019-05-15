@@ -139,7 +139,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         partner.Partner_id = object.getString("account_id");
                         partner.SetUsername(base.GetUsername());
                         partner.TP_ID = object.getString("TP_ID");
-                        partner.FirstName = object.getString("Firstname");
+                        partner.FirstName = object.getString("firstname");
+                        partner.MiddleName = object.getString("middlename");
                         partner.LastName = object.getString("lastname");
                         partner.Contact_No = object.getString("contact_no");
                         partner.Email = object.getString("email");
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         patient.SetUsername(base.GetUsername());
                         patient.TB_CASE_NO = object.getString("TB_CASE_NO");
                         patient.Disease_Classification = object.getString("disease_classification");
+                        patient.Weight = Float.parseFloat(object.getString("weight"));
                         patient.Registration_Group = object.getString("registration_group");
                         JSONObject t = object.getJSONObject("treatment_date_start");
                         Date temp = df.parse(t.getString("date"));

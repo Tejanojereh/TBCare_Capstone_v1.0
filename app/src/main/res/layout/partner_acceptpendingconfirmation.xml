@@ -8,6 +8,25 @@
 
     <!--PARTNER SIDE: SET NUMBER OF MEDICINE INTAKE OF ACCEPTED PENDING CONFIRMATION OF PATIENTS-->
 
+    <TextView
+        android:id="@+id/txtDatestart"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Date Started:"
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/lblintakes" />
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline8"
         android:layout_width="wrap_content"
@@ -85,12 +104,12 @@
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <TextView
-        android:id="@+id/txtDatestart"
+        android:id="@+id/txtDatestart2"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
@@ -101,7 +120,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/txtDisease" />
+        app:layout_constraintTop_toBottomOf="@+id/lblintakes2" />
 
 
     <TextView
@@ -110,18 +129,39 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="#00250808"
-        android:fontFamily="@font/roboto"
-        android:text="Date Ended:"
 
+        android:fontFamily="@font/roboto"
+        android:text="Date End:"
         android:textAlignment="center"
         android:textColor="#EE050000"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toBottomOf="@+id/txtWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerintakes" />
+
+    <TextView
+        android:id="@+id/txtDateend2"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00250808"
+
+        android:fontFamily="@font/roboto"
+        android:text="Date End:"
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerintakes2" />
 
     <TextView
         android:id="@+id/txtWeight"
@@ -148,7 +188,7 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
@@ -159,7 +199,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDisease" />
 
 
     <TextView
@@ -168,7 +208,7 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
@@ -179,7 +219,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/lblintakes" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDatestart" />
 
 
     <Button
@@ -209,45 +249,30 @@
     <Spinner
         android:id="@+id/spinnerintakes"
         style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="149dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/guideline31" />
-
-    <LinearLayout
-        android:id="@+id/widget_horizontal_white_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="3dip"
-        android:layout_marginStart="8dp"
-
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline31"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/txtWeight" />
 
     <Spinner
         android:id="@+id/spinnerintakes2"
         style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="149dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerintakes" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDateend" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline15"

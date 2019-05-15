@@ -113,6 +113,7 @@
                                 android:textSize="13sp" />
 
                             <EditText
+                                android:id="@+id/firstNameTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_bold"
@@ -135,6 +136,7 @@
                                 android:textSize="13sp" />
 
                             <EditText
+                                android:id="@+id/middleNameTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_bold"
@@ -156,6 +158,29 @@
                                 android:textSize="13sp" />
 
                             <EditText
+                                android:id="@+id/lastNameTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_bold"
+
+                                android:textColor="@color/darkgray"
+                                android:textSize="18sp" />
+
+                            <android.support.v4.view.ViewPager
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@color/darkgray" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/username"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="13sp" />
+
+                            <EditText
+                                android:id="@+id/usernameTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_bold"
@@ -178,10 +203,12 @@
                                 android:textSize="13sp" />
 
                             <EditText
+                                android:id="@+id/emailTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_bold"
 
+                                android:inputType="textWebEmailAddress"
                                 android:textColor="@color/darkgray"
                                 android:textSize="18sp" />
 
@@ -199,10 +226,12 @@
                                 android:textSize="13sp" />
 
                             <EditText
+                                android:id="@+id/contactNoTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto_bold"
 
+                                android:inputType="phone"
                                 android:textColor="@color/darkgray"
                                 android:textSize="18sp" />
 
@@ -211,42 +240,6 @@
                                 android:layout_height="1dp"
                                 android:layout_marginTop="15dp"
                                 android:background="@color/darkgray" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/idpartner"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_bold"
-                                android:text="TP124123"
-                                android:textColor="@color/darkgray"
-                                android:textSize="18sp" />
-
-                            <android.support.v4.view.ViewPager
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="15dp"
-                                android:background="@color/darkgray" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/username"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="13sp" />
-
-                            <EditText
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/roboto_bold"
-
-                                android:textColor="@color/darkgray"
-                                android:textSize="18sp" />
 
 
                         </LinearLayout>
@@ -274,7 +267,7 @@
 
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab"
+                    android:id="@+id/saveBtn"
                     android:layout_width="62dp"
                     android:layout_height="59dp"
                     android:layout_gravity="bottom|end"

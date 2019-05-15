@@ -87,19 +87,34 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         menuItem.setChecked(true);
 
+        Bundle bundle = new Bundle();
         switch (menuItem.getItemId())
         {
-            case R.id.nav_schedule:
-                intent = new Intent(Menu_Patient.this, My_Schedule_Patient.class);
-                Bundle bundle = new Bundle();
+            case R.id.nav_home:
+                break;
+            case R.id.nav_account:
+                intent = new Intent(Menu_Patient.this, Account_Patient.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_progress:
+                intent = new Intent(Menu_Patient.this, My_Progress.class);
                 bundle.putString("patient_id", id);
                 intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case R.id.nav_schedule:
+                intent = new Intent(Menu_Patient.this, My_Schedule_Patient.class);
+                bundle.putString("patient_id", id);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             case R.id.nav_tp:
                 intent = new Intent(Menu_Patient.this, My_Partner_Info.class);
+                startActivity(intent);
                 break;
             case R.id.nav_ChangePassword:
                 intent = new Intent(Menu_Patient.this, ChangePasswordActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);
@@ -111,28 +126,15 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                 editor.putString("class", "");
                 editor.apply();
                 intent = new Intent(Menu_Patient.this, MainActivity.class);
+                startActivity(intent);
+
                 break;
 
 
 
         }
 
-        /*Bundle bundle=new Bundle();
-         bundle1= getIntent().getExtras();
-
-        id= bundle1.getString("id");
-
-        bundle.putString("id",id);
-        intent.putExtras(bundle);*/
-        /*case R.id.nav_account:
-                intent = new Intent(Menu_Patient.this, Account_TBPartner.class);
-                break;
-            case R.id.nav_patients:
-                intent = new Intent(Menu_Patient.this, My_Patients.class);
-                break;*/
-
-        startActivity(intent);
-        return false;
+        return true;
     }
 
     public void CheckPatientHasPartner(){

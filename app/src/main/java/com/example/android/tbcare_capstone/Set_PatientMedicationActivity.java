@@ -22,7 +22,7 @@ import java.util.Calendar;
 
 public class Set_PatientMedicationActivity extends AppCompatActivity implements WebServiceClass.Listener {
 
-    private TextView patientName, classification, weight, treatment_date_start;
+    private TextView patientName, classification, weight, dateStart, dateStart2, dateEnd, dateEnd2;
     private Button submit;
     private Spinner intake1, intake2;
     private String patient_id, partner_id, medication_date1, end_date1, medication_date2, end_date2;
@@ -39,9 +39,12 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
 
         Bundle bundle = getIntent().getExtras();
         patientName = findViewById(R.id.txtPatientname);
-        classification = findViewById(R.id.disease_classification);
-        weight = findViewById(R.id.weightTxt);
-        treatment_date_start = findViewById(R.id.date_startedTxt);
+        classification = findViewById(R.id.txtDisease);
+        weight = findViewById(R.id.txtWeight);
+        dateStart = findViewById(R.id.txtDatestart);
+        dateStart2 = findViewById(R.id.txtDatestart2);
+        dateEnd = findViewById(R.id.txtenddate);
+        dateEnd2 = findViewById(R.id.txtenddate2);
         intake1 = findViewById(R.id.spinnerintakes);
         intake2 = findViewById(R.id.spinnerintakes2);
         submit = findViewById(R.id.backBtn);
@@ -53,7 +56,6 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
         patientName.setText(bundle.getString("patient_number"));
         classification.setText("Classification: "+bundle.getString("classification"));
         weight.setText("Weight: "+bundle.getString("weight")+"kg");
-        treatment_date_start.setText("Treatment Date Start:"+bundle.getString("treatment_date_start"));
 
         ArrayList<Integer> list = new ArrayList<Integer>();
         list.add(2);
@@ -71,7 +73,6 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetDate();
                 String address = "http://tbcarephp.azurewebsites.net/accept_patient.php";
                 String[] value = {patient_id, partner_id, intake1.getSelectedItem().toString(), intake2.getSelectedItem().toString(), medication_date1, medication_date2, end_date1, end_date2};
                 String[] valueName = {"patient_id", "partner_id", "no_of_intake1", "no_of_intake2", "medication_date1", "medication_date2", "end_date1", "end_date2"};
@@ -143,6 +144,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
             d=Integer.toString(dayOfMonth);
 
         medication_date1 = m +"-"+d+"-"+year;
+        dateStart.setText("Date Start: "+ medication_date1);
 /*
         c.add(Calendar.MONTH, 3);
         c.add(Calendar.DAY_OF_MONTH, 1);
@@ -173,6 +175,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
             d=Integer.toString(dayOfMonth);
 
         end_date1 = m +"-"+d+"-"+year;
+        dateStart2.setText("Date End: "+end_date1);
 
 /*        c.add(Calendar.DAY_OF_MONTH, 1);
         dayOfMonth = c.get(Calendar.DAY_OF_MONTH);*/
@@ -201,6 +204,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
             d=Integer.toString(dayOfMonth);
 
         medication_date2 = m +"-"+d+"-"+year;
+        dateStart2.setText("Date Start: "+medication_date2);
 
         month = month + 3;
         if(month < 10){
@@ -227,5 +231,6 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
             d=Integer.toString(dayOfMonth);
 
         end_date2 = m +"-"+d+"-"+year;
+        dateEnd2.setText("Date End: "+end_date2);
     }
 }

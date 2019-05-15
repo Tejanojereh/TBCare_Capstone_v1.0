@@ -122,7 +122,7 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/txttime"
+            android:id="@+id/txtEndDate"
             style="@style/TextAppearance.AppCompat.Inverse"
             android:layout_width="150dp"
             android:layout_height="50dp"

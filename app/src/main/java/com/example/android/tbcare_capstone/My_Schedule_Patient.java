@@ -37,7 +37,7 @@ public class My_Schedule_Patient extends AppCompatActivity implements WebService
         start2 = findViewById(R.id.txtstartdate2);
         end1 = findViewById(R.id.txtenddate);
         end2 = findViewById(R.id.txtenddate2);
-        time1 = findViewById(R.id.txttime);
+        time1 = findViewById(R.id.txtEndDate);
         time2 = findViewById(R.id.txttime2);
         backBtn = findViewById(R.id.btn_back);
 

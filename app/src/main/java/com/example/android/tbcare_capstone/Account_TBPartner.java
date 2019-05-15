@@ -3,6 +3,7 @@ package com.example.android.tbcare_capstone;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,7 +20,7 @@ import com.google.gson.Gson;
 
 public class Account_TBPartner extends AppCompatActivity implements Listener {
     private TextView fname,lname,mname,contact,uname, email, partner_id, header_name;
-    private ImageButton btn,back;
+    private FloatingActionButton editBtn;
     private Bundle bundle;
     private WebServiceClass webService;
     @Override
@@ -28,14 +29,6 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         setContentView(R.layout.activity_acct_tbpartner);
 
         InitiateControls();
-
-        /*String address = "http://tbcarephp.azurewebsites.net/retrieve_tbinfo.php";
-        String[] value = {bundle.getString("id")};
-        String[] valueName = {"P_ID"};
-        webService = new WebServiceClass(address, value, valueName, Account_TBPartner.this, this);
-        webService.execute();*/
-
-        //new WebService_TBPartner().execute();
 
     }
 
@@ -65,15 +58,8 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         email = findViewById(R.id.myAcc_email);
         contact=findViewById(R.id.myAcc_ContactNo);
         partner_id=findViewById(R.id.myAcc_partner_ID);
-        //btn= findViewById(R.id.btnsave);
-        /*back = (ImageButton) findViewById(R.id.btn_Back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
+        editBtn = findViewById(R.id.editBtn);
 
-        });*/
 
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
@@ -81,19 +67,30 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
         String name = "";
         PartnerClass partner = gson.fromJson(json, PartnerClass.class);
 
-        if(partner.MiddleName.equals(""))
+        if(!partner.MiddleName.equals(null))
         {
             name = partner.FirstName +" "+partner.MiddleName+" "+partner.LastName;
+            mname.setText(partner.MiddleName);
         }
-        else
+        else{
+            mname.setText("");
             name = partner.FirstName +" "+partner.LastName;
+        }
         fname.setText(partner.FirstName);
         lname.setText(partner.LastName);
-        mname.setText(partner.MiddleName);
         header_name.setText(name);
         uname.setText(partner.GetUsername());
         email.setText(partner.Email);
         contact.setText(partner.Contact_No);
         partner_id.setText(partner.TP_ID);
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Account_TBPartner.this, Edit_PartnerActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

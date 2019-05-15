@@ -68,6 +68,17 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
             }
         });
 
+        patientProgress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedView_Patient.this, My_Progress.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("patient_id", patient_id);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
         ph_ReadingHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

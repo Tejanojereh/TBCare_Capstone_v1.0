@@ -70,46 +70,33 @@
         app:layout_constraintTop_toTopOf="@+id/gdtitleup"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ProgressBar
-        android:id="@+id/prgPercentage"
-        style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"
-        android:layout_width="256dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/gdright"
-        app:layout_constraintStart_toStartOf="@+id/gdleft"
-        app:layout_constraintTop_toBottomOf="@+id/txtmed1" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/overallProgressTxt"
+        style="@style/TextAppearance.AppCompat.Inverse"
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        style="@style/TextAppearance.AppCompat.Inverse"
         android:text="30%"
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintEnd_toStartOf="@+id/gdright"
         app:layout_constraintStart_toStartOf="@+id/gdleft"
-        app:layout_constraintTop_toBottomOf="@+id/prgPercentage" />
+        app:layout_constraintTop_toBottomOf="@+id/txtmed1" />
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="304dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="@+id/gdleft"
-        app:layout_constraintTop_toBottomOf="@+id/widget_horizontal_white_bar">
+        app:layout_constraintTop_toBottomOf="@+id/overallProgressTxt">
 
         <TextView
             android:id="@+id/lbldatestart"
@@ -132,14 +119,14 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="308dp"
+        android:layout_width="315dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/gdright"
-        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="@+id/gdleft"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
@@ -152,7 +139,7 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/txttime"
+            android:id="@+id/txtEndDate"
             style="@style/TextAppearance.AppCompat.Inverse"
             android:layout_width="167dp"
             android:layout_height="46dp"
@@ -163,20 +150,70 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/widget_horizontal_white_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="3dip"
+        android:id="@+id/sample"
+        android:layout_width="308dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#FFFFFF"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"></LinearLayout>
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <TextView
+            android:id="@+id/medicationLabel"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="147dp"
+            android:layout_height="45dp"
+            android:text="Medication 1 (QuadMax) Progress: "
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/medicationProgress"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="167dp"
+            android:layout_height="46dp"
+            android:text="Aug, 18, 2019"
+            android:textAlignment="center" />
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sample2"
+        android:layout_width="317dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/sample"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/medicationLabel2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="147dp"
+            android:layout_height="45dp"
+            android:text="Medication 2 (DuoMax) Progress: "
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/medicationProgress2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="167dp"
+            android:layout_height="46dp"
+            android:text="Aug, 18, 2019"
+            android:textAlignment="center" />
 
 
+    </LinearLayout>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_back"
@@ -218,4 +255,32 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="0.9"/>
+
+    <Button
+        android:id="@+id/readingHistoryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="View PH Reading History"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/sample2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/viewIntakeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="View Intake History"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/readingHistoryBtn"
+        app:layout_constraintTop_toBottomOf="@+id/sample2"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

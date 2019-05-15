@@ -100,98 +100,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:text="First Name"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/fname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Gwyneth"
-                    android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/darkgray" />
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Middle Name"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/mname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="A"
-                    android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/darkgray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Last Name"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Escarda"
-                    android:id="@+id/lname"
-                    android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
-
-
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/darkgray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:id="@+id/txtemail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="gaescarda@live.mcl.edu.ph"
-                    android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/darkgray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="@string/contactnum"
                     android:textColor="@color/colorPrimary"
                     android:textSize="13sp" />
@@ -288,7 +196,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/editBtn"
         android:layout_width="62dp"
         android:layout_height="59dp"
         android:layout_gravity="bottom|end"

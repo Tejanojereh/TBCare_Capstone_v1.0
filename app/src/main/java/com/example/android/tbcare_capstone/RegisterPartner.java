@@ -111,7 +111,7 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
                         partner.MiddleName = middlename.getText().toString();
                     }
                     partner.Email = txtemail.getText().toString();
-                    partner.TP_ID = partner_id.getText().toString();
+                    partner.TP_ID = partner_id.getText().toString().toUpperCase();
                     partner.Contact_No = contact_no.getText().toString();
                     partner.Security_Question1 = sec_question_1.getSelectedItem().toString();
                     partner.Security_Question2 = sec_question_2.getSelectedItem().toString();

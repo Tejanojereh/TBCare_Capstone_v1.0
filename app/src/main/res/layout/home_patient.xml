@@ -162,7 +162,7 @@
                     app:pcv_textSize="40dp"
                     app:pcv_textColor="@color/darkgray"
                     app:pcv_orientation="counter_clockwise"
-                    app:pcv_progress="10"
+                    app:pcv_progress="1"
                     app:pcv_startAngle="90" />
 
 
