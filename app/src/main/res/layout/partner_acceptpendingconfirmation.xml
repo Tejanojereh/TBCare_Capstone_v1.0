@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_pink">
+    android:background="@drawable/ic_accept">
 
     <!--PARTNER SIDE: SET NUMBER OF MEDICINE INTAKE OF ACCEPTED PENDING CONFIRMATION OF PATIENTS-->
 
@@ -37,8 +37,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_begin="617dp"
+        app:layout_constraintGuide_percent="0.97" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline13"
@@ -46,72 +46,155 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.26" />
 
     <TextView
         android:id="@+id/txtPatientname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Inverse"
+        android:layout_width="129dp"
+        android:layout_height="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
+        android:text="Gwen Escarda"
+        android:textAlignment="center"
+        android:textSize="17sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline32"
+        app:layout_constraintVertical_bias="0.294" />
 
     <TextView
-        android:id="@+id/lblintakes"
-        android:layout_width="182dp"
-        android:layout_height="82dp"
+        android:id="@+id/txtDisease"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
-        android:text="Number of dosage for Rifampicin + Isoniazid-Film Coated Tablet(Anti Tuberculosis) (Duomax)"
+        android:text="Disease Classification:"
         android:textAlignment="center"
         android:textColor="#EE050000"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <TextView
-        android:id="@+id/lblintakes2"
-        android:layout_width="188dp"
-        android:layout_height="102dp"
+        android:id="@+id/txtDatestart"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
-        android:text="Number of dosage for Rifampicin+ Isoniazid+ Pyrazinamide+ Ethambutol HCI (Quadmax)"
+        android:text="Date Started:"
         android:textAlignment="center"
         android:textColor="#EE050000"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/txtDisease" />
+
+
+    <TextView
+        android:id="@+id/txtDateend"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Date Ended:"
+
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toBottomOf="@+id/txtWeight" />
+
+    <TextView
+        android:id="@+id/txtWeight"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Weight:"
+
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+
+    <TextView
+        android:id="@+id/lblintakes"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Number of Medicine 1 Intakes"
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+
+
+    <TextView
+        android:id="@+id/lblintakes2"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="148dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:background="#00250808"
+        android:fontFamily="@font/roboto"
+        android:text="Number of Medicine 2 Intakes"
+        android:textAlignment="center"
+        android:textColor="#EE050000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/lblintakes" />
 
 
-
     <Button
-        android:id="@+id/backBtn"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorPrimary"
         android:fontFamily="@font/roboto"
         android:padding="12dp"
         android:text="Submit"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
 
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
@@ -126,28 +209,43 @@
     <Spinner
         android:id="@+id/spinnerintakes"
         style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintTop_toTopOf="@+id/guideline31" />
+
+    <LinearLayout
+        android:id="@+id/widget_horizontal_white_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline31"></LinearLayout>
 
     <Spinner
         android:id="@+id/spinnerintakes2"
         style="@android:style/Widget.Material.Spinner.Underlined"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="25dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/color1"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
         app:layout_constraintTop_toBottomOf="@+id/spinnerintakes" />
 
@@ -159,48 +257,19 @@
         app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
-        android:id="@+id/disease_classification"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/weightTxt"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="0.952" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.54" />
 
-    <TextView
-        android:id="@+id/weightTxt"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="48dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/lblintakes"
-        app:layout_constraintEnd_toStartOf="@+id/guideline15"
-        app:layout_constraintHorizontal_bias="0.149"
-        app:layout_constraintStart_toStartOf="@+id/guideline9" />
-
-    <TextView
-        android:id="@+id/date_startedTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/guideline13"
-        app:layout_constraintEnd_toStartOf="@+id/guideline11"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="1.0" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.14"/>
 </android.support.constraint.ConstraintLayout>
