@@ -65,9 +65,9 @@ public class Edit_PatientActivity extends AppCompatActivity implements WebServic
             @Override
             public void onClick(View v) {
 
-                String address = "http://tbcarephp.azurewebsites.net/edit_partnerinfo.php";
+                String address = "http://tbcarephp.azurewebsites.net/edit_patientinfo.php";
                 String[] value = {patient_id, account_id, weight.getText().toString(), contactNo.getText().toString(), username.getText().toString()};
-                String[] valueName = {"partner_id", "account_id", "weight", "contactNo", "username"};
+                String[] valueName = {"patient_id", "account_id", "weight", "contact_no", "username"};
                 WebServiceClass wbc = new WebServiceClass(address, value, valueName, Edit_PatientActivity.this, Edit_PatientActivity.this);
 
                 wbc.execute();
@@ -99,7 +99,7 @@ public class Edit_PatientActivity extends AppCompatActivity implements WebServic
                         editor.putString("class", json);
                         editor.apply();
 
-                        Intent intent = new Intent(Edit_PatientActivity.this, Account_TBPartner.class);
+                        Intent intent = new Intent(Edit_PatientActivity.this, Account_Patient.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(this, object.getString("message"), Toast.LENGTH_SHORT).show();
