@@ -13,7 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.android.tbcare_capstone.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.AccountActivities.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.AccountActivities.View_AuditLog;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.MainActivity;
@@ -111,6 +112,10 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.nav_ChangePass:
                 intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_auditLog:
+                intent = new Intent(getApplicationContext(), View_AuditLog.class);
                 startActivity(intent);
                 break;
             case R.id.nav_log_out:

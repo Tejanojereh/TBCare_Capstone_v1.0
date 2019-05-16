@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,17 +28,26 @@ public class Intake_HistoryActivity extends AppCompatActivity implements WebServ
 
 
     private ListView listView;
-    private String[] actions, dateTime, mednames;
+    private String[] actions, dateTime, mednames, idarray;
+    private Button backBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intake_history);
 
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Bundle bundle = getIntent().getExtras();
         String id = bundle.getString("patient_id");
         String address = "http://tbcarephp.azurewebsites.net/retrieve_IntakeLog.php";
         String[] value = {id};
-        String[] valueName = {"id"};
+        String[] valueName = {"patient_id"};
         WebServiceClass wbc = new WebServiceClass(address, value, valueName, Intake_HistoryActivity.this, Intake_HistoryActivity.this);
         wbc.execute();
     }
@@ -50,6 +60,7 @@ public class Intake_HistoryActivity extends AppCompatActivity implements WebServ
                 actions = new String[Result.length()];
                 mednames = new String[Result.length()];
                 dateTime = new String[Result.length()];
+                idarray = new String[Result.length()];
                 try {
                     JSONObject object1 = Result.getJSONObject(0);
                     String hasIntake = object1.getString("hasIntake");
@@ -66,7 +77,7 @@ public class Intake_HistoryActivity extends AppCompatActivity implements WebServ
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
                             SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy HH:mm a");
                             try {
-                                Date d = df.parse(o.getString("datetime"));
+                                Date d = df.parse(o.getString("date"));
 
                                 dateTime[i] = final_format.format(d);
                             } catch (ParseException e1) {
@@ -75,7 +86,7 @@ public class Intake_HistoryActivity extends AppCompatActivity implements WebServ
 
                         }
                         listView = findViewById(R.id.ph_history);
-                        MyAdapter adapter = new MyAdapter(this, actions, dateTime, mednames);
+                        MyAdapter adapter = new MyAdapter(this, idarray, actions, dateTime, mednames);
                         listView.setAdapter(adapter);
                     }
                     else if(hasIntake.equals("false")){
@@ -105,8 +116,8 @@ public class Intake_HistoryActivity extends AppCompatActivity implements WebServ
         String[] medicinenames;
         String[] dateTime;
 
-        MyAdapter(Context c, String[] actions_, String[] date, String[] mednames) {
-            super(c, R.layout.intake_history_listview, R.id.linearLayoutID);
+        MyAdapter(Context c, String[] id, String[] actions_, String[] date, String[] mednames) {
+            super(c, R.layout.intake_history_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.actions = actions_;
             this.dateTime = date;

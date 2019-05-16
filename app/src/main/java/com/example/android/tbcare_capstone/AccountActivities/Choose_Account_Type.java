@@ -1,10 +1,12 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.AccountActivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.android.tbcare_capstone.R;
 
 public class Choose_Account_Type extends AppCompatActivity implements View.OnClickListener {
 

@@ -27,6 +27,11 @@
         <item
             android:id="@+id/nav_ChangePass"
             android:title="Change Password" />
+
+        <item
+            android:id="@+id/nav_auditLog"
+            android:title="Activity Log" />
+
         <item
             android:id="@+id/nav_log_out"
             android:title="Log Out" />

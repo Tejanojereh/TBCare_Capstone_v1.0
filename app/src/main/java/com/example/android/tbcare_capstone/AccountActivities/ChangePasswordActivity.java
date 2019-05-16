@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.AccountActivities;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.Account;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

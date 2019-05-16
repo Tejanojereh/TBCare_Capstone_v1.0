@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.*;
 
+import com.example.android.tbcare_capstone.AccountActivities.Choose_Account_Type;
 import com.example.android.tbcare_capstone.Class.BaseClass;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.PatientClass;

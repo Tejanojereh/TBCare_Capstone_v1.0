@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.widget.DrawerLayout;
@@ -19,7 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.android.tbcare_capstone.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.AccountActivities.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.AccountActivities.View_AuditLog;
 import com.example.android.tbcare_capstone.ChoosePartner;
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
@@ -117,6 +117,10 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_ChangePassword:
                 intent = new Intent(Menu_Patient.this, ChangePasswordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_auditLog:
+                intent = new Intent(getApplicationContext(), View_AuditLog.class);
                 startActivity(intent);
                 break;
             case R.id.nav_log_out:

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +28,20 @@ import java.util.Date;
 public class Reading_HistoryActivity extends AppCompatActivity implements WebServiceClass.Listener {
 
     private ListView listView;
-    private String[] phLevel, dateTime;
+    private Button backBtn;
+    private String[] phLevel, dateTime, idArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deviceoutput_sputumresults);
 
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Bundle bundle = getIntent().getExtras();
         String id = bundle.getString("patient_id");
         String address = "http://tbcarephp.azurewebsites.net/retrieve_ReadingHistory.php";
@@ -49,18 +58,20 @@ public class Reading_HistoryActivity extends AppCompatActivity implements WebSer
             if(Result != null){
                 phLevel = new String[Result.length()];
                 dateTime = new String[Result.length()];
+                idArray = new String[Result.length()];
                 try {
                     JSONObject object1 = Result.getJSONObject(0);
                     String hasIntake = object1.getString("hasIntake");
                     if(hasIntake.equals("true")){
                         for(int i = 0; i < Result.length(); i++){
+                            idArray[i] = Integer.toString(i);
                             JSONObject object = Result.getJSONObject(i);
                             phLevel[i] = object.getString("ph_level");
-                            JSONObject o = object.getJSONObject("treatment_date_start");
+                            JSONObject o = object.getJSONObject("datetime");
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
                             SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
                             try {
-                                Date d = df.parse(o.getString("datetime"));
+                                Date d = df.parse(o.getString("date"));
 
                                 dateTime[i] = final_format.format(d);
                             } catch (ParseException e1) {
@@ -68,8 +79,8 @@ public class Reading_HistoryActivity extends AppCompatActivity implements WebSer
                             }
 
                         }
-                        listView = findViewById(R.id.ph_history);
-                        MyAdapter adapter = new MyAdapter(this, phLevel, dateTime);
+                        listView = findViewById(R.id.listview1);
+                        MyAdapter adapter = new MyAdapter(this, idArray, phLevel, dateTime);
                         listView.setAdapter(adapter);
                     }
                     else if(hasIntake.equals("false")){
@@ -98,8 +109,8 @@ public class Reading_HistoryActivity extends AppCompatActivity implements WebSer
         String[] ph_level;
         String[] dateTime;
 
-        MyAdapter(Context c, String[] level, String[] date) {
-            super(c, R.layout.row_listview, R.id.linearLayoutID);
+        MyAdapter(Context c, String[] id, String[] level, String[] date) {
+            super(c, R.layout.deviceoutput_sputumresults_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.ph_level = level;
             this.dateTime = date;

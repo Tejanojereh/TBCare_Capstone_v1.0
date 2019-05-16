@@ -18,7 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.tbcare_capstone.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.AccountActivities.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.AccountActivities.View_AuditLog;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.DetailedView_Patient;
@@ -151,6 +152,10 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                 break;
             case R.id.nav_ChangePass:
                 intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_auditLog:
+                intent = new Intent(getApplicationContext(), View_AuditLog.class);
                 startActivity(intent);
                 break;
             case R.id.nav_log_out:

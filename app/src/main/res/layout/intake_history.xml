@@ -43,6 +43,7 @@
         app:layout_constraintGuide_percent="0.9"/>
 
     <ListView
+        android:id="@+id/ph_history"
         android:layout_width="265dp"
         android:layout_height="341dp"
         android:layout_marginStart="8dp"

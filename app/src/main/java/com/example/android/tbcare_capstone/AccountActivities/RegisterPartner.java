@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.AccountActivities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

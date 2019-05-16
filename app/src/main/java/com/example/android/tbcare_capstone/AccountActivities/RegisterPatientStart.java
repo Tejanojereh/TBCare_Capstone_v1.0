@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.AccountActivities;
 
 import android.app.DatePickerDialog;
 import android.support.v4.app.DialogFragment;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.Utility.DatepickerFragment;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,8 +27,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class RegisterPatientStart extends AppCompatActivity implements WebServiceClass.Listener, DatePickerDialog.OnDateSetListener {
 
