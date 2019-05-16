@@ -12,22 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Account_Patient"></activity>
-        <activity android:name=".Edit_PatientActivity" />
-        <activity android:name=".Edit_PartnerActivity" />
-        <activity android:name=".My_Progress" />
+        <activity android:name=".PatientActivities.Account_Patient"></activity>
+        <activity android:name=".PatientActivities.Edit_PatientActivity" />
+        <activity android:name=".PartnerActivities.Edit_PartnerActivity" />
+        <activity android:name=".PatientActivities.My_Progress" />
         <activity android:name=".Intake_HistoryActivity" />
         <activity android:name=".Reading_HistoryActivity" />
         <activity android:name=".DetailedView_Patient" />
         <activity android:name=".Patient_Setintake" />
         <activity android:name=".Set_PatientMedicationActivity" />
-        <activity android:name=".Patient_RequestActivity" />
+        <activity android:name=".PartnerActivities.Patient_RequestActivity" />
         <activity android:name=".ForgotPassword_ChangePassActivity" />
         <activity android:name=".Answer_Security_QuestionsActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".RegisterPatientStart" />
-        <activity android:name=".My_Patients" />
-        <activity android:name=".My_Partner_Info" />
+        <activity android:name=".PartnerActivities.My_Patients" />
+        <activity android:name=".PatientActivities.My_Partner_Info" />
         <activity android:name=".ChoosePartner" />
         <activity android:name=".Choose_Account_Type" />
         <activity android:name=".MainActivity">
@@ -37,12 +37,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".My_Schedule_Patient" />
-        <activity android:name=".Menu_Patient" />
+        <activity android:name=".PatientActivities.My_Schedule_Patient" />
+        <activity android:name=".PatientActivities.Menu_Patient" />
         <activity android:name=".Note_Patient" />
-        <activity android:name=".Menu_TBPartner" />
+        <activity android:name=".PartnerActivities.Menu_TBPartner" />
         <activity android:name=".ForgotPassword" />
-        <activity android:name=".Account_TBPartner" />
+        <activity android:name=".PartnerActivities.Account_TBPartner" />
         <activity android:name=".TreatmentDetails" />
         <activity android:name=".Partner_Info" />
         <activity android:name=".Myaccount_partner" />
