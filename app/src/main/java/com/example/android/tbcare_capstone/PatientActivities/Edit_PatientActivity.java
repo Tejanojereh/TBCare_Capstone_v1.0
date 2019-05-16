@@ -49,13 +49,6 @@ public class Edit_PatientActivity extends AppCompatActivity implements WebServic
         String name = "";
         patientClass = gson.fromJson(json, PatientClass.class);
 
-        /*if(partnerClass.MiddleName.equals(null))
-        {
-            middlename.setText("");
-        }
-        else
-            middlename.setText(partnerClass.MiddleName);*/
-
 
         weight.setText(Float.toString(patientClass.Weight));
         username.setText(patientClass.GetUsername());
@@ -75,6 +68,17 @@ public class Edit_PatientActivity extends AppCompatActivity implements WebServic
         });
 
 
+    }
+
+    public boolean Validator(){
+
+        boolean flag = true;
+        if(weight.getText().toString().length() == 0)
+        {
+            weight.requestFocus(); weight.setError("Filed cannot be empty");flag = false;
+        }
+        if(username.getText().toString().length() == 0){username.requestFocus(); username.setError("Filed cannot be empty");flag = false;}
+        return flag;
     }
 
     @Override

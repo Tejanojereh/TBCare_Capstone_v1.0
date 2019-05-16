@@ -190,7 +190,7 @@
                             android:background="@drawable/bg_overlay"
                             android:backgroundTint="@color/colorWhite"
                             android:drawableLeft="@drawable/weight"
-                            android:hint="Enter your Weight"
+                            android:hint="Enter your weight in Kg"
                             android:inputType="number"
                             android:padding="16dp"
                             android:textColor="#FFFFFF"

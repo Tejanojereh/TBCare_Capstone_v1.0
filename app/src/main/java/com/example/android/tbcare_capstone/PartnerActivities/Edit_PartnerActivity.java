@@ -69,25 +69,41 @@ public class Edit_PartnerActivity extends AppCompatActivity implements WebServic
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PartnerClass partner = new PartnerClass();
-                partner.SetUsername(username.getText().toString());
-                partner.FirstName = firstname.getText().toString();
-                partner.LastName = lastname.getText().toString();
-                if(middlename.getText().toString().equals("")){
-                    partner.MiddleName = "";
-                }else{
-                    partner.MiddleName = middlename.getText().toString();
-                }
-                partner.Email = txtemail.getText().toString();
-                partner.Contact_No = contact_no.getText().toString();
-                String address = "http://tbcarephp.azurewebsites.net/edit_partnerinfo.php";
-                String[] value = {partner_id, account_id, partner.FirstName, partner.MiddleName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername()};
-                String[] valueName = {"partner_id", "account_id","firstname", "middlename", "lastname", "contact_no", "email", "username"};
-                WebServiceClass wbc = new WebServiceClass(address, value, valueName, Edit_PartnerActivity.this, Edit_PartnerActivity.this);
+                if(Validator())
+                {
+                    PartnerClass partner = new PartnerClass();
+                    partner.SetUsername(username.getText().toString());
+                    partner.FirstName = firstname.getText().toString();
+                    partner.LastName = lastname.getText().toString();
+                    if(middlename.getText().toString().equals("")){
+                        partner.MiddleName = "";
+                    }else{
+                        partner.MiddleName = middlename.getText().toString();
+                    }
+                    partner.Email = txtemail.getText().toString();
+                    partner.Contact_No = contact_no.getText().toString();
+                    String address = "http://tbcarephp.azurewebsites.net/edit_partnerinfo.php";
+                    String[] value = {partner_id, account_id, partner.FirstName, partner.MiddleName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername()};
+                    String[] valueName = {"partner_id", "account_id","firstname", "middlename", "lastname", "contact_no", "email", "username"};
+                    WebServiceClass wbc = new WebServiceClass(address, value, valueName, Edit_PartnerActivity.this, Edit_PartnerActivity.this);
 
-                wbc.execute();
+                    wbc.execute();
+                }
             }
         });
+    }
+
+    public boolean Validator(){
+
+        boolean flag = true;
+        if(firstname.getText().toString().length() == 0)
+        {
+            firstname.requestFocus(); firstname.setError("Filed cannot be empty");flag = false;
+        }
+        if(lastname.getText().toString().length() == 0){lastname.requestFocus(); lastname.setError("Filed cannot be empty");flag = false;}
+        if(username.getText().toString().length() == 0){username.requestFocus(); username.setError("Filed cannot be empty");}flag = false;
+        if(txtemail.getText().toString().length() == 0){txtemail.requestFocus(); txtemail.setError("Filed cannot be empty");flag = false;}
+        return flag;
     }
 
 

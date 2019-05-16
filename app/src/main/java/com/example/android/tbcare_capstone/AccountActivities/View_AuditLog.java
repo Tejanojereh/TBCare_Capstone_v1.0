@@ -54,7 +54,7 @@ public class View_AuditLog extends AppCompatActivity implements WebServiceClass.
             }
         });
         SharedPreferences s = getSharedPreferences("session", 0);
-        id = Integer.toString(s.getInt("account_id", 0));
+        id = s.getString("id", "");
         String address = "http://tbcarephp.azurewebsites.net/retrieve_auditlogs.php";
         String[] value = {id};
         String[] valueName = {"id"};
@@ -85,7 +85,7 @@ public class View_AuditLog extends AppCompatActivity implements WebServiceClass.
                             logAction[i] = object.getString("action");
                             JSONObject o = object.getJSONObject("datetime");
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-                            SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy HH:mm a");
+                            SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy hh:mm a");
                             try {
                                 Date d = df.parse(o.getString("date"));
                                 date_time[i] = final_format.format(d);
