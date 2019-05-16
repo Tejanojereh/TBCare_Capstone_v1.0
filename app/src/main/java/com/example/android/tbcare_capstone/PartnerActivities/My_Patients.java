@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PartnerActivities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,8 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,7 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.tbcare_capstone.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.DetailedView_Patient;
+import com.example.android.tbcare_capstone.MainActivity;
+import com.example.android.tbcare_capstone.R;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +34,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class My_Patients extends AppCompatActivity implements WebServiceClass.Listener {
+public class My_Patients extends AppCompatActivity implements WebServiceClass.Listener, NavigationView.OnNavigationItemSelectedListener {
 
     private ListView listView;
     private String[] patients_number;
@@ -35,13 +43,27 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
     private String[] weight;
     private String[] treatment_date;
     private String id;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_patients);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
+        navigationView.setNavigationItemSelectedListener(this);
         SharedPreferences s = getSharedPreferences("session", 0);
+        Gson gson = new Gson();
+        String json = s.getString("class", "");
+        PartnerClass partner = gson.fromJson(json, PartnerClass.class);
+
+        View headerView = LayoutInflater.from(this).inflate(R.layout.nav_header, null);
+        TextView userName = (TextView) headerView.findViewById(R.id.user_name);
+        TextView user_id=headerView.findViewById(R.id.user_id);
+        userName.setText(partner.GetUsername());
+        user_id.setText(partner.TP_ID);
+        navigationView.addHeaderView(headerView);
+
         id = Integer.toString(s.getInt("account_id", 0));
         String address = "http://tbcarephp.azurewebsites.net/retrieve_patientList.php";
         String[] value = {id};
@@ -104,6 +126,53 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                 });
             }
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        menuItem.setChecked(true);
+
+        switch (menuItem.getItemId())
+        {
+            case R.id.nav_home:
+                intent = new Intent(getApplicationContext(), Menu_TBPartner.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_requests:
+                intent = new Intent(getApplicationContext(), Patient_RequestActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_account:
+                intent = new Intent(getApplicationContext(), Account_TBPartner.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_patients:
+                break;
+            case R.id.nav_ChangePass:
+                intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_log_out:
+                SharedPreferences s = getSharedPreferences("session", 0);
+                SharedPreferences.Editor editor = s.edit();
+                int id = 0;
+                String account_type = "";
+                editor.putInt("account_id", id);
+                editor.putString("account_type", account_type);
+                editor.putString("class", "");
+                editor.apply();
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+
+
+
+        }
+
+
+        return false;
     }
 
     class MyAdapter extends ArrayAdapter<String> {

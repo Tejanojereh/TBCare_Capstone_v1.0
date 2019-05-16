@@ -43,11 +43,13 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
         weight = findViewById(R.id.txtWeight);
         dateStart = findViewById(R.id.txtDatestart);
         dateStart2 = findViewById(R.id.txtDatestart2);
-        dateEnd = findViewById(R.id.txtenddate);
-        dateEnd2 = findViewById(R.id.txtenddate2);
+        dateEnd = findViewById(R.id.txtDateend);
+        dateEnd2 = findViewById(R.id.txtDateend2);
         intake1 = findViewById(R.id.spinnerintakes);
         intake2 = findViewById(R.id.spinnerintakes2);
-        submit = findViewById(R.id.backBtn);
+        submit = findViewById(R.id.submitBtn);
+
+        SetDate();
 
         SharedPreferences s = getSharedPreferences("session", 0);
         partner_id = Integer.toString(s.getInt("account_id", 0));
@@ -175,7 +177,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
             d=Integer.toString(dayOfMonth);
 
         end_date1 = m +"-"+d+"-"+year;
-        dateStart2.setText("Date End: "+end_date1);
+        dateEnd.setText("Date End: "+end_date1);
 
 /*        c.add(Calendar.DAY_OF_MONTH, 1);
         dayOfMonth = c.get(Calendar.DAY_OF_MONTH);*/

@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PartnerActivities;
 
 
 import android.content.Intent;
@@ -9,13 +9,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.android.tbcare_capstone.ChangePasswordActivity;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.MainActivity;
+import com.example.android.tbcare_capstone.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -92,17 +94,24 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
 
         switch (menuItem.getItemId())
         {
+            case R.id.nav_home:
+                break;
             case R.id.nav_requests:
-                intent = new Intent(Menu_TBPartner.this, Patient_RequestActivity.class);
+                intent = new Intent(getApplicationContext(), Patient_RequestActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_account:
-                intent = new Intent(Menu_TBPartner.this, Account_TBPartner.class);
+                intent = new Intent(getApplicationContext(), Account_TBPartner.class);
+                startActivity(intent);
                 break;
             case R.id.nav_patients:
-                intent = new Intent(Menu_TBPartner.this, My_Patients.class);
+                intent = new Intent(getApplicationContext(), My_Patients.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.nav_ChangePass:
-                intent = new Intent(Menu_TBPartner.this, ChangePasswordActivity.class);
+                intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);
@@ -113,22 +122,17 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
                 editor.putString("account_type", account_type);
                 editor.putString("class", "");
                 editor.apply();
-                intent = new Intent(Menu_TBPartner.this, MainActivity.class);
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
                 break;
 
 
 
         }
 
-        /*Bundle bundle=new Bundle();
-         bundle1= getIntent().getExtras();
 
-        id= bundle1.getString("id");
-
-        bundle.putString("id",id);
-        intent.putExtras(bundle);*/
-
-        startActivity(intent);
         return false;
     }
 

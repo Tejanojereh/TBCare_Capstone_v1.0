@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.PatientActivities.My_Progress;
 
 import org.json.JSONArray;
 import org.json.JSONException;

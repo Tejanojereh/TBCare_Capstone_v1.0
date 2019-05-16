@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PartnerActivities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,13 +11,12 @@ import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.R;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 public class Edit_PartnerActivity extends AppCompatActivity implements WebServiceClass.Listener {
 
@@ -83,7 +82,7 @@ public class Edit_PartnerActivity extends AppCompatActivity implements WebServic
                 partner.Contact_No = contact_no.getText().toString();
                 String address = "http://tbcarephp.azurewebsites.net/edit_partnerinfo.php";
                 String[] value = {partner_id, account_id, partner.FirstName, partner.MiddleName, partner.LastName, partner.Contact_No, partner.Email, partner.GetUsername()};
-                String[] valueName = {"partner_id", "account_id","firstname", "middlename", "lastname", "contactNo", "email", "username"};
+                String[] valueName = {"partner_id", "account_id","firstname", "middlename", "lastname", "contact_no", "email", "username"};
                 WebServiceClass wbc = new WebServiceClass(address, value, valueName, Edit_PartnerActivity.this, Edit_PartnerActivity.this);
 
                 wbc.execute();

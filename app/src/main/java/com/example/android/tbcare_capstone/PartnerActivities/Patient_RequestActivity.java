@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PartnerActivities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,8 +22,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.tbcare_capstone.ChangePasswordActivity;
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.MainActivity;
+import com.example.android.tbcare_capstone.R;
+import com.example.android.tbcare_capstone.Set_PatientMedicationActivity;
 import com.google.gson.Gson;
 
 import org.apache.http.HttpResponse;
@@ -90,19 +94,27 @@ public class Patient_RequestActivity extends AppCompatActivity implements WebSer
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         menuItem.setChecked(true);
+
         switch (menuItem.getItemId())
         {
+            case R.id.nav_home:
+                intent = new Intent(getApplicationContext(), Menu_TBPartner.class);
+                startActivity(intent);
+                finish();
             case R.id.nav_requests:
-                intent = new Intent(Patient_RequestActivity.this, Patient_RequestActivity.class);
                 break;
             case R.id.nav_account:
-                intent = new Intent(Patient_RequestActivity.this, Account_TBPartner.class);
+                intent = new Intent(getApplicationContext(), Account_TBPartner.class);
+                startActivity(intent);
                 break;
             case R.id.nav_patients:
-                intent = new Intent(Patient_RequestActivity.this, My_Patients.class);
+                intent = new Intent(getApplicationContext(), My_Patients.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.nav_ChangePass:
-                intent = new Intent(Patient_RequestActivity.this, ChangePasswordActivity.class);
+                intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);
@@ -113,23 +125,16 @@ public class Patient_RequestActivity extends AppCompatActivity implements WebSer
                 editor.putString("account_type", account_type);
                 editor.putString("class", "");
                 editor.apply();
-                intent = new Intent(Patient_RequestActivity.this, MainActivity.class);
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
                 break;
 
 
 
         }
 
-        /*Bundle bundle=new Bundle();
-         bundle1= getIntent().getExtras();
 
-        id= bundle1.getString("id");
-
-        bundle.putString("id",id);
-        intent.putExtras(bundle);*/
-
-        startActivity(intent);
-        finish();
         return false;
     }
 

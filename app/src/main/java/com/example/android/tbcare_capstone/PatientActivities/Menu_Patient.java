@@ -1,9 +1,10 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PatientActivities;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.widget.DrawerLayout;
@@ -14,15 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.example.android.tbcare_capstone.Class.PartnerClass;
+import com.example.android.tbcare_capstone.ChangePasswordActivity;
+import com.example.android.tbcare_capstone.ChoosePartner;
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.MainActivity;
+import com.example.android.tbcare_capstone.Patient_Setintake;
+import com.example.android.tbcare_capstone.R;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -126,8 +129,8 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                 editor.putString("class", "");
                 editor.apply();
                 intent = new Intent(Menu_Patient.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-
                 break;
 
 
@@ -191,7 +194,8 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                         }
-                                    });
+                                    })
+                                    .setCancelable(false);
                             AlertDialog alert = builder.create();
                             alert.show();
                         }

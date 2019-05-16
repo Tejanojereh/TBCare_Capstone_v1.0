@@ -14,6 +14,8 @@ import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
+import com.example.android.tbcare_capstone.PartnerActivities.Menu_TBPartner;
+import com.example.android.tbcare_capstone.PatientActivities.Menu_Patient;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

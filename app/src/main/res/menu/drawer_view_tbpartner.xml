@@ -3,7 +3,11 @@
 
     >
     <group android:checkableBehavior="single">
-    <item
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"/>
+        <item
         android:id="@+id/nav_account"
         android:title="My Account" />
         <!--android:icon="@drawable/details"-->

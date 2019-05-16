@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PatientActivities;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.R;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -50,8 +51,8 @@ public class My_Partner_Info extends AppCompatActivity implements WebServiceClas
         String json = s.getString("class", "");
         PatientClass patient = gson.fromJson(json, PatientClass.class);
 
-        String[] value = {Integer.toString(patient.ID)}, valueName = {"id"};
-        String address = "http://tbcarephp.azurewebsites.net/retrieve_AssignedPartner.php";
+        String[] value = {patient.Partner_id}, valueName = {"partner_id"};
+        String address = "http://tbcarephp.azurewebsites.net/retrieve_partnerinfo.php";
         WebServiceClass service = new WebServiceClass(address, value, valueName, this, this);
 
         service.execute();
@@ -66,13 +67,13 @@ public class My_Partner_Info extends AppCompatActivity implements WebServiceClas
 
                 try {
                     JSONObject object = Result.getJSONObject(0);
-                    /*if(partner.MiddleName.equals(""))
+                    if(!object.getString("middlename").equals(""))
                     {
-                        name = partner.FirstName +" "+partner.MiddleName+" "+partner.LastName;
+                        name.setText(object.getString("firstname") +" "+ object.getString("middlename")+" "+ object.getString("lastname"));
                     }
                     else
-                        name = partner.FirstName +" "+partner.LastName;*/
-                    name.setText(object.getString("firstname") +" "+ object.getString("lastname"));
+                        name.setText(object.getString("firstname") +" "+ object.getString("lastname"));
+
                     email.setText(object.getString("email"));
                     contact_no.setText(object.getString("contact_no"));
                     patients_Handled.setText(object.getString("patients_handled"));

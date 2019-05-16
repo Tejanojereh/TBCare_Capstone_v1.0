@@ -1,4 +1,4 @@
-package com.example.android.tbcare_capstone;
+package com.example.android.tbcare_capstone.PartnerActivities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,19 +6,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import com.example.android.tbcare_capstone.Class.PartnerClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
-import com.example.android.tbcare_capstone.Class.WebServiceClass.Listener;
+import com.example.android.tbcare_capstone.R;
 import com.google.gson.Gson;
 
-public class Account_TBPartner extends AppCompatActivity implements Listener {
+public class Account_TBPartner extends AppCompatActivity {
     private TextView fname,lname,mname,contact,uname, email, partner_id, header_name;
     private FloatingActionButton editBtn;
     private Bundle bundle;
@@ -30,23 +25,6 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
 
         InitiateControls();
 
-    }
-
-    @Override
-    public void OnTaskCompleted(JSONArray Result, boolean flag) {
-
-        try {
-            JSONObject c = Result.getJSONObject(0);
-
-            fname.setText(c.getString("TP_Fname").toString());
-            c = Result.getJSONObject(1);
-            mname.setText("TP_Mname");
-            c = Result.getJSONObject(2);
-            lname.setText(c.getString("TP_Lname").toString());
-            c = Result.getJSONObject(3);
-            contact.setText(c.getString("TP_ContactNo").toString());
-        }
-        catch(Exception e) { Toast.makeText(Account_TBPartner.this, e.getMessage().toString(), Toast.LENGTH_LONG).show(); }
     }
 
     private void InitiateControls(){
@@ -93,4 +71,6 @@ public class Account_TBPartner extends AppCompatActivity implements Listener {
             }
         });
     }
+
+
 }
