@@ -19,7 +19,7 @@ import java.util.Date;
 
 public class My_Schedule_Patient extends AppCompatActivity implements WebServiceClass.Listener {
 
-    TextView start1, end1, time1, start2, end2, time2;
+    TextView start1, end1, time1, start2, end2, time2, txtNoOfIntakes1, txtNoOfIntakes2;
     Button backBtn;
 
     @Override
@@ -38,8 +38,10 @@ public class My_Schedule_Patient extends AppCompatActivity implements WebService
         start2 = findViewById(R.id.txtstartdate2);
         end1 = findViewById(R.id.txtenddate);
         end2 = findViewById(R.id.txtenddate2);
-        time1 = findViewById(R.id.txtEndDate);
+        time1 = findViewById(R.id.txttime1);
         time2 = findViewById(R.id.txttime2);
+        txtNoOfIntakes1 = findViewById(R.id.txtNoOfIntakes1);
+        txtNoOfIntakes2  = findViewById(R.id.txtNoOfIntakes2);
         backBtn = findViewById(R.id.btn_back);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +91,7 @@ public class My_Schedule_Patient extends AppCompatActivity implements WebService
                             } catch (ParseException e1) {
                                 e1.printStackTrace();
                             }
+                            txtNoOfIntakes1.setText(object.getString("number_of_intake"));
                         }
                         else if(object.getString("drug_id").toString().equals("2")){
                             JSONObject initial = object.getJSONObject("initial_date");
@@ -104,6 +107,7 @@ public class My_Schedule_Patient extends AppCompatActivity implements WebService
                             } catch (ParseException e1) {
                                 e1.printStackTrace();
                             }
+                            txtNoOfIntakes2.setText(object.getString("number_of_intake"));
                         }
                     }
                 } catch (JSONException e) {

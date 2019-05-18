@@ -23,6 +23,7 @@ import com.example.android.tbcare_capstone.AccountActivities.View_AuditLog;
 import com.example.android.tbcare_capstone.ChoosePartner;
 import com.example.android.tbcare_capstone.Class.PatientClass;
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.EditNote;
 import com.example.android.tbcare_capstone.MainActivity;
 import com.example.android.tbcare_capstone.Notes;
 import com.example.android.tbcare_capstone.Patient_Setintake;
@@ -127,6 +128,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
             case R.id.nav_notes:
                 intent = new Intent(getApplicationContext(), Notes.class);
                 startActivity(intent);
+                break;
             case R.id.nav_log_out:
                 SharedPreferences s = getSharedPreferences("session", 0);
                 SharedPreferences.Editor editor = s.edit();
@@ -192,6 +194,8 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         {
                             object = Result.getJSONObject(2);
                             int numberofIntake = Integer.parseInt(object.getString("number_of_intake"));
+                            object = Result.getJSONObject(3);
+                            int numberofIntake2 = Integer.parseInt(object.getString("number_of_intake"));
                             android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
                             builder.setMessage("Good day! Your partner has already accepted your request. Time to set up your medication intake. Please input your first intake for the day, and we'll calculate it based on the number of intakes your partner gave you.")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -199,6 +203,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                                             Intent intent = new Intent(Menu_Patient.this, Patient_Setintake.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putInt("number_of_intakes", numberofIntake);
+                                            bundle.putInt("number_of_intakes2", numberofIntake2);
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                         }

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountActivities.View_AuditLog"></activity>
+        <activity android:name=".PartnerActivities.View_PatientNotes"></activity>
+        <activity android:name=".AccountActivities.View_AuditLog" />
         <activity android:name=".PatientActivities.Account_Patient" />
         <activity android:name=".PatientActivities.Edit_PatientActivity" />
         <activity android:name=".PartnerActivities.Edit_PartnerActivity" />
@@ -49,6 +50,7 @@
         <activity android:name=".Myaccount_partner" />
         <activity android:name=".AccountActivities.RegisterPartner" />
         <activity android:name=".RegisterPatient" />
+        <activity android:name=".Notes" />
         <activity
             android:name=".EditNote"
             android:label="@string/title_activity_edit_note"

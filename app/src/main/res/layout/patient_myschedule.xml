@@ -122,11 +122,42 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/txtEndDate"
+            android:id="@+id/txttime1"
             style="@style/TextAppearance.AppCompat.Inverse"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="8:00AM"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutnumberofdosage"
+        android:layout_width="319dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <TextView
+            android:id="@+id/lblNumberDosage"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Number of Intakes:"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtNoOfIntakes1"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="0"
             android:textAlignment="center" />
 
 
@@ -144,7 +175,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
-        app:layout_constraintVertical_bias="0.0"></LinearLayout>
+        app:layout_constraintVertical_bias="0.181"></LinearLayout>
 
 
     <TextView
@@ -222,6 +253,38 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:text="8:00AM"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutDosage2"
+        android:layout_width="319dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3rd">
+
+
+        <TextView
+            android:id="@+id/lblNumberDosage2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Number of Intakes:"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txtNoOfIntakes2"
+            style="@style/TextAppearance.AppCompat.Inverse"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="0"
             android:textAlignment="center" />
 
 

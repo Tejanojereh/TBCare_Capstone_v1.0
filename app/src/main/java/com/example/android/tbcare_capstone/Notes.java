@@ -78,7 +78,7 @@ public class Notes extends AppCompatActivity {
         });
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 new AlertDialog.Builder(Notes.this)
@@ -126,7 +126,7 @@ public class Notes extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

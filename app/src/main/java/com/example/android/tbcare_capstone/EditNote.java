@@ -13,13 +13,20 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.android.tbcare_capstone.Class.WebServiceClass;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashSet;
 
 import static com.example.android.tbcare_capstone.Notes.notes;
 import static com.example.android.tbcare_capstone.Notes.set;
 
-public class EditNote extends AppCompatActivity implements TextWatcher {
+public class EditNote extends AppCompatActivity implements TextWatcher, WebServiceClass.Listener {
 
     int noteId;
 
@@ -51,7 +58,13 @@ public class EditNote extends AppCompatActivity implements TextWatcher {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences s = getSharedPreferences("session", 0);
+                String address = "http://tbcarephp.azurewebsites.net/save_notes.php";
+                String[] value = {Integer.toString(s.getInt("account_id", 0)), editText.getText().toString()};
+                String[] valueName = {"patient_id", "notes"};
 
+                WebServiceClass service = new WebServiceClass(address, value, valueName, EditNote.this, EditNote.this);
+                service.execute();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,5 +105,31 @@ public class EditNote extends AppCompatActivity implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    @Override
+    public void OnTaskCompleted(JSONArray Result, boolean flag) {
+
+        if(flag)
+        {
+            if(Result != null)
+            {
+                try {
+                    JSONObject object = Result.getJSONObject(0);
+                    String success = object.getString("success");
+                    if(success.equals("true"))
+                    {
+                        Toast.makeText(this, object.getString("message"), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    else if(success.equals("false")){
+                        Toast.makeText(this, object.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
     }
 }

@@ -17,7 +17,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="Gwyneth Escarda"
         android:textAlignment="center"
         android:textColor="#E2DBE4"
         android:textSize="32sp"
@@ -173,7 +172,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="09173344367"
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
 
@@ -195,7 +193,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="TB124123"
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
 
@@ -217,7 +214,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="50kg"
                     android:textColor="@color/darkgray"
                     android:textSize="18sp" />
 
@@ -357,6 +353,34 @@
         />
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/fab44"
+        android:layout_width="59dp"
+        android:layout_height="59dp"
+
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fab33"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="546dp"
+        app:layout_constraintEnd_toStartOf="@+id/gdright">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/notesFab"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="5dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_edit"
+            app:fab_label="Progress results"
+
+            />
+
+    </LinearLayout>
+
     <android.support.constraint.Guideline
         android:id="@+id/guideline28"
         android:layout_width="wrap_content"

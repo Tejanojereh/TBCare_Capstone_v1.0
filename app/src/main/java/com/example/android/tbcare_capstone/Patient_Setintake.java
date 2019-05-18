@@ -1,8 +1,20 @@
 package com.example.android.tbcare_capstone;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -18,13 +30,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 public  class Patient_Setintake extends AppCompatActivity implements TimePickerfragments.TimePickerListener, WebServiceClass.Listener {
 
     private TextView tvDisplayTime;
-    private int numberofIntake;
+    private int numberofIntake, numberofIntake2;
     private Button submitBtn;
-    private String first_intake, second_intake, third_intake, fourth_intake, fifth_intake;
+    private String first_intake, second_intake, third_intake, fourth_intake, fifth_intake, first_intake2, second_intake2, third_intake2, fourth_intake2, fifth_intake2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +49,16 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
         third_intake = "";
         fourth_intake = "";
         fifth_intake = "";
+        first_intake2 = "";
+        second_intake2 ="";
+        third_intake2 = "";
+        fourth_intake2= "";
+        fifth_intake2 = "";
         tvDisplayTime = findViewById(R.id.tvDisplayTime);
         submitBtn = findViewById(R.id.btnSubmit);
         Bundle bundle = getIntent().getExtras();
         numberofIntake = bundle.getInt("number_of_intakes");
+        numberofIntake2 = bundle.getInt("number_of_intakes2");
         Button btnShowTimePicker = findViewById(R.id.btnShowTimePicker);
         btnShowTimePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +78,8 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                     SharedPreferences s = getSharedPreferences("session", 0);
                     String patient_id  = Integer.toString(s.getInt("account_id", 0));
                     String address = "http://tbcarephp.azurewebsites.net/set_medication_schedule.php";
-                    String[] value = {first_intake, second_intake, third_intake, fourth_intake, fifth_intake, patient_id, Integer.toString(numberofIntake)};
-                    String[] valueName = {"first", "second", "third", "fourth", "fifth", "patient_id", "numberofIntakes"};
+                    String[] value = {first_intake, second_intake, third_intake, fourth_intake, fifth_intake, first_intake2, second_intake2, third_intake2, fourth_intake2, fifth_intake2, patient_id, Integer.toString(numberofIntake), Integer.toString(numberofIntake2)};
+                    String[] valueName = {"first", "second", "third", "fourth", "fifth", "first2", "second2", "third2", "fourth2", "fifth2", "patient_id", "numberofIntakes", "numberofIntakes2"};
 
                     WebServiceClass service = new WebServiceClass(address, value, valueName, Patient_Setintake.this, Patient_Setintake.this);
                     service.execute();
@@ -72,6 +91,7 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
 
     @Override
     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        int hour2 = hour, minute2 = minute;
         Time time = new Time(hour, minute, 0);
 
         timePicker.getCurrentMinute();
@@ -163,6 +183,115 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                 fifth_intake = time.toString();
                 break;
         }
+
+        time = new Time(hour2, minute2, 0);
+
+        /*AlarmManager mgrAlarm = (AlarmManager) getSystemService(ALARM_SERVICE);
+        ArrayList<PendingIntent> intentArray = new ArrayList<PendingIntent>();
+
+        for(int i = 0; i < numberofIntake; ++i)
+        {
+            Intent intent = new Intent(getApplicationContext(), OnAlarmReceiver.class);
+            // Loop counter `i` is used as a `requestCode`
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), i, intent, 0);
+            // Single alarms in 1, 2, ..., 10 minutes (in `i` minutes)
+            mgrAlarm.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    SystemClock.elapsedRealtime() + 60000 * i,
+                    pendingIntent);
+
+            intentArray.add(pendingIntent);
+        }*/
+
+        timePicker.getCurrentMinute();
+        timePicker.getCurrentHour();
+        /*tvDisplayTime.setText(  timePicker.getCurrentHour() + " :" + timePicker.getCurrentMinute() );*/
+        tvDisplayTime.setText(time.toString());
+
+        switch(numberofIntake2)
+        {
+            case 2:
+                first_intake2 = time.toString();
+                hour2 = hour2 + 12;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                second_intake2 = time.toString();
+                break;
+            case 3:
+                first_intake2 = time.toString();
+                hour2 = hour2 + 8;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                second_intake2 = time.toString();
+                hour2 = hour2 + 8;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                third_intake2 = time.toString();
+                break;
+            case 4:
+                first_intake2 = time.toString();
+                hour2 = hour2 + 6;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                second_intake2 = time.toString();
+                hour2 = hour2 + 6;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                third_intake2 = time.toString();
+                hour2 = hour2 + 6;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                fourth_intake2 = time.toString();
+                break;
+            case 5:
+                first_intake2 = time.toString();
+                hour2 = hour2 + 5;
+                if(hour >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                second_intake2 = time.toString();
+                hour2 = hour2 + 5;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                third_intake2 = time.toString();
+                hour2 = hour2 + 5;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                fourth_intake2 = time.toString();
+                hour2 = hour2 + 5;
+                if(hour2 >= 24)
+                {
+                    hour2 = hour2 - 24;
+                }
+                time = new Time(hour2, minute2, 0);
+                fifth_intake2 = time.toString();
+                break;
+        }
     }
 
     @Override
@@ -190,6 +319,70 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
         }
 
     }
+
+    /*public class MyReceiver extends BroadcastReceiver {
+
+
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            showNotification(context,Main3Activity.class,"Test Time","do it now");
+
+
+        }
+
+        public static void showNotification(Context context,Class<?> cls,String title,String content)
+
+        {
+
+            Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+
+
+
+            Intent notificationIntent = new Intent(context, cls);
+
+            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+
+
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+
+            stackBuilder.addParentStack(cls);
+
+            stackBuilder.addNextIntent(notificationIntent);
+
+
+
+
+            PendingIntent pendingIntent = stackBuilder.getPendingIntent(
+
+                    DAILY_REMINDER_REQUEST_CODE,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+
+
+            NotificationCompat.Builder builder = new     NotificationCompat.Builder(context);
+
+            Notification notification = builder.setContentTitle(title)
+
+                    .setContentText(content).setAutoCancel(true)
+
+                    .setSound(alarmSound).setSmallIcon(R.mipmap.ic_launcher_round)
+
+                    .setContentIntent(pendingIntent).build();
+
+
+
+            NotificationManager notificationManager = (NotificationManager)
+
+                    context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+            notificationManager.notify(DAILY_REMINDER_REQUEST_CODE, notification);
+
+        }*/
 }
 
 

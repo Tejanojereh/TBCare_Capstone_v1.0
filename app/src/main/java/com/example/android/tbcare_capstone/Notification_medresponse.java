@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +19,8 @@ public class Notification_medresponse extends Activity {
         setContentView(R.layout.notification_medresponse);
 
 
-        Button btn = (Button) findViewById(R.id.btndone);
-        final TextView tv = (TextView) findViewById(R.id.tv);
+        Button btn = (Button) findViewById(R.id.btn_no);
+        final Spinner tv = findViewById(R.id.tv);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +45,6 @@ public class Notification_medresponse extends Activity {
                     }
                 });
 
-// Set the alert dialog no button click listener
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -59,6 +59,6 @@ public class Notification_medresponse extends Activity {
                 dialog.show();
             }
         });
-            }
-        }
+    }
+}
 

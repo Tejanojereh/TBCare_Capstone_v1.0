@@ -90,7 +90,7 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="24dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintTop_toTopOf="@+id/guideline32" />
 
     <TextView
         android:id="@+id/txtDatestart2"
@@ -111,16 +111,19 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
         android:text="Date Started:"
         android:textAlignment="center"
         android:textColor="#EE050000"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/lblintakes2" />
+        app:layout_constraintTop_toBottomOf="@+id/lblintakes2"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView
@@ -172,18 +175,19 @@
         android:layout_width="148dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="8dp"
         android:background="#00250808"
         android:fontFamily="@font/roboto"
-        android:text="Weight:"
 
+        android:text="Weight:"
         android:textAlignment="center"
         android:textColor="#EE050000"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.696"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintTop_toTopOf="@+id/guideline32" />
 
     <TextView
         android:id="@+id/lblintakes"
