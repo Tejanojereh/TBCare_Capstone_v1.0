@@ -6,19 +6,23 @@
 
         <item
             android:id="@+id/nav_home"
-            android:title="Home"/>
+            android:title="Home"
+            android:icon="@drawable/ic_home1"/>
         <item
         android:id="@+id/nav_account"
-        android:title="My Account" />
+        android:title="My Account"
+            android:icon="@drawable/ic_myaccount"/>
         <!--android:icon="@drawable/details"-->
         <!--android:icon="@drawable/schedule"-->
         <item
             android:id="@+id/nav_patients"
-            android:title="My Patients" />
+            android:title="My Patients"
+            android:icon="@drawable/ic_mypatient"/>
 
         <item
             android:id="@+id/nav_requests"
-            android:title="Patient Request" />
+            android:title="Patient Request"
+            android:icon="@drawable/ic_patientrequest"/>
         <!--<item
             android:id="@+id/nav_reac"
             android:title="Reactions and Recommendations" />-->
@@ -26,15 +30,18 @@
         <!--android:icon="@drawable/patient"-->
         <item
             android:id="@+id/nav_ChangePass"
-            android:title="Change Password" />
+            android:title="Change Password"
+            android:icon="@drawable/ic_changepass"/>
 
         <item
             android:id="@+id/nav_auditLog"
-            android:title="Activity Log" />
+            android:title="Activity Log"
+            android:icon="@drawable/ic_actlog"/>
 
         <item
             android:id="@+id/nav_log_out"
-            android:title="Log Out" />
+            android:title="Log Out"
+            android:icon="@drawable/ic_logout"/>
         <!--android:icon="@drawable/logout"-->
 
 
