@@ -1,7 +1,9 @@
 package com.example.android.tbcare_capstone.PatientActivities;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -29,10 +31,23 @@ import com.example.android.tbcare_capstone.Notes;
 import com.example.android.tbcare_capstone.Patient_Setintake;
 import com.example.android.tbcare_capstone.R;
 import com.google.gson.Gson;
+import com.ramijemli.percentagechartview.PercentageChartView;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Menu_Patient extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, WebServiceClass.Listener {
 
@@ -45,11 +60,8 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
     Bundle bundle1;
     TextView user;
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
+    PercentageChartView chart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +70,10 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar); // get the reference of Toolbar
         setSupportActionBar(toolbar); // Setting/replace toolbar as the ActionBar
+
+        chart = findViewById(R.id.percentChart);
+
+        //chart.setProgress(10, true);
 
         navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(this);
@@ -85,6 +101,8 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
         navigationView.addHeaderView(headerView);
 
         CheckPatientHasPartner();
+        GetOverallProgress();
+
         //setNavigationDrawer(); // call method
     }
 
@@ -162,6 +180,16 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void GetOverallProgress(){
+        String address = "http://tbcarephp.azurewebsites.net/retrieve_progress.php";
+        String[] value = {id};
+        String[] valueName = {"ID"};
+
+        GetProgress service = new GetProgress(address, value, valueName);
+        service.execute();
+
+    }
+
 
     @Override
     public void OnTaskCompleted(JSONArray Result, boolean flag) {
@@ -221,56 +249,119 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
             }
         }
     }
-}
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
 
 
+    class GetProgress extends AsyncTask {
+
+        private String Address;
+        private String[] Value;
+        private String[] ValueName;
+        private org.json.JSONArray RecordResult;
+        private ProgressDialog progressDialog;
+        private boolean flag = true;
 
 
-//   navigationView = (NavigationView) findViewById(R.id.nav_view);
-      //  navigationView.setNavigationItemSelectedListener(this);
-     //   bundle1=getIntent().getExtras();
-      //  id= bundle1.getString("id");
-     //   user=findViewById(R.id.user_id);
-     //   View headerView = LayoutInflater.from(this).inflate(R.layout.nav_header, null);
-     //   TextView userName = (TextView) headerView.findViewById(R.id.user_id);
-     //   userName.setText(id);
+        public GetProgress(String address, String[] value, String[] valueName)
+        {
+            Address = address;
+            Value = value;
+            ValueName = valueName;
+            RecordResult = new org.json.JSONArray();
+        }
 
-      //  navigationView.addHeaderView(headerView);
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(Menu_Patient.this);
+            progressDialog.setCancelable(false);
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.show();
+        }
 
-/*private void setNavigationDrawer() {
-        dLayout = (DrawerLayout) findViewById(R.id.drawer_layout); // initiate a DrawerLayout
-        NavigationView navView = (NavigationView) findViewById(R.id.navigation); // initiate a Navigation View
-// implement setNavigationItemSelectedListener event on NavigationView
-        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Fragment frag = null; // create a Fragment Object
-                int itemId = menuItem.getItemId(); // get selected menu item's id
-// check selected menu item's id and replace a Fragment Accordingly
+        @Override
+        protected Object doInBackground(Object[] objects) {
 
-               //GUIDE
-             //   if (itemId == R.id.first) {
-            //        frag = new FirstFragment();
-             //   } else if (itemId == R.id.second) {
-             //       frag = new SecondFragment();
-              //  } else if (itemId == R.id.third) {
-             //       frag = new ThirdFragment();
-              //  }
-                //END GUIDE
-// display a toast message with menu item's title
-                Toast.makeText(getApplicationContext(), menuItem.getTitle(), Toast.LENGTH_SHORT).show();
-                if (frag != null) {
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frame, frag); // replace a Fragment with Frame Layout
-                    transaction.commit(); // commit the changes
-                    dLayout.closeDrawers(); // close the all open Drawer Views
-                    return true;
-                }
-                return false;
+            byte data[];
+            HttpPost httpPost;
+            StringBuffer buffer = null;
+            HttpResponse response;
+            HttpClient httpClient;
+            InputStream inputStream;
+            final String message;
+
+            List<NameValuePair> nameValuePairs;
+            nameValuePairs = new ArrayList<NameValuePair>(ValueName.length);
+            for(int i=0; i<ValueName.length; i++)
+            {
+                nameValuePairs.add(new BasicNameValuePair(ValueName[i].toString(), Value[i].toString()));
             }
-        });
-    }*/
+
+            try {
+                httpClient = new DefaultHttpClient();
+                httpPost = new HttpPost(Address);
+                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                response = httpClient.execute(httpPost);
+                inputStream = response.getEntity().getContent();
+                data = new byte[256];
+                buffer = new StringBuffer();
+                int len = 0;
+
+                while(-1 != (len=inputStream.read(data))) {
+                    buffer.append(new String (data, 0, len));
+                }
+
+                message = buffer.toString();
+                JSONObject jsonObj = new JSONObject(message);
+                JSONArray RecordResult = jsonObj.getJSONArray("results");
+
+                return RecordResult;
+
+            }catch (final Exception e) {
+                flag = false;
+                return null;
+            }
+        }
+
+
+        @Override
+        protected void onPostExecute(Object o) {
+            if(flag)
+            {
+                Object json = null;
+                try {
+                    json = new JSONTokener(o.toString()).nextValue();
+                    if (json instanceof JSONArray) {
+                        RecordResult = (JSONArray) json;
+                    }
+                    JSONObject success = RecordResult.getJSONObject(0);
+                    String message = success.getString("hasData");
+                    if(message.equals("true"))
+                    {
+                        JSONObject object = RecordResult.getJSONObject(2);
+                        chart.setProgress(Float.parseFloat(object.getString("overall")), true);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                progressDialog.dismiss();
+            }else{
+                progressDialog.dismiss();
+            }
+
+        }
+    }
+
+}
 
 
 

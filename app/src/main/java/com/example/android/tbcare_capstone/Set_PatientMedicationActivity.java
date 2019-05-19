@@ -152,7 +152,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
         c.add(Calendar.DAY_OF_MONTH, 1);
         month = c.get(Calendar.MONTH);
         dayOfMonth = c.get(Calendar.DAY_OF_MONTH);*/
-        month = month+3;
+        month = month+2;
         if(month < 10){
 
             m = "0" + month;
@@ -208,7 +208,7 @@ public class Set_PatientMedicationActivity extends AppCompatActivity implements 
         medication_date2 = m +"-"+d+"-"+year;
         dateStart2.setText("Date Start: "+medication_date2);
 
-        month = month + 3;
+        month = month + 4;
         if(month < 10){
 
             m = "0" + month;

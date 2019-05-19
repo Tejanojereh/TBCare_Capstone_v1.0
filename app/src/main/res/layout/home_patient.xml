@@ -144,7 +144,7 @@
                     app:layout_constraintGuide_percent="0.58"/>
 
                 <com.ramijemli.percentagechartview.PercentageChartView
-                    android:id="@+id/view_id"
+                    android:id="@+id/percentChart"
                     android:layout_width="276dp"
                     android:layout_height="474dp"
                     android:layout_marginStart="8dp"

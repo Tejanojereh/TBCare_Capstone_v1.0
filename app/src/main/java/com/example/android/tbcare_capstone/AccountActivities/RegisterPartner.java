@@ -142,6 +142,12 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
             username.setError("FIELD CANNOT BE EMPTY");
             flag = false;
         }
+        if(username.getText().toString().contains(" "))
+        {
+            username.requestFocus();
+            username.setError("Username cannot contain white spaces");
+            flag = false;
+        }
         if(answer_2.length() == 0){
             answer_2.requestFocus();
             answer_2.setError("FIELD CANNOT BE EMPTY");

@@ -168,6 +168,11 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
             username.setError("FIELD CANNOT BE EMPTY");
             flag = false;
         }
+        if(username.getText().toString().contains(" ")){
+            username.requestFocus();
+            username.setError("Username cannot contain white spaces");
+            flag = false;
+        }
         if(answer2.length() == 0){
             answer2.requestFocus();
             answer2.setError("FIELD CANNOT BE EMPTY");

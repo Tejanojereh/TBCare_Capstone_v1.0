@@ -50,6 +50,13 @@
         <activity android:name=".Myaccount_partner" />
         <activity android:name=".AccountActivities.RegisterPartner" />
         <activity android:name=".RegisterPatient" />
+        <activity android:name=".Notification_medresponse">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <activity android:name=".Notes" />
         <activity
             android:name=".EditNote"
