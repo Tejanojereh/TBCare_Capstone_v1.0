@@ -298,6 +298,10 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="5dp"
         android:layout_marginTop="8dp"
+            app:fabCustomSize="50dp"
+            app:elevation="1dp"
+            app:borderWidth="0dp"
+            app:pressedTranslationZ="1dp"
 
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="8dp"
@@ -325,6 +329,10 @@
             android:layout_margin="5dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="12dp"
+            app:fabCustomSize="50dp"
+            app:elevation="1dp"
+            app:borderWidth="0dp"
+            app:pressedTranslationZ="1dp"
             android:src="@drawable/ic_ph1"
 
             app:fab_label="Intake results" />
@@ -348,6 +356,10 @@
         android:layout_margin="5dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic_prg"
+        app:fabCustomSize="50dp"
+        app:elevation="1dp"
+        app:borderWidth="0dp"
+        app:pressedTranslationZ="1dp"
         app:fab_label="Progress results"
 
         />
@@ -375,6 +387,10 @@
             android:layout_margin="5dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/ic_edit"
+            app:fabCustomSize="50dp"
+            app:elevation="1dp"
+            app:borderWidth="0dp"
+            app:pressedTranslationZ="1dp"
             app:fab_label="Progress results"
 
             />
