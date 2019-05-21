@@ -328,7 +328,7 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                             for(int i = 0; i < numberofIntake; ++i)
                             {
                                 Calendar cal = Calendar.getInstance();
-                                SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a ", Locale.ENGLISH);
+                                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                                 cal.setTime(sdf.parse(intake[i]));
                                 Intent intent = new Intent(getApplicationContext(), AlertReceiver.class);
                                 // Loop counter `i` is used as a `requestCode`
