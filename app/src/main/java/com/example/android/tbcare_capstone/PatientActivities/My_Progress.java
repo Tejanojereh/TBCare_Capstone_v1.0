@@ -129,7 +129,7 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                         }
 
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-                        SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy HH:mm a");
+                        SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
                         JSONObject convertDateStart = overall.getJSONObject("treatment_date_start");
                         JSONObject convertDateEnd = overall.getJSONObject("end_date");
                         try {

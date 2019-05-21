@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 
 public class Account_Patient extends AppCompatActivity {
 
-    TextView patient_case_num, txtcontact, patient_case_numTxtView, txt_weight, txtusername;
+    TextView patient_case_num, txtcontact, patient_case_numTxtView, txt_weight, txtusername, txtViewPatientID;
     FloatingActionButton editBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class Account_Patient extends AppCompatActivity {
         txtcontact=findViewById(R.id.txtcontact);
         patient_case_numTxtView=findViewById(R.id.patient_case_numTxtView);
         txt_weight = findViewById(R.id.txt_weight);
+        txtViewPatientID = findViewById(R.id.txtViewPatientID);
         editBtn = findViewById(R.id.editBtn);
 
 
@@ -56,6 +57,7 @@ public class Account_Patient extends AppCompatActivity {
         txt_weight.setText(Float.toString(patient.Weight));
         patient_case_num.setText(patient.TB_CASE_NO);
         patient_case_numTxtView.setText(patient.TB_CASE_NO);
+        txtViewPatientID.setText(patient.ID);
 
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override

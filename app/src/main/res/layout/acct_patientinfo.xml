@@ -211,6 +211,37 @@
         app:layout_constraintTop_toTopOf="@+id/guideline7"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="67dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Patient ID:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@+id/gd1"
+        app:layout_constraintVertical_bias="0.212" />
+
+    <TextView
+        android:id="@+id/txtViewPatientID"
+        android:layout_width="67dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gdright"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="@+id/gdleft"
+        app:layout_constraintTop_toTopOf="@+id/gd1"
+        app:layout_constraintVertical_bias="0.212" />
+
 
 </android.support.constraint.ConstraintLayout>
 

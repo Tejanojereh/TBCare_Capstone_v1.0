@@ -28,6 +28,7 @@ import com.example.android.tbcare_capstone.Class.WebServiceClass;
 import com.example.android.tbcare_capstone.EditNote;
 import com.example.android.tbcare_capstone.MainActivity;
 import com.example.android.tbcare_capstone.Notes;
+import com.example.android.tbcare_capstone.Notification_medresponse;
 import com.example.android.tbcare_capstone.Patient_Setintake;
 import com.example.android.tbcare_capstone.R;
 import com.google.gson.Gson;
@@ -145,6 +146,10 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_notes:
                 intent = new Intent(getApplicationContext(), Notes.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_recordIntake:
+                intent = new Intent(getApplicationContext(), Notification_medresponse.class);
                 startActivity(intent);
                 break;
             case R.id.nav_log_out:

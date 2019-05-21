@@ -68,6 +68,8 @@
                 android:value="com.example.android.tbcare_capstone.Notes" />
         </activity>
 
+        <receiver android:name=".Class.Utility.AlertReceiver" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
