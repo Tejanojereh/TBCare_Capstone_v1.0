@@ -38,7 +38,7 @@ public class View_PatientNotes extends AppCompatActivity implements WebServiceCl
         String id = bundle.getString("patient_id");
         String address = "http://tbcarephp.azurewebsites.net/retrieve_patient_notes.php";
         String[] value = {id};
-        String[] valueName = {"id"};
+        String[] valueName = {"patient_id"};
         WebServiceClass wbc = new WebServiceClass(address, value, valueName, View_PatientNotes.this, View_PatientNotes.this);
         wbc.execute();
     }
@@ -58,6 +58,7 @@ public class View_PatientNotes extends AppCompatActivity implements WebServiceCl
                     if(hasNotes.equals("true")){
                         for(int i = 0; i < Result.length(); i++)
                         {
+                            object = Result.getJSONObject(i);
                             patientNotes[i] = object.getString("notes");
                             JSONObject o = object.getJSONObject("date");
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");

@@ -73,7 +73,7 @@ public class Answer_Security_QuestionsActivity extends AppCompatActivity {
     }
 
     public void Validator(){
-        if(answer.getText().toString().equals(answers[index])){
+        if(answer.getText().toString().toLowerCase().equals(answers[index])){
             Toast.makeText(this, "Answer is correct", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ForgotPassword_ChangePassActivity.class);
             Bundle bundle = new Bundle();

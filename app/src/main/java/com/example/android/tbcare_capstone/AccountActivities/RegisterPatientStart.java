@@ -109,8 +109,8 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
                         patient.Contact_No = contactNo.getText().toString();
                         patient.Disease_Classification = "Pulmonary";
                         patient.Treatment_Date_Start = today;
-                        patient.Security_Answer1 = answer1.getText().toString();
-                        patient.Security_Answer2 = answer2.getText().toString();
+                        patient.Security_Answer1 = answer1.getText().toString().toLowerCase();
+                        patient.Security_Answer2 = answer2.getText().toString().toLowerCase();
                         String dated = df.format(today);
                         String address = "http://tbcarephp.azurewebsites.net/register_account.php";
                         String[] value = {"PATIENT", patient.TB_CASE_NO, Float.toString(patient.Weight), df.format(patient.Treatment_Date_Start), patient.Registration_Group, patient.Disease_Classification, patient.Contact_No, patient.GetUsername(), patient.GetPassword(), patient.Security_Question1, patient.Security_Answer1, patient.Security_Question2, patient.Security_Answer2};

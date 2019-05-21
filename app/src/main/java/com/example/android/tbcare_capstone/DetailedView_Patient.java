@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.tbcare_capstone.Class.WebServiceClass;
+import com.example.android.tbcare_capstone.PartnerActivities.View_PatientNotes;
 import com.example.android.tbcare_capstone.PatientActivities.My_Progress;
 
 import org.json.JSONArray;
@@ -25,7 +26,7 @@ import java.util.Date;
 public class DetailedView_Patient extends AppCompatActivity implements WebServiceClass.Listener {
 
 
-    private FloatingActionButton intakeHistory, ph_ReadingHistory, patientProgress;
+    private FloatingActionButton intakeHistory, ph_ReadingHistory, patientProgress, patientNotes;
     private TextView patient_case_num, patient_case_numTxtView, contactNo, weight, disease_classification, regGroup, treatmentDate_start;
 
 
@@ -38,6 +39,7 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
         setContentView(R.layout.detailedview_patient);
 
         InstantiateControls();
+        closeFABMenu();
 
         Bundle bundle = getIntent().getExtras();
         patient_id = bundle.getString("patient_id");
@@ -53,6 +55,7 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
 
     private void InstantiateControls(){
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.btnfab);
+        patientNotes = findViewById(R.id.notesFab);
         intakeHistory = (FloatingActionButton) findViewById(R.id.intakeHistory);
         ph_ReadingHistory = (FloatingActionButton) findViewById(R.id.ph_readingHistoryFab);
         patientProgress = (FloatingActionButton) findViewById(R.id.progressFab);
@@ -91,6 +94,17 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
             }
         });
 
+        patientNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedView_Patient.this, View_PatientNotes.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("patient_id", patient_id);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
         intakeHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +132,7 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
         intakeHistory.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         ph_ReadingHistory.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
         patientProgress.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
+        patientNotes.animate().translationY(-getResources().getDimension(R.dimen.standard_205));
     }
 
     private void closeFABMenu(){
@@ -125,6 +140,7 @@ public class DetailedView_Patient extends AppCompatActivity implements WebServic
         intakeHistory.animate().translationY(0);
         ph_ReadingHistory.animate().translationY(0);
         patientProgress.animate().translationY(0);
+        patientNotes.animate().translationY(0);
     }
 
     @Override

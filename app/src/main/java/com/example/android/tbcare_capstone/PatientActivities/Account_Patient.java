@@ -57,7 +57,7 @@ public class Account_Patient extends AppCompatActivity {
         txt_weight.setText(Float.toString(patient.Weight));
         patient_case_num.setText(patient.TB_CASE_NO);
         patient_case_numTxtView.setText(patient.TB_CASE_NO);
-        txtViewPatientID.setText(patient.ID);
+        txtViewPatientID.setText(Integer.toString(patient.ID));
 
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
