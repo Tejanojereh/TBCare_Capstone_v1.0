@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.tbcare_capstone.Myaccount_partner"
+    tools:context="com.tbsense.android.tbcare_capstone.Myaccount_partner"
    >
 
     <LinearLayout

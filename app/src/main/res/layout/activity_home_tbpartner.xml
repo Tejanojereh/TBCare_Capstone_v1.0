@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    tools:context="com.example.android.tbcare_capstone.Myaccount_partner"
+    tools:context="com.tbsense.android.tbcare_capstone.Myaccount_partner"
    >
 
     <!--DASHBOARD of TB PARTNER with NAV MENU-->

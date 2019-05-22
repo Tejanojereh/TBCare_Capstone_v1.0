@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.tbcare_capstone">
+    package="com.tbsense.android.tbcare_capstone">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -65,7 +65,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.android.tbcare_capstone.Notes" />
+                android:value=".Notes" />
         </activity>
 
         <receiver android:name=".Class.Utility.AlertReceiver" />

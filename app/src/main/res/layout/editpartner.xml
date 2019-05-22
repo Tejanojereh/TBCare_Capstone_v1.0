@@ -267,7 +267,7 @@
 
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/saveBtn"
+                    android:id="@+id/saveBtnpartner"
                     android:layout_width="62dp"
                     android:layout_height="59dp"
                     android:layout_gravity="bottom|end"

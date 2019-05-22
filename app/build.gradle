@@ -4,11 +4,11 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.example.android.tbcare_capstone"
+        applicationId "com.tbsense.android.tbcare_capstone"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName '1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         useLibrary 'org.apache.http.legacy'
 
