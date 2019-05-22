@@ -52,6 +52,7 @@
 
     <TextView
         android:id="@+id/txtmed1"
+        style="@style/TextAppearance.AppCompat.Inverse"
         android:layout_width="325dp"
         android:layout_height="54dp"
         android:layout_marginStart="8dp"
@@ -59,7 +60,6 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="My Progress"
-        style="@style/TextAppearance.AppCompat.Inverse"
         android:textAlignment="center"
 
         android:textSize="20sp"
@@ -189,7 +189,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintBottom_toTopOf="@+id/guideline37"
         app:layout_constraintEnd_toStartOf="@+id/gdright"
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="@+id/gdleft"
@@ -231,14 +232,14 @@
         app:layout_constraintBottom_toTopOf="@+id/gdbelow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/gdleft"
-        app:layout_constraintTop_toTopOf="@+id/guideline6"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
     <android.support.constraint.Guideline
         android:id="@+id/gdtitledown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp"
-        />
+        app:layout_constraintGuide_begin="20dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -254,33 +255,51 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp"
-        app:layout_constraintGuide_percent="0.9"/>
+        app:layout_constraintGuide_percent="0.9" />
 
     <Button
         android:id="@+id/readingHistoryBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="146dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto"
         android:text="View PH Reading History"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="@+id/gdleft"
-        app:layout_constraintTop_toBottomOf="@+id/sample2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/centergd"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/gdleft" />
 
     <Button
         android:id="@+id/viewIntakeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="156dp"
+        android:layout_height="44dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/roboto"
         android:text="View Intake History"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/readingHistoryBtn"
-        app:layout_constraintTop_toBottomOf="@+id/sample2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/centergd" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/centergd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.76"/>
 </android.support.constraint.ConstraintLayout>
