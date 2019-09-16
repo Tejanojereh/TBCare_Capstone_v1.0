@@ -29,7 +29,7 @@ public class Myaccount_partner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tbpartner);
-        drawChart();
+        //drawChart();
         Toolbar toolbar1 = findViewById(R.id.my_toolbar);
              setSupportActionBar(toolbar1);
 
@@ -38,7 +38,7 @@ public class Myaccount_partner extends AppCompatActivity {
 
         }
 
-    private void drawChart() {
+    /*private void drawChart() {
         BarChart barChart = findViewById(R.id.barChart);
         barChart.setDrawBarShadow(false);
         barChart.setDrawValueAboveBar(true);
@@ -104,7 +104,7 @@ public class Myaccount_partner extends AppCompatActivity {
         barChart.groupBars(startYear, groupSpace, barSpace);
         barChart.invalidate();
 
-    }
+    }*/
 
     }
 

@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,6 +48,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
     private String[] treatment_date;
     private String id;
     private Intent intent;
+    private DrawerLayout dLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,20 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_patients_toolbar);
+        setSupportActionBar(toolbar);
+        dLayout = findViewById(R.id.linlay);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dLayout.openDrawer(Gravity.LEFT);
+            }
+        });
+
+
         SharedPreferences s = getSharedPreferences("session", 0);
         Gson gson = new Gson();
         String json = s.getString("class", "");

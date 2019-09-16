@@ -108,7 +108,7 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                             progressmed1.setText(0+"%");
                         }
                         else{
-                            progressmed1.setText(object.getString("med1Progress")+"%");
+                            progressmed1.setText(String.format("%.2f", Float.parseFloat(object.getString("med1Progress")))+"%");
                         }
 
                         JSONObject progressData2 = Result.getJSONObject(1);
@@ -117,7 +117,7 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                             progressmed2.setText(0+"%");
                         }
                         else{
-                            progressmed2.setText(progressData2.getString("med2Progress")+"%");
+                            progressmed2.setText(String.format("%.2f", Float.parseFloat(progressData2.getString("med2Progress")))+"%");
                         }
                         JSONObject overall = Result.getJSONObject(2);
                         if(Float.parseFloat(overall.getString("overall")) < 0)
@@ -125,7 +125,7 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                             overallProgress.setText(0+"%");
                         }
                         else{
-                            overallProgress.setText(overall.getString("overall")+"%");
+                            overallProgress.setText(String.format("%.2f", Float.parseFloat(overall.getString("overall")))+"%");
                         }
 
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");

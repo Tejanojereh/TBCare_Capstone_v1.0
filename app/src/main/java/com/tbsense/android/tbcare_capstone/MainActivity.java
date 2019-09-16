@@ -72,15 +72,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             //sign in
             case R.id.submitBtn: {
-                base = new BaseClass();
-                base.SetUsername(txtUsername.getText().toString());
-                base.SetPassword(txtPassword.getText().toString());
-                String address = "http://tbcarephp.azurewebsites.net/login.php";
-                String[] value = {base.GetUsername(), base.GetPassword()};
-                String[] valueName = {"username", "password"};
-                WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
+                if(txtUsername.getText().toString().trim().equals("") || txtPassword.getText().toString().trim().equals(""))
+                {
+                    Toast.makeText(this, "Please input your credentials", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    base = new BaseClass();
+                    base.SetUsername(txtUsername.getText().toString());
+                    base.SetPassword(txtPassword.getText().toString());
+                    String address = "http://tbcarephp.azurewebsites.net/login.php";
+                    String[] value = {base.GetUsername(), base.GetPassword()};
+                    String[] valueName = {"username", "password"};
+                    WebServiceClass wbc = new WebServiceClass(address, value, valueName, MainActivity.this, MainActivity.this);
 
-                wbc.execute();
+                    wbc.execute();
+                }
 
             }
             break;

@@ -104,7 +104,7 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
                         patient.SetPassword(password.getText().toString());
                         patient.Security_Question1 = question1.getSelectedItem().toString();
                         patient.Security_Question2 = question2.getSelectedItem().toString();
-                        patient.TB_CASE_NO = patient_id.getText().toString();
+                        patient.TB_CASE_NO = patient_id.getText().toString().toUpperCase();
                         patient.Weight = Float.parseFloat(weight.getText().toString());
                         patient.Contact_No = contactNo.getText().toString();
                         patient.Disease_Classification = "Pulmonary";
@@ -186,6 +186,12 @@ public class RegisterPatientStart extends AppCompatActivity implements WebServic
         if(patient_id.length() == 0){
             patient_id.requestFocus();
             patient_id.setError("FIELD CANNOT BE EMPTY");
+            flag = false;
+        }
+        else if(!patient_id.getText().toString().matches("^TB[0-9]{6}"))
+        {
+            patient_id.requestFocus();
+            patient_id.setError("Patient ID example: TB100001");
             flag = false;
         }
         if(weight.length() == 0){

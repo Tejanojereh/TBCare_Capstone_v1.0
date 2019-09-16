@@ -163,6 +163,12 @@ public class RegisterPartner extends AppCompatActivity implements WebServiceClas
             partner_id.setError("FIELD CANNOT BE EMPTY");
             flag = false;
         }
+        else if(!partner_id.getText().toString().matches("^TP[0-9]{6}"))
+        {
+            partner_id.requestFocus();
+            partner_id.setError("Patient ID example: TP100001");
+            flag = false;
+        }
         if(firstname.length() == 0){
             firstname.requestFocus();
             firstname.setError("FIELD CANNOT BE EMPTY");

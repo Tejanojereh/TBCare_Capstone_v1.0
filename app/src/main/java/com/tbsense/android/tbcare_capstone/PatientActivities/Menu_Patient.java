@@ -76,6 +76,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
         //chart.setProgress(10, true);
 
         navigationView = findViewById(R.id.navigation);
+        dLayout = findViewById(R.id.drawer_layout);
         navigationView.setNavigationItemSelectedListener(this);
 
         // implement setNavigationOnClickListener event

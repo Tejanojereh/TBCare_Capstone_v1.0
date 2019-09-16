@@ -35,6 +35,7 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
     private Button submitBtn;
     private String first_intake, second_intake, third_intake, fourth_intake, fifth_intake, first_intake2, second_intake2, third_intake2, fourth_intake2, fifth_intake2;
     private String[] intake, intake2;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,10 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
 
     @Override
     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
         int hour2 = hour, minute2 = minute;
         Time time = new Time(hour, minute, 0);
 
@@ -311,6 +316,7 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                     String message = object.getString("message");
                     if(message.equals("Success"))
                     {
+                        cancelAlarm();
                         try {
 
                             AlarmManager mgrAlarm = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -324,8 +330,11 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                                 Intent intent = new Intent(getApplicationContext(), AlertReceiver.class);
                                 // Loop counter `i` is used as a `requestCode`
                                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), i, intent, 0);
+                                /*if (cal.before(Calendar.getInstance())) {
+                                    cal.add(Calendar.DATE, 1);
+                                }*/
                                 // Single alarms in 1, 2, ..., 10 minutes (in `i` minutes)
-                                mgrAlarm.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                                mgrAlarm.setRepeating(AlarmManager.RTC_WAKEUP,
                                         cal.getTimeInMillis(),
                                         AlarmManager.INTERVAL_DAY,
                                         pendingIntent);
@@ -425,6 +434,16 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
         }*/
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+
+    private void cancelAlarm() {
+        for(int i = 0; i < 5; i++){
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(this, AlertReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, i, intent, 0);
+
+            alarmManager.cancel(pendingIntent);
+        }
     }
 }
 

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PartnerActivities.View_PatientNotes"></activity>
+        <activity android:name=".PatientActivities.UpdatePatientStatusActivity"></activity>
+        <activity android:name=".PartnerActivities.View_PatientNotes" />
         <activity android:name=".AccountActivities.View_AuditLog" />
         <activity android:name=".PatientActivities.Account_Patient" />
         <activity android:name=".PatientActivities.Edit_PatientActivity" />
@@ -51,11 +52,14 @@
         <activity android:name=".AccountActivities.RegisterPartner" />
         <activity android:name=".RegisterPatient" />
         <activity android:name=".Notification_medresponse">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".Notes" />
         <activity

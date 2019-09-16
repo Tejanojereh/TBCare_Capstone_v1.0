@@ -7,7 +7,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,13 +44,24 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
     NavigationView navigationView;
     Intent intent;
     TextView user_id, user_name, patientsHandledTxtView;
-    BarChart barChart;
+    DrawerLayout dLayout;
+    //BarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tbpartner);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.partner_toolbar);
+        setSupportActionBar(toolbar);
+        dLayout = findViewById(R.id.drawer_partnet_layout);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dLayout.openDrawer(Gravity.LEFT);
+            }
+        });
 
         InstantiateControls();
         CheckPartnerHandled();
@@ -85,8 +99,8 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
         user_id.setText(partner.TP_ID);
         navigationView.addHeaderView(headerView);
 
-        barChart = findViewById(R.id.barChart);
-        drawChart();
+        //barChart = findViewById(R.id.barChart);
+        //drawChart();
     }
 
     @Override
@@ -141,7 +155,7 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
         return false;
     }
 
-    private void drawChart() {
+    /*private void drawChart() {
         BarChart barChart = findViewById(R.id.barChart);
         barChart.setDrawBarShadow(false);
         barChart.setDrawValueAboveBar(true);
@@ -207,7 +221,7 @@ public class Menu_TBPartner extends AppCompatActivity implements NavigationView.
         barChart.groupBars(startYear, groupSpace, barSpace);
         barChart.invalidate();
 
-    }
+    }*/
 
     @Override
     public void OnTaskCompleted(JSONArray Result, boolean flag) {
