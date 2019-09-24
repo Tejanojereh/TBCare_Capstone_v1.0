@@ -215,36 +215,66 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         finish();
                     }
                     else if(hasPartner.equals("true")){
-                        patient.Partner_id = object.getString("partner_id");
-                        SharedPreferences s = getSharedPreferences("session", 0);
-                        SharedPreferences.Editor editor = s.edit();
-                        Gson gson = new Gson();
-                        String json = gson.toJson(patient);
-                        editor.putString("class", json);
-                        editor.apply();
-                        object = Result.getJSONObject(1);
-                        if(Integer.parseInt(object.getString("intakeSchedule").toString()) == 0)
+                        if(object.getString("status").equals("PENDING"))
                         {
-                            object = Result.getJSONObject(2);
-                            int numberofIntake = Integer.parseInt(object.getString("number_of_intake"));
-                            object = Result.getJSONObject(3);
-                            int numberofIntake2 = Integer.parseInt(object.getString("number_of_intake"));
                             android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
-                            builder.setMessage("Good day! Your partner has already accepted your request. Time to set up your medication intake. Please input your first intake for the day, and we'll calculate it based on the number of intakes your partner gave you.")
+                            builder.setMessage("Good day! Your partner still has not approved your partnership.")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            Intent intent = new Intent(Menu_Patient.this, Patient_Setintake.class);
-                                            Bundle bundle = new Bundle();
-                                            bundle.putInt("number_of_intakes", numberofIntake);
-                                            bundle.putInt("number_of_intakes2", numberofIntake2);
-                                            intent.putExtras(bundle);
-                                            startActivity(intent);
                                         }
                                     })
                                     .setCancelable(false);
                             AlertDialog alert = builder.create();
                             alert.show();
                         }
+                        else if(object.getString("status").equals("APPROVED"))
+                        {
+                            patient.Partner_id = object.getString("partner_id");
+                            SharedPreferences s = getSharedPreferences("session", 0);
+                            SharedPreferences.Editor editor = s.edit();
+                            Gson gson = new Gson();
+                            String json = gson.toJson(patient);
+                            editor.putString("class", json);
+                            editor.apply();
+                            object = Result.getJSONObject(1);
+                            if(Integer.parseInt(object.getString("intakeSchedule").toString()) == 0)
+                            {
+                                object = Result.getJSONObject(2);
+                                int numberofIntake = Integer.parseInt(object.getString("number_of_intake"));
+                                object = Result.getJSONObject(3);
+                                int numberofIntake2 = Integer.parseInt(object.getString("number_of_intake"));
+                                android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
+                                builder.setMessage("Good day! Your partner has already accepted your request. Time to set up your medication intake. Please input your first intake for the day, and we'll calculate it based on the number of intakes your partner gave you.")
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Intent intent = new Intent(Menu_Patient.this, Patient_Setintake.class);
+                                                Bundle bundle = new Bundle();
+                                                bundle.putInt("number_of_intakes", numberofIntake);
+                                                bundle.putInt("number_of_intakes2", numberofIntake2);
+                                                intent.putExtras(bundle);
+                                                startActivity(intent);
+                                            }
+                                        })
+                                        .setCancelable(false);
+                                AlertDialog alert = builder.create();
+                                alert.show();
+                            }
+                        }
+                        else if(object.getString("status").equals("INACTIVE")){
+                            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
+                            builder.setMessage("Hi there. Unfortunately, we have some sad news. Your partner has now deactivated its account. You will now be brought to the partner selection page to select a new partner. Please coordinate with the hospital nurse for more information about who you should select as partner. Thank you!")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            intent = new Intent(Menu_Patient.this, ChoosePartner.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    })
+                                    .setCancelable(false);
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
+
 
                     }
                 } catch (JSONException e) {
@@ -348,19 +378,52 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         RecordResult = (JSONArray) json;
                     }
                     JSONObject success = RecordResult.getJSONObject(0);
-                    String message = success.getString("hasData");
-                    if(message.equals("true"))
+                    if(success.getString("status").equals("DEACTIVATED"))
                     {
-                        JSONObject object = RecordResult.getJSONObject(2);
-                        chart.setProgress(Float.parseFloat(object.getString("overall")), true);
+                        progressDialog.dismiss();
+                        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
+                        builder.setMessage("This account has been activated by your partner for the sole reason that you have successfully undergone the treatment. Thank you for using TB Care and we hope a wonderful journey ahead of you. You will now be logged out.")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        SharedPreferences s = getSharedPreferences("session", 0);
+                                        SharedPreferences.Editor editor = s.edit();
+
+                                        String account_type = "";
+                                        editor.putInt("account_id", 0);
+                                        editor.putString("account_type", account_type);
+                                        editor.putString("class", "");
+                                        editor.apply();
+                                        intent = new Intent(Menu_Patient.this, MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }
+                                })
+                                .setCancelable(false);
+                        AlertDialog alert = builder.create();
+                        alert.show();
                     }
+                    else if(success.getString("status").equals("ACTIVE"))
+                    {
+                        String message = success.getString("hasData");
+                        if(message.equals("true"))
+                        {
+                            JSONObject object = RecordResult.getJSONObject(2);
+                            chart.setProgress(Float.parseFloat(object.getString("overall")), true);
+                        }
+                        else if(message.equals("false"))
+                        {
+                            Toast.makeText(Menu_Patient.this, success.getString("message"), Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                progressDialog.dismiss();
             }else{
                 progressDialog.dismiss();
+                Toast.makeText(Menu_Patient.this, "Error occured", Toast.LENGTH_LONG).show();
             }
 
         }
