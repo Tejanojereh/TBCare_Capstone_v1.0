@@ -135,7 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (Result != null) {
                 try {
                     JSONObject object = Result.getJSONObject(0);
-                    if(object.getString("status").equals("DEACTIVATED"))
+                    JSONObject innerObject = Result.getJSONObject(1);
+                    if(innerObject.getString("status").equals("DEACTIVATED"))
                     {
                         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
                         builder.setMessage("Sorry, but it seems this account has been deactivated.")
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         AlertDialog alert = builder.create();
                         alert.show();
                     }
-                    else if(object.getString("status").equals("ACTIVATED")){
+                    else if(innerObject.getString("status").equals("ACTIVE")){
                         id = Integer.parseInt(object.getString("ID"));
                         account_type = object.getString("account_type");
 
