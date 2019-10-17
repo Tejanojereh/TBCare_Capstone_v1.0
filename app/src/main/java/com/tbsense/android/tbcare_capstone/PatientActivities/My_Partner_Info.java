@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 public class My_Partner_Info extends AppCompatActivity implements WebServiceClass.Listener {
 
-    TextView name, email, contact_no, patients_Handled, partner_id;
+    TextView name, email, contact_no;
     Button backBtn;
 
     @Override
@@ -35,8 +35,6 @@ public class My_Partner_Info extends AppCompatActivity implements WebServiceClas
         name = findViewById(R.id.tp_name);
         email = findViewById(R.id.tp_email);
         contact_no = findViewById(R.id.tp_contact);
-        patients_Handled = findViewById(R.id.tp_patients_hanled);
-        partner_id = findViewById(R.id.tp_id);
         backBtn = findViewById(R.id.backBtn);
 
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +74,6 @@ public class My_Partner_Info extends AppCompatActivity implements WebServiceClas
 
                     email.setText(object.getString("email"));
                     contact_no.setText(object.getString("contact_no"));
-                    patients_Handled.setText(object.getString("patients_handled"));
-                    partner_id.setText(object.getString("TP_ID"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -217,6 +217,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                     else if(hasPartner.equals("true")){
                         if(object.getString("status").equals("PENDING"))
                         {
+
                             android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(Menu_Patient.this);
                             builder.setMessage("Good day! Your partner still has not approved your partnership.")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -409,6 +410,7 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         {
                             JSONObject object = RecordResult.getJSONObject(2);
                             chart.setProgress(Float.parseFloat(object.getString("overall")), true);
+                            progressDialog.dismiss();
                         }
                         else if(message.equals("false"))
                         {

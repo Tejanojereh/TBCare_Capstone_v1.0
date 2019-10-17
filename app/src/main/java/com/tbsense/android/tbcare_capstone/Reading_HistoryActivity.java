@@ -68,7 +68,7 @@ public class Reading_HistoryActivity extends AppCompatActivity implements WebSer
                             phLevel[i] = object.getString("ph_level");
                             JSONObject o = object.getJSONObject("datetime");
                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-                            SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
+                            SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy HH:mm a");
                             try {
                                 Date d = df.parse(o.getString("date"));
 

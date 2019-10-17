@@ -107,6 +107,10 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                         {
                             progressmed1.setText(0+"%");
                         }
+                        else if(Float.parseFloat(object.getString("med1Progress")) > 100)
+                        {
+                            progressmed1.setText(String.format("%.2f", 100.00)+"%");
+                        }
                         else{
                             progressmed1.setText(String.format("%.2f", Float.parseFloat(object.getString("med1Progress")))+"%");
                         }
@@ -116,6 +120,10 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                         {
                             progressmed2.setText(0+"%");
                         }
+                        else if(Float.parseFloat(progressData2.getString("med2Progress")) > 100)
+                        {
+                            progressmed2.setText(String.format("%.2f", 100)+"%");
+                        }
                         else{
                             progressmed2.setText(String.format("%.2f", Float.parseFloat(progressData2.getString("med2Progress")))+"%");
                         }
@@ -123,6 +131,10 @@ public class My_Progress extends AppCompatActivity implements WebServiceClass.Li
                         if(Float.parseFloat(overall.getString("overall")) < 0)
                         {
                             overallProgress.setText(0+"%");
+                        }
+                        else if(Float.parseFloat(overall.getString("overall")) > 100)
+                        {
+                            overallProgress.setText(String.format("%.2f", 100)+"%");
                         }
                         else{
                             overallProgress.setText(String.format("%.2f", Float.parseFloat(overall.getString("overall")))+"%");

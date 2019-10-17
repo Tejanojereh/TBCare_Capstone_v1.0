@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,6 +47,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
     private String[] patient_id;
     private String[] weight;
     private String[] treatment_date;
+    private String[] status;
     private String id;
     private Intent intent;
     private DrawerLayout dLayout;
@@ -102,6 +104,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             patient_id = new String[Result.length()];
             weight = new String[Result.length()];
             treatment_date = new String[Result.length()];
+            status = new String[Result.length()];
             try {
                 JSONObject object = Result.getJSONObject(0);
                 patients_no = object.getString("patients_no");
@@ -115,6 +118,16 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                         patients_number[i] = object.getString("TB_CASE_NO").toString();
                         patientsdisease[i] = object.getString("disease_classification").toString();
                         weight[i] = object.getString("weight");
+
+                        if(Float.parseFloat(object.getString("progress_status")) <= 0)
+                        {
+                            status[i] = "ON GOING";
+                        }
+                        else if(Float.parseFloat(object.getString("progress_status")) > 100)
+                        {
+                            status[i] = "COMPLETED";
+                        }
+
                         JSONObject o = object.getJSONObject("treatment_date_start");
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
                         SimpleDateFormat final_format = new SimpleDateFormat("MMM dd, yyyy");
@@ -131,7 +144,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                     }
                 }
                 listView = findViewById(R.id.listview1);
-                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease, weight, treatment_date);
+                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease, weight, treatment_date, status);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -205,14 +218,16 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         String[] patientsdisease;
         String[] p_weight;
         String[] p_treatment_date;
+        String[] status;
 
-        MyAdapter(Context c, String[] id, String[] patientsdisease, String[] patientweight, String[] date) {
+        MyAdapter(Context c, String[] id, String[] patientsdisease, String[] patientweight, String[] date, String[] status_) {
             super(c, R.layout.row_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.pid = id;
             this.patientsdisease = patientsdisease;
             this.p_weight = patientweight;
             this.p_treatment_date = date;
+            this.status = status_;
 
         }
 
@@ -225,11 +240,13 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             TextView names = row.findViewById(R.id.tp_name);
             TextView tp_weight = row.findViewById(R.id.tp_weight);
             TextView tp_date_start = row.findViewById(R.id.tp_date_started);
+            TextView patient_status = row.findViewById(R.id.patient_status);
 
             ids.setText(pid[position]);
             names.setText("Classification: "+patientsdisease[position]);
             tp_weight.setText("Weight: "+p_weight[position]+"kg");
             tp_date_start.setText("Treatment Date Start: "+p_treatment_date[position]);
+            patient_status.setText("Status: "+status[position]);
 
 
             return row;

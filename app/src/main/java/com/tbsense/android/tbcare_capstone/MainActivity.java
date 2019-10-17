@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void InstantiateControl() {
         txtUsername = (EditText) findViewById(R.id.input_username);
-        txtPassword = (EditText) findViewById(R.id.usernameTxt);
+        txtPassword = (EditText) findViewById(R.id.passwordTxt);
         imgBtnSignIn = (AppCompatButton) findViewById(R.id.submitBtn);
         imgBtnForgotPassword = (TextView) findViewById(R.id.forgotpassBtn);
         btnregister = findViewById(R.id.btnregisterm);
