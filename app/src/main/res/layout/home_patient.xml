@@ -178,7 +178,7 @@
                     app:pcv_backgroundBarColor="@color/color3"
                     app:pcv_mode="ring"
                     app:pcv_orientation="counter_clockwise"
-                    app:pcv_progress="1"
+                    app:pcv_progress="0"
                     app:pcv_startAngle="90"
                     app:pcv_textColor="@color/darkgray"
                     app:pcv_textSize="40dp" />

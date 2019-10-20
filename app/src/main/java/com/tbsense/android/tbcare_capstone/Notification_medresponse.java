@@ -18,7 +18,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Notification_medresponse extends Activity implements WebServiceClass.Listener {
 
@@ -60,7 +62,6 @@ public class Notification_medresponse extends Activity implements WebServiceClas
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item,medicineOptions);
         medicine.setAdapter(adapter);
-
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +161,8 @@ public class Notification_medresponse extends Activity implements WebServiceClas
 
     @Override
     public void OnTaskCompleted(JSONArray Result, boolean flag) {
+        SharedPreferences sp = getSharedPreferences("session", 0);
+        SharedPreferences.Editor editor = sp.edit();
         if(flag)
         {
             if(Result != null)
@@ -170,6 +173,16 @@ public class Notification_medresponse extends Activity implements WebServiceClas
                     if(success.equals("true"))
                     {
                         Toast.makeText(this, "Intake recorded", Toast.LENGTH_SHORT).show();
+                        int intakes_taken = sp.getInt("intakes_taken", 0);
+                        intakes_taken++;
+                        editor.putInt("intakes_taken", intakes_taken);
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+                        String today = sdf.format(new Date());
+
+                        editor.putString("date_last_intake", today);
+                        editor.apply();
+
                         finish();
                     }
                     else if(success.equals("false")){

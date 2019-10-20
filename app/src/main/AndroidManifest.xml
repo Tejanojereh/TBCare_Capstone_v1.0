@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tbsense.android.tbcare_capstone">
 
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -14,13 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        >
+        android:usesCleartextTraffic="true">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
-
-        <activity android:name=".PatientActivities.UpdatePatientStatusActivity"></activity>
+        <activity android:name=".PatientActivities.UpdatePatientStatusActivity" />
         <activity android:name=".PartnerActivities.View_PatientNotes" />
         <activity android:name=".AccountActivities.View_AuditLog" />
         <activity android:name=".PatientActivities.Account_Patient" />
@@ -49,7 +46,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".PatientActivities.My_Schedule_Patient" />
-        <activity android:name=".PatientActivities.Menu_Patient" />
+        <activity
+            android:name=".PatientActivities.Menu_Patient"
+            android:theme="@style/AppTheme" />
         <activity android:name=".Note_Patient" />
         <activity android:name=".PartnerActivities.Menu_TBPartner" />
         <activity android:name=".ForgotPassword" />
@@ -79,8 +78,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Notes" />
         </activity>
-
-        <receiver android:name=".Class.Utility.AlertReceiver" />
 
         <meta-data
             android:name="preloaded_fonts"
