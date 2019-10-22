@@ -1,6 +1,7 @@
 package com.tbsense.android.tbcare_capstone.PartnerActivities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -29,6 +31,7 @@ import com.tbsense.android.tbcare_capstone.DetailedView_Patient;
 import com.tbsense.android.tbcare_capstone.MainActivity;
 import com.tbsense.android.tbcare_capstone.R;
 import com.google.gson.Gson;
+import com.tbsense.android.tbcare_capstone.Set_PatientMedicationActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +51,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
     private String[] weight;
     private String[] treatment_date;
     private String[] status;
+    private String[] accountStatus;
     private String id;
     private Intent intent;
     private DrawerLayout dLayout;
@@ -105,6 +109,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             weight = new String[Result.length()];
             treatment_date = new String[Result.length()];
             status = new String[Result.length()];
+            accountStatus = new String[Result.length()];
             try {
                 JSONObject object = Result.getJSONObject(0);
                 patients_no = object.getString("patients_no");
@@ -118,8 +123,9 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                         patients_number[i] = object.getString("TB_CASE_NO").toString();
                         patientsdisease[i] = object.getString("disease_classification").toString();
                         weight[i] = object.getString("weight");
+                        accountStatus[i] = object.getString("account_status");
 
-                        if(Float.parseFloat(object.getString("progress_status")) <= 0)
+                        if(Float.parseFloat(object.getString("progress_status")) >= 0 && Float.parseFloat(object.getString("progress_status")) < 100)
                         {
                             status[i] = "ON GOING";
                         }
@@ -144,16 +150,69 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
                     }
                 }
                 listView = findViewById(R.id.listview1);
-                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease, weight, treatment_date, status);
+                MyAdapter adapter = new MyAdapter(this, patients_number, patientsdisease, weight, treatment_date, status, accountStatus);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(My_Patients.this, DetailedView_Patient.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("patient_id", patient_id[position]);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+
+                        if(accountStatus[position].equals("ACTIVE"))
+                        {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(My_Patients.this);
+                            builder.setMessage("Choose action")
+                                    .setPositiveButton("View Patient Details", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent intent = new Intent(My_Patients.this, DetailedView_Patient.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("patient_id", patient_id[position]);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
+                                        }
+                                    })
+                                    .setNegativeButton("Deactivate Patient Account", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent intent = new Intent(My_Patients.this, DeactivateAccountActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("patient_id", patient_id[position]);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }else if(accountStatus[position].equals("DEACTIVATED"))
+                        {
+                            Intent intent = new Intent(My_Patients.this, DetailedView_Patient.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("patient_id", patient_id[position]);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                            /*AlertDialog.Builder builder = new AlertDialog.Builder(My_Patients.this);
+                            builder.setMessage("Choose action")
+                                    .setPositiveButton("View Patient Details", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent intent = new Intent(My_Patients.this, DetailedView_Patient.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("patient_id", patient_id[position]);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
+                                        }
+                                    });*/
+                                    /*.setNegativeButton("Re-activate Patient Account", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            *//*Intent intent = new Intent(My_Patients.this, DeactivateAccountActivity.class);
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("patient_id", patient_id[position]);
+                                            intent.putExtras(bundle);
+                                            startActivity(intent);
+                                            finish();*//*
+                                        }
+                                    });*/
+                            /*AlertDialog alert = builder.create();
+                            alert.show();*/
+                        }
+
                     }
                 });
             }
@@ -219,8 +278,9 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
         String[] p_weight;
         String[] p_treatment_date;
         String[] status;
+        String[] account_status;
 
-        MyAdapter(Context c, String[] id, String[] patientsdisease, String[] patientweight, String[] date, String[] status_) {
+        MyAdapter(Context c, String[] id, String[] patientsdisease, String[] patientweight, String[] date, String[] status_, String[] account_Status) {
             super(c, R.layout.row_listview, R.id.linearLayoutID, id);
             this.context = c;
             this.pid = id;
@@ -228,6 +288,7 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             this.p_weight = patientweight;
             this.p_treatment_date = date;
             this.status = status_;
+            this.account_status = account_Status;
 
         }
 
@@ -241,12 +302,14 @@ public class My_Patients extends AppCompatActivity implements WebServiceClass.Li
             TextView tp_weight = row.findViewById(R.id.tp_weight);
             TextView tp_date_start = row.findViewById(R.id.tp_date_started);
             TextView patient_status = row.findViewById(R.id.patient_status);
+            TextView account_status_tv = row.findViewById(R.id.account_status);
 
             ids.setText(pid[position]);
             names.setText("Classification: "+patientsdisease[position]);
             tp_weight.setText("Weight: "+p_weight[position]+"kg");
             tp_date_start.setText("Treatment Date Start: "+p_treatment_date[position]);
             patient_status.setText("Status: "+status[position]);
+            account_status_tv.setText("Account Status:" + account_status[position]);
 
 
             return row;

@@ -178,6 +178,7 @@ public class Notification_medresponse extends Activity implements WebServiceClas
                         editor.putInt("intakes_taken", intakes_taken);
 
                         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+                        Date todays_date = new Date();
                         String today = sdf.format(new Date());
 
                         editor.putString("date_last_intake", today);

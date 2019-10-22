@@ -54,25 +54,6 @@
             android:textStyle="bold"
             android:layout_margin="5dp"
             android:textSize="15sp"/>
-        <TextView
-            android:id="@+id/patient_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Patient Status:"
-            android:textColor="@color/color1"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/account_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Account Status:"
-            android:textColor="@color/color1"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:textSize="15sp"/>
     </LinearLayout>
 
 </LinearLayout>

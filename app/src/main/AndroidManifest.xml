@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -13,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".PartnerActivities.DeactivateAccountActivity"></activity>
         <activity android:name=".PatientActivities.UpdatePatientStatusActivity" />
         <activity android:name=".PartnerActivities.View_PatientNotes" />
         <activity android:name=".AccountActivities.View_AuditLog" />
@@ -46,9 +49,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PatientActivities.My_Schedule_Patient" />
-        <activity
-            android:name=".PatientActivities.Menu_Patient"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".PatientActivities.Menu_Patient"/>
         <activity android:name=".Note_Patient" />
         <activity android:name=".PartnerActivities.Menu_TBPartner" />
         <activity android:name=".ForgotPassword" />

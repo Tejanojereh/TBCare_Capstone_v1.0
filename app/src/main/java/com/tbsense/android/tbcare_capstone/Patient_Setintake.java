@@ -27,6 +27,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 public  class Patient_Setintake extends AppCompatActivity implements TimePickerfragments.TimePickerListener, WebServiceClass.Listener {
 
@@ -297,11 +299,10 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                 break;
         }
 
-
-        Calendar c = Calendar.getInstance();
+        /*Calendar c = Calendar.getInstance();
         c.add(Calendar.MINUTE, 1);
 
-        startAlarm(c);
+        startAlarm(c);*/
     }
 
     @Override
@@ -324,6 +325,7 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
 
                             for(int i = 0; i < numberofIntake; ++i)
                             {
+
                                 Calendar cal = Calendar.getInstance();
                                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
                                 cal.setTime(sdf.parse(intake[i]));
@@ -342,6 +344,22 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
                                 intentArray.add(pendingIntent);
                             }
 
+                            SharedPreferences sp = getSharedPreferences("session", 0);
+                            SharedPreferences.Editor editor = sp.edit();
+
+                            Set<String> set = new HashSet<String>();
+
+                            for(int i = 0; i<numberofIntake; i++)
+                            {
+                                set.add(intake[i]);
+                            }
+                            for(int i = 0; i<numberofIntake2; i++)
+                            {
+                                set.add(intake2[i]);
+                            }
+
+                            editor.putStringSet("alarms", set);
+                            editor.apply();
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
@@ -359,70 +377,6 @@ public  class Patient_Setintake extends AppCompatActivity implements TimePickerf
         }
 
     }
-
-    /*public class MyReceiver extends BroadcastReceiver {
-
-
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            showNotification(context,Main3Activity.class,"Test Time","do it now");
-
-
-        }
-
-        public static void showNotification(Context context,Class<?> cls,String title,String content)
-
-        {
-
-            Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-
-
-
-            Intent notificationIntent = new Intent(context, cls);
-
-            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-
-
-
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-
-            stackBuilder.addParentStack(cls);
-
-            stackBuilder.addNextIntent(notificationIntent);
-
-
-
-
-            PendingIntent pendingIntent = stackBuilder.getPendingIntent(
-
-                    DAILY_REMINDER_REQUEST_CODE,PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-
-
-            NotificationCompat.Builder builder = new     NotificationCompat.Builder(context);
-
-            Notification notification = builder.setContentTitle(title)
-
-                    .setContentText(content).setAutoCancel(true)
-
-                    .setSound(alarmSound).setSmallIcon(R.mipmap.ic_launcher_round)
-
-                    .setContentIntent(pendingIntent).build();
-
-
-
-            NotificationManager notificationManager = (NotificationManager)
-
-                    context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-            notificationManager.notify(DAILY_REMINDER_REQUEST_CODE, notification);
-
-        }*/
 
     private void startAlarm(Calendar c) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

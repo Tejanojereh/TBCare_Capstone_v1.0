@@ -400,8 +400,10 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
         SimpleDateFormat print = new SimpleDateFormat("MM-dd-yyyy");
         Date today = new Date();
+        String temp = print.format(today);
 
         try {
+            today = print.parse(temp);
             Date first_med_end = print.parse(sp.getString("first_end_medication_intake", ""));
             Date second_med_end = print.parse(sp.getString("second_end_medication_intake", ""));
 
@@ -424,9 +426,11 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
 
                 }
 
-                if(today.after(date_last_intake))
+                if(today.compareTo(date_last_intake) > 0)
                 {
+                    number_of_intakes_taken_today = 0;
                     edit.putInt("intakes_taken", 0);
+                    edit.apply();
                 }
 
                 if(number_of_intake_today > number_of_intakes_taken_today)
