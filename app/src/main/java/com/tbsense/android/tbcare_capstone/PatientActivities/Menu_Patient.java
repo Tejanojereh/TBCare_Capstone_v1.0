@@ -590,7 +590,12 @@ public class Menu_Patient extends AppCompatActivity implements NavigationView.On
                         if(message.equals("true"))
                         {
                             JSONObject object = RecordResult.getJSONObject(2);
-                            chart.setProgress(Float.parseFloat(object.getString("overall")), true);
+                            float progressChart = Float.parseFloat(object.getString("overall"));
+                            if(progressChart > 100)
+                            {
+                                progressChart = 100;
+                            }
+                            chart.setProgress(progressChart, true);
                             progressDialog.dismiss();
                         }
                         else if(message.equals("false"))
